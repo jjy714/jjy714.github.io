@@ -1,5 +1,6 @@
 # Software Developer
 
+Technical Skills: Python, C++, C, JAVA, React/React-native, Django, SQL
 
 
 ### Education  \
