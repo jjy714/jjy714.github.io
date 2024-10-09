@@ -1,16 +1,15 @@
 # Software Developer
-
-Technical Skills: Python, C++, C, JAVA, React/React-native, Django, SQL
-
-
-### Education  \
-Hong Kong Polytechnic University Computer Science 
-Hankuk Academy of Foreign Studies 
+#### Technical Skills: Python, C++, C, JAVA, React/React-native, Django, SQL
 
 
-### Projects  \
-Machine Learning Project: Custom Image Classification 
-Industrial Software Engineering Project: Top down Architecture design
-WFL-Mobile application development Project: Menu/Restaruant recommendation system
+## Education  
+- The Hong Kong Polytechnic University Computer Science 
+- Hankuk Academy of Foreign Studies 
+
+
+## Projects  
+- Machine Learning Project: Custom Image Classification 
+- Industrial Software Engineering Project: Top down Architecture design
+- WFL-Mobile application development Project: Menu/Restaruant recommendation system
 
 
