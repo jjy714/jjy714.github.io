@@ -1,4 +1,8 @@
 # Software Developer
+### Profile Summary
+Aspiring Computing major with a strong foundation in web programming and machine learning, eager to build impactful connections. Passionate about artificial intelligence and its real-world applications, I possess a proven ability to develop essential tools for designing effective AI models and conducting in-depth reviews of scientific literature. I am enthusiastic about the opportunity to contribute to your team and drive innovative solutions.
+
+
 #### Technical Skills: Python, C++, C, JAVA, React/React-native, Django, SQL
 
 ## Work Experience
