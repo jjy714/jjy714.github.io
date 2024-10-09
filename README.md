@@ -15,9 +15,32 @@ Aspiring Computing major with a strong foundation in web programming and machine
 - Hankuk Academy of Foreign Studies 
 
 
-## Projects  
-- Machine Learning Project: Custom Image Classification 
-- Industrial Software Engineering Project: Top down Architecture design
-- WFL-Mobile application development Project: Menu/Restaruant recommendation system
+## Project Experience 
+
+**Machine Learning Project: Custom Image Classification using CNN**
+- Preprocessed data of hand-gestures that shows numbers for input
+- Constructed a custom convolutional neural network to train
+- Developed a classification for newly inputted picture to classify as numbers
+
+**WFL-Mobile application development Project: Menu/Restaruant recommendation system**
+- Designed a UI/UX using React-Native framework
+- Created RESTful API integration with Google Maps API for restaurant location service
+- Constructed a database using Django framework and connected it to the frontend
+- Presented the project evaluation by reviewing user experience data to update the software
+  
+**Industrial Software Engineering Project: Top down Architecture design**
+- Drafted a project plan to design an appropriate model
+- Created a waterfall model/architecture of the software
+- Crafted static/dynamic modeling of the necessary components for the software using UML 
+
+## Skills
+**Language**
+- Korean (Native)
+- English (Fluent)
+- Japanese (Intermediate)
+
+
+
+
 
 
