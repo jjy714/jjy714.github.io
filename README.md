@@ -1,6 +1,5 @@
 # Machine Learning Engineer
 
----
 
 ### **Profile Summary**
 Versatile and driven AI Engineer with a strong foundation in computing, web development, and applied machine learning. Currently leading LLM evaluation and speech enhancement initiatives at Claion, with prior experience in international project coordination and full-stack development. Skilled in designing scalable ML pipelines, evaluating emerging AI technologies, and translating research into deployable systems. Passionate about building impactful AI tools that solve real-world problems and elevate user experiences.
@@ -8,9 +7,9 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 ---
 
 ### **Technical Skills**
-**Languages & Frameworks:** Python, C++, C, Java, React / React Native, Django, SQL  
-**ML & AI Tools:** PyTorch, Transformers, Hugging Face, scikit-learn  
-**Dev Tools & Platforms:** Git, REST APIs, Google Cloud, Streamlit, Docker (basic)  
+**Languages & Frameworks:** Python, Java, React / React Native, Django, FastAPI, SQL  
+**ML & AI Tools:** PyTorch, Transformers, Hugging Face, scikit-learn, MCP, Langchain   
+**Dev Tools & Platforms:** Git, REST APIs 
 
 ---
 
@@ -32,7 +31,7 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 
 ### **Education**
 
-**BSc Computer Science – The Hong Kong Polytechnic University**  
+**BSc Computer Science (Expected Aug 2026) – The Hong Kong Polytechnic University**  
 **Diploma – Hankuk Academy of Foreign Studies**  
 
 ---
@@ -51,8 +50,6 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 **Software Engineering: Top-Down System Architecture Design**  
 - Created detailed waterfall-model plans for a proposed software system.  
 - Developed UML-based static and dynamic component models for system documentation.
-
----
 
 
 **LLM Evaluation Benchmark System (Claion, 2025)**  
