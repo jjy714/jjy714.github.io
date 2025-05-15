@@ -1,4 +1,4 @@
-# AI Engineer / Machine Learning Engineer
+# Machine Learning Engineer
 
 ---
 
