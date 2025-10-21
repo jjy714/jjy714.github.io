@@ -8,7 +8,8 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 
 ### **Technical Skills**
 **Languages & Frameworks:** Python, Java, React / React Native, Django, FastAPI, SQL  
-**ML & AI Tools:** PyTorch, Transformers, Hugging Face, scikit-learn, MCP, Langchain   
+**ML & AI Tools:** PyTorch, Hugging Face, scikit-learn, MCP, Langchain, Langgraph,
+**DB** Qdrant, MongoDB, MySQL, Postgresql
 **Dev Tools & Platforms:** Git, REST APIs 
 
 ---
@@ -51,7 +52,6 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 - Created detailed waterfall-model plans for a proposed software system.  
 - Developed UML-based static and dynamic component models for system documentation.
 
-
 **LLM Evaluation Benchmark System (Claion, 2025)**  
 - Developed a standardized benchmarking system for evaluating small language models (SLMs) across reasoning, summarization, instruction-following, and RAG tasks.  
 - Automated the evaluation pipeline using Python, Hugging Face, and custom metrics reporting for repeatable testing.  
@@ -62,6 +62,20 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 - Integrated the system into a prototype meeting assistant application; improved voice clarity by >30% in internal tests.  
 - Utilized PyTorch, torchaudio, and custom signal processing pipelines.
 
+**Asynchronous RAG Evaluation System (Claion, 2025)**
+- Architected and developed a complete, independent solution to conduct asynchronous, concurrent evaluations of Retrieval-Augmented Generation (RAG) systems.
+- Authored formal functional requirements, system sequence diagrams, and user flow diagrams to define the system architecture.
+- Engineered a Docker-based microservice infrastructure, using FastAPI to manage API ports for each component.
+- Implemented an innovative isolation process that instantiates a target RAG system with a temporary Qdrant vector collection, enabling focused evaluation and exponentially reducing testing time.
+- Utilized MongoDB as the relational database for storing comprehensive evaluation results and system metadata.
+- Integrated a robust suite of standard evaluation metrics, including BLEU, ROUGE for generation quality, and MRR, MAP, Precision, F1-score, and NDCG for retrieval performance.
+
+**SLM Fine-Tuning for Tool-Calling Function Injection (Lab Research, 2025)**
+- Led a dedicated research task to deeply analyze Small Language Model (SLM) architectures and explore methods for injecting tool-calling capabilities.
+- Focused on a comparative study of models including Gemma, Exaone, and HCX DASH, with the primary goal of modifying them to understand and execute tool-use functions.
+- Employed efficient PEFT/LoRA fine-tuning techniques, leveraging the Unsloth library to train models on three distinct open-source datasets from Hugging Face.
+- Engineered and modified model-specific chat templates to enable tool-calling syntax and logic in models that lacked native support.
+  
 
 ### **Languages**
 - **Korean:** Native  
