@@ -1,5 +1,7 @@
-# Machine Learning Engineer
+# 정준영
+### +82-10-4968-7140 | jjy714@gmail.com | jjy714.github.io
 
+# Machine Learning Engineer
 
 ### **Profile Summary**
 Versatile and driven AI Engineer with a strong foundation in computing, web development, and applied machine learning. Currently leading LLM evaluation and speech enhancement initiatives at Claion, with prior experience in international project coordination and full-stack development. Skilled in designing scalable ML pipelines, evaluating emerging AI technologies, and translating research into deployable systems. Passionate about building impactful AI tools that solve real-world problems and elevate user experiences.
