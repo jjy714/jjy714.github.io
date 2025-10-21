@@ -8,8 +8,8 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 
 ### **Technical Skills**
 **Languages & Frameworks:** Python, Java, React / React Native, Django, FastAPI, SQL  
-**ML & AI Tools:** PyTorch, Hugging Face, scikit-learn, MCP, Langchain, Langgraph,
-**DB** Qdrant, MongoDB, MySQL, Postgresql
+**ML & AI Tools:** PyTorch, Hugging Face, scikit-learn, MCP, Langchain, Langgraph 
+**DB** Qdrant, MongoDB, MySQL, Postgresql 
 **Dev Tools & Platforms:** Git, REST APIs 
 
 ---
