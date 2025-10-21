@@ -39,16 +39,16 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 
 ### **Projects**
 
-**Machine Learning: Custom CNN for Hand Gesture Recognition**  
+**Machine Learning: Custom CNN for Hand Gesture Recognition**  (Hanyang University, 2023)
 - Preprocessed gesture image data and implemented a custom convolutional neural network.  
 - Achieved accurate classification of numerical hand signs through supervised learning.
 
-**WFL Mobile App: Restaurant Recommendation System**  
+**WFL Mobile App: Restaurant Recommendation System**  (Hanyang University, 2024)
 - Designed intuitive UI/UX using React Native and integrated Google Maps API.  
 - Built backend services with Django and implemented database connection for location-based suggestions.  
 - Evaluated user behavior to inform iterative UI improvements.
 
-**Software Engineering: Top-Down System Architecture Design**  
+**Software Engineering: Top-Down System Architecture Design**  (Hanyang University, 2024)
 - Created detailed waterfall-model plans for a proposed software system.  
 - Developed UML-based static and dynamic component models for system documentation.
 
@@ -70,7 +70,7 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 - Utilized MongoDB as the relational database for storing comprehensive evaluation results and system metadata.
 - Integrated a robust suite of standard evaluation metrics, including BLEU, ROUGE for generation quality, and MRR, MAP, Precision, F1-score, and NDCG for retrieval performance.
 
-**SLM Fine-Tuning for Tool-Calling Function Injection (Lab Research, 2025)**
+**SLM Fine-Tuning for Tool-Calling Function Injection (Claion/Lab Research, 2025)**
 - Led a dedicated research task to deeply analyze Small Language Model (SLM) architectures and explore methods for injecting tool-calling capabilities.
 - Focused on a comparative study of models including Gemma, Exaone, and HCX DASH, with the primary goal of modifying them to understand and execute tool-use functions.
 - Employed efficient PEFT/LoRA fine-tuning techniques, leveraging the Unsloth library to train models on three distinct open-source datasets from Hugging Face.
