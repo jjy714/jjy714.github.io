@@ -29,7 +29,7 @@
     </div>
     
 
-# 정준영
+# Junyoung Jung
 ### +82-10-4968-7140 | jjy714@gmail.com | jjy714.github.io
 
 # Machine Learning Engineer
