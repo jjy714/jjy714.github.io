@@ -21,7 +21,7 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 ### **Work Experience**
 
 **Machine Learning Engineer @ Claion**  
-*Seoul, South Korea | Jan 2025 – Present*  
+*Seoul, South Korea | Jan 2025 – Jan 2026*  
 - Designed a company-wide benchmarking standard to evaluate the practical feasibility of small language models (SLMs), enabling fast, repeatable, and scalable comparisons.  
 - Conducted research and analysis on global LLM trends, model capabilities, and open-source frameworks to drive product planning and integration strategies.  
 - Built end-to-end pipelines for real-time voice separation and denoising, improving speaker clarity in noisy virtual meeting environments.  
