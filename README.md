@@ -28,7 +28,7 @@ Versatile and driven AI Engineer with a strong foundation in computing, web deve
 - Collaborated cross-functionally to integrate AI modules into enterprise SI solutions, bridging research and system-level deployment.
 
 **Global Project Lead @ KJ Engineering**  
-*Full-time | Jan 2019 – Sep 2019*  
+*Full-time | Jan 2019 – July 2019*  
 - Led international coordination between Korean clients and overseas manufacturers.  
 - Designed visual component blueprints tailored to client specifications, ensuring efficient product realization and cross-border compliance.
 
