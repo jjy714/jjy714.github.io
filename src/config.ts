@@ -28,14 +28,14 @@ export const siteConfig = {
       name: "Asynchronous RAG Evaluation System",
       description:
         "Redesigned sequential per-system RAG evaluation into a central async microservice architecture. Separated the embedding model as an independent service, applied caching for repeated vectorization, and isolated each RAG system into a temporary Qdrant collection for independent evaluation. Integrated BLEU/ROUGE + MRR/MAP/NDCG unified metrics. Authored formal functional requirements, sequence diagrams, and user flow documentation independently.",
-      link: "https://github.com/jjy714",
+      link: "https://github.com/jjy714/RAG-Evaluation",
       skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
     },
     {
       name: "SLM Fine-Tuning for Tool-Calling",
       description:
         "Researched and implemented tool-calling capability injection into SLMs without native support. Applied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH using three open-source Hugging Face datasets. Engineered model-specific chat templates to activate tool-calling syntax and logic per model architecture.",
-      link: "https://github.com/jjy714",
+      link: "https://github.com/jjy714/Fine-Tuning",
       skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
     },
     {
@@ -49,7 +49,7 @@ export const siteConfig = {
       name: "Pet Mischief Detector",
       description:
         "Real-time system detecting spatial relationships between pets and household objects to classify risk level (HIGH/MEDIUM/LOW). Integrated YOLOv11s with Depth Anything V2 to overcome 2D distance limitations. Iterated the core closeness scoring logic 4 times — additive weighting → multiplicative depth gate → portrait-strip sampling → edge-to-edge gap. Also experimented with ResNet18 + Graph Attention Network hybrid classifier. Trained on 27,512 COCO images, achieving 56.74% accuracy.",
-      link: "https://github.com/jjy714",
+      link: "https://github.com/jjy714/The-Pet-Mischief-Detector",
       skills: ["YOLOv11s", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
     },
     {
