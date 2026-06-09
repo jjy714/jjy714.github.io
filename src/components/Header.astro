@@ -1,9 +1,10 @@
 ---
 import { siteConfig } from "../config";
+import { ui } from "../i18n/ui";
 
-const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
-const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
-const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
+const hasExperience = siteConfig.en.experience && siteConfig.en.experience.length > 0;
+const hasEducation = siteConfig.en.education && siteConfig.en.education.length > 0;
 ---
 
 <header
@@ -17,7 +18,8 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           href="#about"
           class="text-gray-700 hover:text-black transition-colors font-medium"
         >
-          About
+          <span data-en>{ui.en.nav.about}</span>
+          <span data-ko>{ui.ko.nav.about}</span>
         </a>
       </li>
       {
@@ -27,7 +29,8 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               href="#projects"
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
-              Projects
+              <span data-en>{ui.en.nav.projects}</span>
+              <span data-ko>{ui.ko.nav.projects}</span>
             </a>
           </li>
         )
@@ -39,7 +42,8 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               href="#experience"
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
-              Experience
+              <span data-en>{ui.en.nav.experience}</span>
+              <span data-ko>{ui.ko.nav.experience}</span>
             </a>
           </li>
         )
@@ -51,11 +55,22 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               href="#education"
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
-              Education
+              <span data-en>{ui.en.nav.education}</span>
+              <span data-ko>{ui.ko.nav.education}</span>
             </a>
           </li>
         )
       }
+      <li>
+        <button
+          id="lang-toggle"
+          aria-label="Toggle language"
+          class="text-gray-700 hover:text-black transition-colors font-medium border border-gray-400 hover:border-black rounded px-2.5 py-1 text-sm"
+        >
+          <span data-en>KO</span>
+          <span data-ko>EN</span>
+        </button>
+      </li>
     </ul>
   </nav>
 </header>

@@ -10,20 +10,24 @@ import { siteConfig } from "../config";
 import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
+    <!-- Prevents flash-of-wrong-language for returning Korean visitors -->
+    <script is:inline>
+      (function(){var l=localStorage.getItem('preferred-lang');if(l==='ko')document.documentElement.setAttribute('data-lang','ko')})();
+    </script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={siteConfig.description} />
+    <meta name="description" content={siteConfig.en.description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <title>{siteConfig.name} - {siteConfig.title}</title>
+    <title>{siteConfig.en.name} - {siteConfig.en.title}</title>
   </head>
   <body>
     <Header />
@@ -35,5 +39,8 @@ import "../styles/global.css";
       <Education />
     </section>
     <Footer />
+    <script>
+      import "../scripts/langToggle.ts";
+    </script>
   </body>
 </html>

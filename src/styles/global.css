@@ -3,3 +3,8 @@
 body {
   font-family: 'IBM Plex Mono', monospace;
 }
+
+/* Language visibility — default shows English, hides Korean */
+[data-ko] { display: none; }
+html[data-lang="ko"] [data-en] { display: none !important; }
+html[data-lang="ko"] [data-ko] { display: revert !important; }
