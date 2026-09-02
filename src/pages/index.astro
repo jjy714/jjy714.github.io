@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import Highlights from "../components/Highlights.astro";
 import About from "../components/About.astro";
 import Projects from "../components/Projects.astro";
 import Experience from "../components/Experience.astro";
@@ -33,6 +34,7 @@ import "../styles/global.css";
     <Header />
     <section>
       <Hero />
+      <Highlights />
       <About />
       <Projects />
       <Experience />
@@ -41,6 +43,7 @@ import "../styles/global.css";
     <Footer />
     <script>
       import "../scripts/langToggle.ts";
+      import "../scripts/scrollReveal.ts";
     </script>
   </body>
 </html>

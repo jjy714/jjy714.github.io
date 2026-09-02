@@ -27,9 +27,16 @@ export const siteConfig = {
       "Portfolio of Junyoung Jung — AI Engineer specializing in LLM evaluation, RAG systems, and SLM fine-tuning",
     aboutMe:
       "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently completing a B.Eng. in Computer Science at The Hong Kong Polytechnic University.",
+    highlights: [
+      { value: "4.7×", label: "Accuracy gain over baseline (BERT sentiment ensemble)" },
+      { value: "0.92", label: "Macro F1 score achieved" },
+      { value: "3", label: "SLMs fine-tuned for tool-calling (LoRA/PEFT)" },
+      { value: "4", label: "Task types covered by automated eval pipeline" },
+    ],
     projects: [
       {
         name: "Asynchronous RAG Evaluation System",
+        metric: "Sequential → parallelized async evaluation architecture",
         description:
           "Redesigned sequential per-system RAG evaluation into a central async microservice architecture. Separated the embedding model as an independent service, applied caching for repeated vectorization, and isolated each RAG system into a temporary Qdrant collection for independent evaluation. Integrated BLEU/ROUGE + MRR/MAP/NDCG unified metrics. Authored formal functional requirements, sequence diagrams, and user flow documentation independently.",
         link: "https://github.com/jjy714/RAG-Evaluation",
@@ -37,6 +44,7 @@ export const siteConfig = {
       },
       {
         name: "SLM Fine-Tuning for Tool-Calling",
+        metric: "3 SLMs · LoRA/PEFT · 300K+ training examples",
         description:
           "Researched and implemented tool-calling capability injection into SLMs without native support. Applied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH using three open-source Hugging Face datasets. Engineered model-specific chat templates to activate tool-calling syntax and logic per model architecture.",
         link: "https://github.com/jjy714/Fine-Tuning",
@@ -44,6 +52,7 @@ export const siteConfig = {
       },
       {
         name: "LLM / SLM Evaluation Benchmark System",
+        metric: "4 task types · data-driven model adoption",
         description:
           "Built a company-wide benchmarking standard to evaluate SLMs for product integration. Defined evaluation criteria across Reasoning, Summarization, Instruction-following, and RAG tasks. Automated the pipeline using Python and Hugging Face; compared commercial vs. open-source models to drive integration decisions.",
         link: "https://github.com/jjy714",
@@ -51,6 +60,7 @@ export const siteConfig = {
       },
       {
         name: "Pet Mischief Detector",
+        metric: "27,512 images trained · 56.74% accuracy",
         description:
           "Real-time system detecting spatial relationships between pets and household objects to classify risk level (HIGH/MEDIUM/LOW). Integrated YOLOv11s with Depth Anything V2 to overcome 2D distance limitations. Iterated the core closeness scoring logic 4 times — additive weighting → multiplicative depth gate → portrait-strip sampling → edge-to-edge gap. Also experimented with ResNet18 + Graph Attention Network hybrid classifier. Trained on 27,512 COCO images, achieving 56.74% accuracy.",
         link: "https://github.com/jjy714/The-Pet-Mischief-Detector",
@@ -58,6 +68,7 @@ export const siteConfig = {
       },
       {
         name: "Movie Sentiment Analysis — Classical NLP to BERT",
+        metric: "Macro F1 0.9208 · 4.7× over baseline",
         description:
           "Two-notebook iterative pipeline for fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset. Systematically compared 4 classical architectures (Word2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM) across 3 label schemes and 3 augmentation strategies, expanding the corpus from 1,024 to 11,900+ samples. Fine-tuned BERT-base-uncased with a 3-fold cross-validation ensemble, achieving Macro F1 0.9208 — a 4.7× improvement over baseline.",
         link: "https://github.com/jjy714",
@@ -114,9 +125,16 @@ export const siteConfig = {
       "정준영 포트폴리오 — LLM 평가, RAG 시스템, SLM 파인튜닝 전문 AI 엔지니어",
     aboutMe:
       "LLM 평가 인프라, SLM 벤치마킹 시스템, PEFT 기반 파인튜닝 파이프라인 설계 및 배포 경험을 보유한 AI 엔지니어입니다. 클라이언에서 요구사항 정의와 시스템 설계 문서 작성부터 Docker 기반 마이크로서비스 배포까지 엔드투엔드 ML 프로젝트를 독립적으로 주도했습니다. 1~3인 규모의 소규모 팀에서 기술 리드(PL)로 활동한 경험이 있으며, 현재 홍콩이공대학교 컴퓨터공학과 공학사 학위 취득을 앞두고 있습니다.",
+    highlights: [
+      { value: "4.7×", label: "베이스라인 대비 정확도 향상 (BERT 감성분석 앙상블)" },
+      { value: "0.92", label: "Macro F1 Score 달성" },
+      { value: "3개", label: "SLM Tool-Calling 파인튜닝 (LoRA/PEFT)" },
+      { value: "4개", label: "업무 유형별 자동화 평가 파이프라인" },
+    ],
     projects: [
       {
         name: "비동기 RAG 평가 시스템",
+        metric: "순차 평가 → 비동기 병렬 처리 아키텍처 전환",
         description:
           "순차 실행 방식의 RAG 평가를 중앙화된 비동기 마이크로서비스 아키텍처로 재설계했습니다. 임베딩 모델을 독립 서비스로 분리하고 반복 벡터화에 캐싱을 적용하며, 각 RAG 시스템을 독립 평가를 위한 임시 Qdrant 컬렉션으로 격리했습니다. BLEU/ROUGE와 MRR/MAP/NDCG를 통합한 통합 평가 지표를 구축했습니다. 기능 요구사항, 시퀀스 다이어그램, 사용자 흐름 문서를 독립적으로 작성했습니다.",
         link: "https://github.com/jjy714/RAG-Evaluation",
@@ -124,6 +142,7 @@ export const siteConfig = {
       },
       {
         name: "Tool-Calling을 위한 SLM 파인튜닝",
+        metric: "SLM 3종 · LoRA/PEFT · 학습 데이터 30만 건+",
         description:
           "기본 지원 없는 SLM에 Tool-Calling 기능을 주입하는 방법을 연구하고 구현했습니다. Unsloth를 통해 Gemma, Exaone, HCX DASH 모델에 LoRA/PEFT 파인튜닝을 적용했으며, 세 가지 공개 Hugging Face 데이터셋을 활용했습니다. 모델 아키텍처별로 Tool-Calling 문법과 로직을 활성화하는 모델 특화 채팅 템플릿을 엔지니어링했습니다.",
         link: "https://github.com/jjy714/Fine-Tuning",
@@ -131,6 +150,7 @@ export const siteConfig = {
       },
       {
         name: "LLM / SLM 평가 벤치마크 시스템",
+        metric: "4개 업무 유형 · 데이터 기반 모델 도입 결정",
         description:
           "제품 통합을 위한 SLM 평가에 사용할 사내 벤치마킹 표준을 구축했습니다. 추론, 요약, 지시 따르기, RAG 작업에 걸친 평가 기준을 정의했습니다. Python과 Hugging Face를 활용해 파이프라인을 자동화하고, 상용 모델과 오픈소스 모델을 비교하여 통합 의사결정에 활용했습니다.",
         link: "https://github.com/jjy714",
@@ -138,6 +158,7 @@ export const siteConfig = {
       },
       {
         name: "반려동물 장난 감지기",
+        metric: "학습 이미지 27,512장 · 정확도 56.74%",
         description:
           "반려동물과 가정용 물건 사이의 공간적 관계를 실시간으로 감지해 위험 수준(HIGH/MEDIUM/LOW)을 분류하는 시스템입니다. 2D 거리의 한계를 극복하기 위해 YOLOv11s와 Depth Anything V2를 결합했습니다. 근접 점수 산정 로직을 4회 반복 개선했습니다(가산 가중치 → 승법 깊이 게이트 → 세로 띠 샘플링 → 엣지 간 간격). ResNet18과 Graph Attention Network 하이브리드 분류기도 실험했습니다. COCO 이미지 27,512장으로 학습하여 정확도 56.74% 달성.",
         link: "https://github.com/jjy714/The-Pet-Mischief-Detector",
@@ -145,6 +166,7 @@ export const siteConfig = {
       },
       {
         name: "영화 감성 분석 — 고전 NLP에서 BERT까지",
+        metric: "Macro F1 0.9208 · 베이스라인 대비 4.7배",
         description:
           "Rotten Tomatoes 데이터셋을 활용한 세밀한 구문 단위 감성 분류 2단계 반복 파이프라인입니다. 3가지 레이블 체계와 3가지 증강 전략을 적용해 4가지 고전 아키텍처(Word2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM)를 체계적으로 비교했으며, 코퍼스를 1,024건에서 11,900건 이상으로 확장했습니다. BERT-base-uncased를 3-Fold 교차검증 앙상블로 파인튜닝하여 Macro F1 0.9208 달성 — 베이스라인 대비 4.7배 향상.",
         link: "https://github.com/jjy714",

@@ -34,7 +34,7 @@ const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
                   : {};
 
                 return (
-                  <div class="group relative">
+                  <div class="group relative" data-reveal style={`transition-delay: ${Math.min(index, 4) * 80}ms`}>
                     <Component
                       {...linkProps}
                       class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
@@ -74,6 +74,19 @@ const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
                             <span data-ko>{projectKo.name}</span>
                           </h3>
                         </div>
+
+                        {projectEn.metric && (
+                          <div
+                            class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold"
+                            style={{
+                              color: siteConfig.accentColor,
+                              backgroundColor: `${siteConfig.accentColor}15`,
+                            }}
+                          >
+                            <span data-en>{projectEn.metric}</span>
+                            <span data-ko>{projectKo.metric}</span>
+                          </div>
+                        )}
 
                         <p
                           class={`text-base sm:text-lg text-gray-600 leading-relaxed ${projectEn.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}

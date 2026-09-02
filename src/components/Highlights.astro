@@ -1,0 +1,35 @@
+---
+import { siteConfig } from "../config";
+const hasHighlights =
+  siteConfig.en.highlights && siteConfig.en.highlights.length > 0;
+---
+
+{
+  hasHighlights && (
+    <section class="relative px-8 sm:px-12 md:px-16 lg:px-24 py-10 md:py-14 border-y border-gray-100 bg-gray-50/60">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
+        {siteConfig.en.highlights.map((hEn, index) => {
+          const hKo = siteConfig.ko.highlights[index];
+          return (
+            <div
+              data-reveal
+              style={`transition-delay: ${index * 90}ms`}
+              class="text-center lg:text-left"
+            >
+              <div
+                class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"
+                style={{ color: siteConfig.accentColor }}
+              >
+                {hEn.value}
+              </div>
+              <p class="mt-1.5 text-xs sm:text-sm md:text-base text-gray-600 leading-snug">
+                <span data-en>{hEn.label}</span>
+                <span data-ko>{hKo.label}</span>
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  )
+}
