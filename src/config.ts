@@ -65,7 +65,6 @@ export const siteConfig = {
         metric: "4 task types · data-driven model adoption",
         description:
           "Built a company-wide benchmarking standard to evaluate SLMs for product integration.\nDefined evaluation criteria across Reasoning, Summarization, Instruction-following, and RAG tasks, and automated the pipeline with Python and Hugging Face.\nCompared commercial and open-source models on the same criteria to drive integration decisions.",
-        link: "https://github.com/jjy714",
         skills: ["Python", "Hugging Face", "LangChain"],
       },
       {
@@ -75,7 +74,6 @@ export const siteConfig = {
         metric: "3 SLMs · LoRA/PEFT · 300K+ training examples",
         description:
           "Researched and implemented tool-calling capability injection into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH using three open-source Hugging Face datasets.\nEngineered model-specific chat templates to activate tool-calling syntax and logic per model architecture.",
-        link: "https://github.com/jjy714/Fine-Tuning",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
@@ -112,7 +110,6 @@ export const siteConfig = {
         metric: "27,512 images trained · 56.74% accuracy",
         description:
           "Real-time system detecting spatial relationships between pets and household objects to classify risk level (HIGH/MEDIUM/LOW).\nIntegrated YOLOv11s with Depth Anything V2 to overcome 2D distance limitations.\nIterated the core closeness scoring logic 4 times — additive weighting → multiplicative depth gate → portrait-strip sampling → edge-to-edge gap.\nAlso experimented with a ResNet18 + Graph Attention Network hybrid classifier.\nTrained on 27,512 COCO images, achieving 56.74% accuracy.",
-        link: "https://github.com/jjy714/The-Pet-Mischief-Detector",
         skills: ["YOLOv11s", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
       },
       {
@@ -122,7 +119,6 @@ export const siteConfig = {
         metric: "Macro F1 0.9208 · 4.7× over baseline",
         description:
           "Two-notebook iterative pipeline for fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset.\nSystematically compared 4 classical architectures (Word2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM) across 3 label schemes and 3 augmentation strategies, expanding the corpus from 1,024 to 11,900+ samples.\nFine-tuned BERT-base-uncased with a 3-fold cross-validation ensemble, achieving Macro F1 0.9208 — a 4.7× improvement over baseline.",
-        link: "https://github.com/jjy714",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
@@ -220,7 +216,6 @@ export const siteConfig = {
         metric: "4개 업무 유형 · 데이터 기반 모델 도입 결정",
         description:
           "어떤 SLM을 제품에 넣을지 감으로 정하던 상황을 데이터로 판단할 수 있도록 사내 평가 표준 수립\n추론·요약·지시 이행·RAG 4개 업무 유형별 평가 기준 정의, Python·Hugging Face로 평가 자동화\n상용 모델과 오픈소스 모델을 같은 기준으로 비교해 도입 의사결정에 활용",
-        link: "https://github.com/jjy714",
         skills: ["Python", "Hugging Face", "LangChain"],
       },
       {
@@ -230,7 +225,6 @@ export const siteConfig = {
         metric: "SLM 3종 · LoRA/PEFT · 학습 데이터 30만 건+",
         description:
           "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 새로 이식\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종 학습\n공개 Hugging Face 데이터셋 3종을 활용해 학습 데이터를 30만 건 규모로 구성\n모델마다 다른 포맷·추론 방식에 맞춘 Chat Template 직접 설계\nLoRA 기반 튜닝의 기술적 한계를 확인하고, 이후 모델 통합 전략 수립에 반영",
-        link: "https://github.com/jjy714/Fine-Tuning",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
@@ -267,7 +261,6 @@ export const siteConfig = {
         metric: "학습 이미지 27,512장 · 정확도 56.74%",
         description:
           "반려동물이 위험한 물건에 다가가는 상황을 실시간으로 감지해 위험도를 상·중·하 3단계로 분류하는 시스템\n2D 영상만으로는 알기 어려운 실제 거리를 YOLOv11s와 Depth Anything V2(깊이 추정 모델)를 결합해 보완\n근접도 판단 기준을 4차례 개선 — 가중치 합산 → 깊이 값을 곱해 반영 → 세로 띠 샘플링 → 물체 가장자리 간 거리\nResNet18 + Graph Attention Network 하이브리드 분류기 실험\nCOCO 이미지 27,512장으로 학습해 정확도 56.74% 달성",
-        link: "https://github.com/jjy714/The-Pet-Mischief-Detector",
         skills: ["YOLOv11s", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
       },
       {
@@ -277,7 +270,6 @@ export const siteConfig = {
         metric: "Macro F1 0.9208 · 베이스라인 대비 4.7배",
         description:
           "Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석\nWord2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM 4가지 방식을 3가지 레이블 체계·3가지 증강 전략으로 비교, 데이터를 1,024건에서 11,900건 이상으로 확장\nBERT-base-uncased를 3-Fold 교차검증 앙상블로 파인튜닝해 Macro F1 0.9208 달성 — 베이스라인 대비 4.7배",
-        link: "https://github.com/jjy714",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
