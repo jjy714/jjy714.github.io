@@ -34,10 +34,10 @@ export const siteConfig = {
     aboutMe:
       "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently building a multimodal AI kiosk at Withmind. Graduated with a B.Sc. in Computing from The Hong Kong Polytechnic University.",
     highlights: [
-      { value: "4.7×", label: "Macro F1 gain over baseline (BERT sentiment ensemble)" },
-      { value: "0.92", label: "Macro F1 score achieved" },
-      { value: "3", label: "SLMs fine-tuned for tool-calling (LoRA/PEFT)" },
-      { value: "4", label: "Task types covered by automated eval pipeline" },
+      { value: "4.7×", label: "Macro F1 gain over baseline (BERT ensemble)", project: "Movie Sentiment Analysis" },
+      { value: "0.92", label: "Macro F1 score achieved", project: "Movie Sentiment Analysis" },
+      { value: "3", label: "SLMs fine-tuned for tool-calling (LoRA/PEFT)", project: "SLM Fine-Tuning" },
+      { value: "4", label: "Task types covered by automated eval pipeline", project: "LLM / SLM Evaluation Benchmark" },
     ],
     projects: [
       {
@@ -177,10 +177,10 @@ export const siteConfig = {
     aboutMe:
       "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계·배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 단독 주도\n1~3인 규모 팀에서 기술 리드(PL)로 활동\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중\n홍콩이공대학교 컴퓨팅 학사 졸업",
     highlights: [
-      { value: "4.7×", label: "베이스라인 대비 Macro F1 향상 (BERT 감성 분석)" },
-      { value: "0.92", label: "Macro F1 점수 달성" },
-      { value: "3개", label: "SLM에 Tool-Calling 기능 이식 (LoRA/PEFT)" },
-      { value: "4개", label: "업무 유형별 자동 평가 체계 구축" },
+      { value: "4.7×", label: "베이스라인 대비 Macro F1 향상 (BERT 앙상블)", project: "영화 리뷰 감성 분석" },
+      { value: "0.92", label: "Macro F1 점수 달성", project: "영화 리뷰 감성 분석" },
+      { value: "3개", label: "SLM에 Tool-Calling 기능 이식 (LoRA/PEFT)", project: "SLM Tool-Calling 파인튜닝" },
+      { value: "4개", label: "업무 유형별 자동 평가 체계 구축", project: "LLM / SLM 평가 벤치마크" },
     ],
     projects: [
       {
