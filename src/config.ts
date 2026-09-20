@@ -36,10 +36,9 @@ export const siteConfig = {
     projects: [
       {
         name: "Asynchronous RAG Evaluation System",
-        metric: "Sequential → parallelized async evaluation architecture",
+        metric: "Foundation of Claion's commercial product R.E.X.",
         description:
-          "Redesigned sequential per-system RAG evaluation into a central async microservice architecture. Separated the embedding model as an independent service, applied caching for repeated vectorization, and isolated each RAG system into a temporary Qdrant collection for independent evaluation. Integrated BLEU/ROUGE + MRR/MAP/NDCG unified metrics. Authored formal functional requirements, sequence diagrams, and user flow documentation independently.",
-        link: "https://github.com/jjy714/RAG-Evaluation",
+          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex). Redesigned sequential per-system RAG evaluation into a central async microservice architecture. Separated the embedding model as an independent service, applied caching for repeated vectorization, and isolated each RAG system into a temporary Qdrant collection for independent evaluation. Integrated BLEU/ROUGE + MRR/MAP/NDCG unified metrics. Authored formal functional requirements, sequence diagrams, and user flow documentation independently.",
         skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
       },
       {
@@ -134,10 +133,9 @@ export const siteConfig = {
     projects: [
       {
         name: "비동기 RAG 평가 시스템",
-        metric: "순차 평가 → 비동기 병렬 처리 아키텍처 전환",
+        metric: "클라이언 상용 제품 R.E.X.의 기반 설계",
         description:
-          "순차 실행 방식의 RAG 평가를 중앙화된 비동기 마이크로서비스 아키텍처로 재설계했습니다. 임베딩 모델을 독립 서비스로 분리하고 반복 벡터화에 캐싱을 적용하며, 각 RAG 시스템을 독립 평가를 위한 임시 Qdrant 컬렉션으로 격리했습니다. BLEU/ROUGE와 MRR/MAP/NDCG를 통합한 통합 평가 지표를 구축했습니다. 기능 요구사항, 시퀀스 다이어그램, 사용자 흐름 문서를 독립적으로 작성했습니다.",
-        link: "https://github.com/jjy714/RAG-Evaluation",
+          "클라이언 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대)를 설계·구축했으며, 퇴사 후 클라이언이 이를 고도화하여 상용 RAG 품질 진단 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시했습니다. 순차 실행 방식의 RAG 평가를 중앙화된 비동기 마이크로서비스 아키텍처로 재설계했습니다. 임베딩 모델을 독립 서비스로 분리하고 반복 벡터화에 캐싱을 적용하며, 각 RAG 시스템을 독립 평가를 위한 임시 Qdrant 컬렉션으로 격리했습니다. BLEU/ROUGE와 MRR/MAP/NDCG를 통합한 통합 평가 지표를 구축했습니다. 기능 요구사항, 시퀀스 다이어그램, 사용자 흐름 문서를 독립적으로 작성했습니다.",
         skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
       },
       {
