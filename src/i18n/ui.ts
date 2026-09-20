@@ -19,6 +19,7 @@ export const ui = {
     hero: {
       greeting: "Hello! 👋",
       intro: "I'm",
+      outro: ", an AI Engineer",
     },
     footer: {
       rights: "All rights reserved.",
@@ -42,8 +43,9 @@ export const ui = {
       academic: "학교 · 논문 프로젝트",
     },
     hero: {
-      greeting: "안녕하세요! 👋",
-      intro: "저는",
+      greeting: "안녕하세요",
+      intro: "AI 엔지니어",
+      outro: "입니다!",
     },
     footer: {
       rights: "All rights reserved.",

@@ -80,7 +80,6 @@ Python, PyTorch, Hugging Face Transformers, LangChain, LangGraph, FastAPI, Docke
    - SLM fine-tuning for tool-calling (LoRA/PEFT, Unsloth, Gemma/Exaone/HCX DASH)
    - PL in teams of 1–3
 
-2. **Cortech** — Global Project Lead (Jan 2019 – Jul 2019)
 
 ### Projects (in order)
 1. **Asynchronous RAG Evaluation System** (Claion, 2025)

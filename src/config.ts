@@ -144,15 +144,6 @@ export const siteConfig = {
           "Operated as PL in teams of 1–3; authored formal functional requirements, system sequence diagrams, and user flow documentation for all major systems.",
         ],
       },
-      {
-        company: "Cortech",
-        title: "Global Project Lead",
-        dateRange: "Jan 2019 - Jul 2019",
-        bullets: [
-          "Led international coordination between Korean clients and overseas manufacturers.",
-          "Designed visual component blueprints tailored to client specifications.",
-        ],
-      },
     ],
     education: [
       {
@@ -160,6 +151,7 @@ export const siteConfig = {
         degree: "B.Sc. in Computing",
         dateRange: "Sep 2019 - Aug 2026",
         achievements: [
+          "Thesis (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer — lower response time and token cost with answer quality preserved",
           "Computer Vision: Real-time object risk detection system using YOLOv11 + Depth Anything V2",
           "Big Data Analytics: NLP pipeline from classical ML to BERT transformer (Macro F1 0.9208)",
         ],
@@ -295,15 +287,6 @@ export const siteConfig = {
           "1~3인 팀에서 PL로 활동하며 주요 시스템의 기능 요구사항·시퀀스 다이어그램·사용자 플로우 문서 작성",
         ],
       },
-      {
-        company: "코텍",
-        title: "글로벌 프로젝트 리드",
-        dateRange: "2019년 1월 - 2019년 7월",
-        bullets: [
-          "한국 고객사와 해외 제조사 간 국제 조율 주도",
-          "고객 요구사항에 맞춘 부품 시각 설계도 작성",
-        ],
-      },
     ],
     education: [
       {
@@ -311,6 +294,7 @@ export const siteConfig = {
         degree: "컴퓨팅 학사 (B.Sc.)",
         dateRange: "2019년 9월 - 2026년 8월",
         achievements: [
+          "졸업 논문 (DMA-RAG) — 질문 난이도별 RAG 라우팅, 멀티 에이전트 Discussion Agent Layer 설계로 답변 품질은 유지하고 응답 시간·토큰 비용 절감",
           "컴퓨터 비전 — YOLOv11 + Depth Anything V2 기반 실시간 위험 감지 시스템",
           "빅데이터 분석 — 고전 ML부터 BERT까지 NLP 파이프라인 (Macro F1 0.9208)",
         ],
