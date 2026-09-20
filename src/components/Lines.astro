@@ -1,0 +1,20 @@
+---
+// Renders a "\n"-separated string as a bullet list, or as a plain paragraph
+// when there is only one line.
+interface Props {
+  text: string;
+}
+const lines = Astro.props.text.split("\n").filter((line) => line.trim() !== "");
+---
+
+{
+  lines.length > 1 ? (
+    <ul class="list-disc pl-5 space-y-1.5 marker:text-gray-400">
+      {lines.map((line) => (
+        <li>{line}</li>
+      ))}
+    </ul>
+  ) : (
+    <p>{lines[0]}</p>
+  )
+}

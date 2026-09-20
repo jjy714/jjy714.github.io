@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from "../config";
 import { ui } from "../i18n/ui";
+import Lines from "./Lines.astro";
 const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
 ---
 
@@ -88,12 +89,16 @@ const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
                           </div>
                         )}
 
-                        <p
+                        <div
                           class={`text-base sm:text-lg text-gray-600 leading-relaxed ${projectEn.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
                         >
-                          <span data-en>{projectEn.description}</span>
-                          <span data-ko>{projectKo.description}</span>
-                        </p>
+                          <div data-en>
+                            <Lines text={projectEn.description} />
+                          </div>
+                          <div data-ko>
+                            <Lines text={projectKo.description} />
+                          </div>
+                        </div>
 
                         {projectEn.skills && projectEn.skills.length > 0 && (
                           <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">

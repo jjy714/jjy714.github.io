@@ -11,10 +11,12 @@ export const siteConfig = {
     "Hugging Face Transformers",
     "LangChain",
     "LangGraph",
+    "Gemini Live API",
     "FastAPI",
     "Docker",
     "Qdrant",
     "MongoDB",
+    "PySpark",
     "scikit-learn",
     "React / React Native",
     "Git",
@@ -26,14 +28,28 @@ export const siteConfig = {
     description:
       "Portfolio of Junyoung Jung — AI Engineer specializing in LLM evaluation, RAG systems, and SLM fine-tuning",
     aboutMe:
-      "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently completing a B.Eng. in Computer Science at The Hong Kong Polytechnic University.",
+      "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently building a multimodal AI kiosk at Withmind, and completing a B.Eng. in Computer Science at The Hong Kong Polytechnic University.",
     highlights: [
-      { value: "4.7×", label: "Accuracy gain over baseline (BERT sentiment ensemble)" },
+      { value: "4.7×", label: "Macro F1 gain over baseline (BERT sentiment ensemble)" },
       { value: "0.92", label: "Macro F1 score achieved" },
       { value: "3", label: "SLMs fine-tuned for tool-calling (LoRA/PEFT)" },
       { value: "4", label: "Task types covered by automated eval pipeline" },
     ],
     projects: [
+      {
+        name: "AI Kiosk Latency Reduction & Tool-Calling Integration",
+        metric: "PoC delivered · 2nd phase in progress",
+        description:
+          "Reduced the response latency of a multimodal in-store AI kiosk and designed how the AI operates the backend. Replaced a sequential STT → LLM → TTS pipeline with the Gemini Live API, which handles voice input and output in a single streaming session. Free-form ordering (adding to the cart, database lookups) is handled by LLM tool calling, while predictable steps such as option pages and menu utterances are matched against a predefined keyword set on the backend and executed directly — removing tool-call misfires and hallucination risk wherever the answer is already known. Designed the Frontend–Backend–AI interface for conversation-driven screen transitions and delivered the PoC; second-phase work is under way.",
+        skills: ["Gemini Live API", "Tool Calling", "LLM Function Calling"],
+      },
+      {
+        name: "Complexity-Based RAG Routing (Thesis: DMA-RAG)",
+        metric: "Lower cost & latency, answer quality preserved",
+        description:
+          "Standard RAG pipelines process every question the same way, wasting tokens and time on simple ones. Designed a Discussion Agent Layer (DAL) that routes each question along a path matched to its complexity, keeping answer quality on complex questions while cutting average response time and token cost.",
+        skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
+      },
       {
         name: "Asynchronous RAG Evaluation System",
         metric: "Foundation of Claion's commercial product R.E.X.",
@@ -58,6 +74,20 @@ export const siteConfig = {
         skills: ["Python", "Hugging Face", "LangChain"],
       },
       {
+        name: "Large-Scale Self-Join Optimization",
+        metric: "1M+ records · no extra hardware",
+        description:
+          "Resolved out-of-memory failures during similarity analysis on a news dataset of over 1 million records. Traced the cause to a Cartesian-product explosion by analyzing the Spark execution plan, then implemented filtering logic with a custom PySpark UDF (least() / greatest()) that removes duplicate comparisons — stabilizing the pipeline without adding hardware.",
+        skills: ["PySpark", "SQL"],
+      },
+      {
+        name: "Lightweight Hybrid Plant Classification",
+        metric: "Built without deep learning",
+        description:
+          "Built a lightweight alternative to heavy deep-learning models for simple, on-site plant classification. Combined HOG and LBP feature extractors with an SVM classifier, achieving classification performance that stays robust under environmental changes without any deep learning.",
+        skills: ["scikit-learn", "HOG", "LBP", "SVM"],
+      },
+      {
         name: "Pet Mischief Detector",
         metric: "27,512 images trained · 56.74% accuracy",
         description:
@@ -75,6 +105,16 @@ export const siteConfig = {
       },
     ],
     experience: [
+      {
+        company: "Withmind",
+        title: "AI Engineer",
+        dateRange: "Jun 2026 - Present",
+        bullets: [
+          "Reduced response latency of a multimodal AI kiosk by adopting the Gemini Live API, which handles voice input and output in a single streaming session.",
+          "Split conversation handling by predictability: LLM tool calling for free-form ordering, keyword-matched backend execution for option and menu steps with fixed answers — designed to prevent tool-call misfires.",
+          "Designed the Frontend–Backend–AI interface, delivered the PoC, and started second-phase development.",
+        ],
+      },
       {
         company: "Claion",
         title: "Machine Learning Engineer",
@@ -117,32 +157,49 @@ export const siteConfig = {
     ],
   },
 
+  // Korean copy is written from scratch (not translated line-by-line):
+  // noun-ending sentences, outcome first, plain wording. Multi-line strings
+  // ("\n") are rendered as bullet lists (projects) or line breaks (aboutMe).
   ko: {
     name: "정준영",
     title: "AI 엔지니어",
     description:
-      "정준영 포트폴리오 — LLM 평가, RAG 시스템, SLM 파인튜닝 전문 AI 엔지니어",
+      "정준영 포트폴리오 — LLM 평가, RAG 시스템, SLM 파인튜닝을 다루는 AI 엔지니어",
     aboutMe:
-      "LLM 평가 인프라, SLM 벤치마킹 시스템, PEFT 기반 파인튜닝 파이프라인 설계 및 배포 경험을 보유한 AI 엔지니어입니다. 클라이언에서 요구사항 정의와 시스템 설계 문서 작성부터 Docker 기반 마이크로서비스 배포까지 엔드투엔드 ML 프로젝트를 독립적으로 주도했습니다. 1~3인 규모의 소규모 팀에서 기술 리드(PL)로 활동한 경험이 있으며, 현재 홍콩이공대학교 컴퓨터공학과 공학사 학위 취득을 앞두고 있습니다.",
+      "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계·배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 단독 주도\n1~3인 규모 팀에서 기술 리드(PL)로 활동\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중, 홍콩이공대학교 컴퓨터공학과 졸업 예정",
     highlights: [
-      { value: "4.7×", label: "베이스라인 대비 정확도 향상 (BERT 감성분석 앙상블)" },
-      { value: "0.92", label: "Macro F1 Score 달성" },
-      { value: "3개", label: "SLM Tool-Calling 파인튜닝 (LoRA/PEFT)" },
-      { value: "4개", label: "업무 유형별 자동화 평가 파이프라인" },
+      { value: "4.7×", label: "베이스라인 대비 Macro F1 향상 (BERT 감성 분석)" },
+      { value: "0.92", label: "Macro F1 점수 달성" },
+      { value: "3개", label: "SLM에 Tool-Calling 기능 이식 (LoRA/PEFT)" },
+      { value: "4개", label: "업무 유형별 자동 평가 체계 구축" },
     ],
     projects: [
       {
-        name: "비동기 RAG 평가 시스템",
-        metric: "클라이언 상용 제품 R.E.X.의 기반 설계",
+        name: "AI 키오스크 응답 지연 개선",
+        metric: "PoC 개발 완료 · 2차 고도화 진행 중",
         description:
-          "클라이언 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대)를 설계·구축했으며, 퇴사 후 클라이언이 이를 고도화하여 상용 RAG 품질 진단 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시했습니다. 순차 실행 방식의 RAG 평가를 중앙화된 비동기 마이크로서비스 아키텍처로 재설계했습니다. 임베딩 모델을 독립 서비스로 분리하고 반복 벡터화에 캐싱을 적용하며, 각 RAG 시스템을 독립 평가를 위한 임시 Qdrant 컬렉션으로 격리했습니다. BLEU/ROUGE와 MRR/MAP/NDCG를 통합한 통합 평가 지표를 구축했습니다. 기능 요구사항, 시퀀스 다이어그램, 사용자 흐름 문서를 독립적으로 작성했습니다.",
+          "음성으로 주문하는 매장용 AI 키오스크의 느린 응답을 줄이고, AI가 주문 처리를 직접 수행하는 구조 설계\nSTT → LLM → TTS를 순서대로 호출하던 방식에서 음성 입출력을 한 번에 처리하는 Gemini Live API로 전환해 지연 개선\n장바구니 담기·DB 조회 등 자유로운 발화는 LLM Tool Calling으로 처리\n옵션 선택·메뉴 발화처럼 답이 정해진 구간은 자주 쓰는 키워드를 미리 등록해 두고, 매칭되면 LLM 판단 없이 백엔드가 즉시 실행 — 오작동·환각 가능성 사전 차단\nFrontend·Backend·AI를 잇는 인터페이스를 설계해 대화에 따른 화면 자동 전환 구현",
+        skills: ["Gemini Live API", "Tool Calling", "LLM Function Calling"],
+      },
+      {
+        name: "질문 난이도별 RAG 라우팅 (졸업 논문, DMA-RAG)",
+        metric: "답변 품질 유지 · 응답 시간·비용 절감",
+        description:
+          "모든 질문을 같은 방식으로 처리해 불필요한 비용과 지연이 생기던 RAG 구조 개선\n질문의 복잡도에 따라 처리 경로를 자동으로 나누는 Discussion Agent Layer(DAL) 설계 — 쉬운 질문은 가볍게, 어려운 질문은 깊게\n복잡한 질문의 답변 품질은 유지하면서 평균 응답 시간과 토큰 비용 절감",
+        skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
+      },
+      {
+        name: "비동기 RAG 평가 시스템",
+        metric: "클라이온 상용 제품 R.E.X.의 기반 설계",
+        description:
+          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nRAG 시스템을 하나씩 순서대로 테스트하던 구조를, 여러 시스템을 동시에 평가하는 비동기 마이크로서비스로 재설계\n임베딩 모델을 별도 서비스로 분리하고 캐싱을 적용해 반복 연산 제거, 시스템마다 독립된 Qdrant 컬렉션을 사용해 서로 간섭 없이 평가\nBLEU/ROUGE와 MRR/MAP/NDCG를 하나의 기준으로 통합해 시스템 간 동일한 잣대로 비교\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 단독 작성",
         skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
       },
       {
-        name: "Tool-Calling을 위한 SLM 파인튜닝",
+        name: "SLM Tool-Calling 파인튜닝",
         metric: "SLM 3종 · LoRA/PEFT · 학습 데이터 30만 건+",
         description:
-          "기본 지원 없는 SLM에 Tool-Calling 기능을 주입하는 방법을 연구하고 구현했습니다. Unsloth를 통해 Gemma, Exaone, HCX DASH 모델에 LoRA/PEFT 파인튜닝을 적용했으며, 세 가지 공개 Hugging Face 데이터셋을 활용했습니다. 모델 아키텍처별로 Tool-Calling 문법과 로직을 활성화하는 모델 특화 채팅 템플릿을 엔지니어링했습니다.",
+          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 새로 이식\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종 학습\n공개 Hugging Face 데이터셋 3종을 활용해 학습 데이터를 30만 건 규모로 구성\n모델마다 다른 포맷·추론 방식에 맞춘 Chat Template 직접 설계\nLoRA 기반 튜닝의 기술적 한계를 확인하고, 이후 모델 통합 전략 수립에 반영",
         link: "https://github.com/jjy714/Fine-Tuning",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
@@ -150,37 +207,61 @@ export const siteConfig = {
         name: "LLM / SLM 평가 벤치마크 시스템",
         metric: "4개 업무 유형 · 데이터 기반 모델 도입 결정",
         description:
-          "제품 통합을 위한 SLM 평가에 사용할 사내 벤치마킹 표준을 구축했습니다. 추론, 요약, 지시 따르기, RAG 작업에 걸친 평가 기준을 정의했습니다. Python과 Hugging Face를 활용해 파이프라인을 자동화하고, 상용 모델과 오픈소스 모델을 비교하여 통합 의사결정에 활용했습니다.",
+          "어떤 SLM을 제품에 넣을지 감으로 정하던 상황을 데이터로 판단할 수 있도록 사내 평가 표준 수립\n추론·요약·지시 이행·RAG 4개 업무 유형별 평가 기준 정의, Python·Hugging Face로 평가 자동화\n상용 모델과 오픈소스 모델을 같은 기준으로 비교해 도입 의사결정에 활용",
         link: "https://github.com/jjy714",
         skills: ["Python", "Hugging Face", "LangChain"],
+      },
+      {
+        name: "대용량 데이터 자기조인 최적화",
+        metric: "100만 건+ 데이터 · 추가 하드웨어 없이 해결",
+        description:
+          "100만 건 이상 뉴스 데이터의 유사도 분석 중 발생한 메모리 부족(OOM) 오류 해결\nSpark 실행 계획을 분석해, 모든 데이터 쌍을 비교하는 Cartesian Product가 원인임을 규명\nleast()·greatest() 기반 커스텀 PySpark UDF로 중복 비교를 걸러내, 서버 증설 없이 파이프라인 안정화",
+        skills: ["PySpark", "SQL"],
+      },
+      {
+        name: "경량 하이브리드 식물 분류",
+        metric: "딥러닝 없이 구현",
+        description:
+          "현장의 간단한 식물 분류에 무거운 딥러닝 모델을 쓰는 비효율을 줄이기 위한 경량 분류 시스템\n이미지의 형태·질감 패턴을 추출하는 HOG와 LBP를 결합하고 SVM으로 분류\n딥러닝 없이도 환경 변화에 강한 분류 성능 확보",
+        skills: ["scikit-learn", "HOG", "LBP", "SVM"],
       },
       {
         name: "반려동물 장난 감지기",
         metric: "학습 이미지 27,512장 · 정확도 56.74%",
         description:
-          "반려동물과 가정용 물건 사이의 공간적 관계를 실시간으로 감지해 위험 수준(HIGH/MEDIUM/LOW)을 분류하는 시스템입니다. 2D 거리의 한계를 극복하기 위해 YOLOv11s와 Depth Anything V2를 결합했습니다. 근접 점수 산정 로직을 4회 반복 개선했습니다(가산 가중치 → 승법 깊이 게이트 → 세로 띠 샘플링 → 엣지 간 간격). ResNet18과 Graph Attention Network 하이브리드 분류기도 실험했습니다. COCO 이미지 27,512장으로 학습하여 정확도 56.74% 달성.",
+          "반려동물이 위험한 물건에 다가가는 상황을 실시간으로 감지해 위험도를 상·중·하 3단계로 분류하는 시스템\n2D 영상만으로는 알기 어려운 실제 거리를 YOLOv11s와 Depth Anything V2(깊이 추정 모델)를 결합해 보완\n근접도 판단 기준을 4차례 개선 — 가중치 합산 → 깊이 값을 곱해 반영 → 세로 띠 샘플링 → 물체 가장자리 간 거리\nResNet18 + Graph Attention Network 하이브리드 분류기 실험\nCOCO 이미지 27,512장으로 학습해 정확도 56.74% 달성",
         link: "https://github.com/jjy714/The-Pet-Mischief-Detector",
         skills: ["YOLOv11s", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
       },
       {
-        name: "영화 감성 분석 — 고전 NLP에서 BERT까지",
+        name: "영화 리뷰 감성 분석 — 고전 NLP에서 BERT까지",
         metric: "Macro F1 0.9208 · 베이스라인 대비 4.7배",
         description:
-          "Rotten Tomatoes 데이터셋을 활용한 세밀한 구문 단위 감성 분류 2단계 반복 파이프라인입니다. 3가지 레이블 체계와 3가지 증강 전략을 적용해 4가지 고전 아키텍처(Word2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM)를 체계적으로 비교했으며, 코퍼스를 1,024건에서 11,900건 이상으로 확장했습니다. BERT-base-uncased를 3-Fold 교차검증 앙상블로 파인튜닝하여 Macro F1 0.9208 달성 — 베이스라인 대비 4.7배 향상.",
+          "Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석\nWord2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM 4가지 방식을 3가지 레이블 체계·3가지 증강 전략으로 비교, 데이터를 1,024건에서 11,900건 이상으로 확장\nBERT-base-uncased를 3-Fold 교차검증 앙상블로 파인튜닝해 Macro F1 0.9208 달성 — 베이스라인 대비 4.7배",
         link: "https://github.com/jjy714",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
     experience: [
       {
-        company: "클라이언",
+        company: "Withmind",
+        title: "AI 엔지니어",
+        dateRange: "2026년 6월 - 현재",
+        bullets: [
+          "멀티모달 AI 키오스크의 응답 지연 개선 — 음성 입출력을 한 번에 처리하는 Gemini Live API 도입",
+          "자유 발화는 LLM Tool Calling으로, 답이 정해진 구간은 키워드 매칭 후 백엔드가 직접 처리하도록 나누어 오작동 가능성 차단",
+          "Frontend·Backend·AI 연동 구조 설계, PoC 완료 후 2차 고도화 진행",
+        ],
+      },
+      {
+        company: "클라이온",
         title: "머신러닝 엔지니어",
         dateRange: "2025년 1월 - 2026년 1월",
         bullets: [
-          "추론, 요약, 지시 따르기, RAG 작업 전반에 걸친 자동화 평가 파이프라인을 포함하는 사내 SLM 벤치마킹 표준을 설계했습니다.",
-          "비동기 RAG 평가 마이크로서비스를 아키텍처 설계 및 구축했습니다 — 순차 평가를 비동기 병렬 처리로 재설계하고 임베딩 서비스 격리 및 캐싱을 적용했습니다.",
-          "Gemma, Exaone, HCX DASH에 대한 SLM 파인튜닝 연구(Unsloth를 통한 LoRA/PEFT)를 주도하고, Tool-Calling 기능 주입을 위한 모델 특화 채팅 템플릿을 엔지니어링했습니다.",
-          "1~3인 팀에서 PL로 활동하며 모든 주요 시스템의 기능 요구사항, 시스템 시퀀스 다이어그램, 사용자 흐름 문서를 작성했습니다.",
+          "추론·요약·지시 이행·RAG 4개 업무 유형의 자동 평가 파이프라인과 사내 SLM 벤치마크 표준 수립",
+          "비동기 RAG 평가 마이크로서비스 설계·구축 — 순차 평가를 병렬 처리로 전환하고 임베딩 서비스 분리·캐싱 적용",
+          "Gemma·EXAONE·HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 모델별 Chat Template 설계로 Tool-Calling 기능 이식 주도",
+          "1~3인 팀에서 PL로 활동하며 주요 시스템의 기능 요구사항·시퀀스 다이어그램·사용자 플로우 문서 작성",
         ],
       },
       {
@@ -188,8 +269,8 @@ export const siteConfig = {
         title: "글로벌 프로젝트 리드",
         dateRange: "2019년 1월 - 2019년 7월",
         bullets: [
-          "한국 클라이언트와 해외 제조사 간의 국제 조율을 주도했습니다.",
-          "클라이언트 요구사항에 맞춘 시각적 부품 설계도를 작성했습니다.",
+          "한국 고객사와 해외 제조사 간 국제 조율 주도",
+          "고객 요구사항에 맞춘 부품 시각 설계도 작성",
         ],
       },
     ],
@@ -199,8 +280,8 @@ export const siteConfig = {
         degree: "컴퓨터공학 공학사 (우등)",
         dateRange: "2019년 9월 - 2026년 8월 (예정)",
         achievements: [
-          "컴퓨터 비전: YOLOv11 + Depth Anything V2를 활용한 실시간 객체 위험 감지 시스템",
-          "빅데이터 분석: 고전 ML에서 BERT 트랜스포머까지의 NLP 파이프라인 (Macro F1 0.9208)",
+          "컴퓨터 비전 — YOLOv11 + Depth Anything V2 기반 실시간 위험 감지 시스템",
+          "빅데이터 분석 — 고전 ML부터 BERT까지 NLP 파이프라인 (Macro F1 0.9208)",
         ],
       },
       {
