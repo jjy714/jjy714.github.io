@@ -74,7 +74,7 @@ siteConfig fields:
 Python, PyTorch, Hugging Face Transformers, LangChain, LangGraph, FastAPI, Docker, Qdrant, MongoDB, scikit-learn, React / React Native, Git
 
 ### Experience
-1. **Claion** — Machine Learning Engineer (Jan 2025 – Jan 2026)
+1. **Claion** — AI Engineer (Jan 2025 – Jan 2026)
    - SLM benchmarking standard + automated eval pipeline
    - Async RAG evaluation microservice (FastAPI, Docker, Qdrant, MongoDB)
    - SLM fine-tuning for tool-calling (LoRA/PEFT, Unsloth, Gemma/Exaone/HCX DASH)
@@ -89,7 +89,7 @@ Python, PyTorch, Hugging Face Transformers, LangChain, LangGraph, FastAPI, Docke
 5. **Movie Sentiment Analysis** (PolyU DSAI4205, 2026) — BERT ensemble, Macro F1 0.9208 (4.7× improvement)
 
 ### Education
-1. PolyU — B.Sc. in Computing, graduated Aug 2026
+1. PolyU — Computer Science, graduated Aug 2026
 2. Hanyang University — Visiting Student, Sep 2023 – Jul 2024
 
 ## Pending Tasks

@@ -32,7 +32,7 @@ export const siteConfig = {
     description:
       "Portfolio of Junyoung Jung — AI Engineer specializing in LLM evaluation, RAG systems, and SLM fine-tuning",
     aboutMe:
-      "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently building a multimodal AI kiosk at Withmind. Graduated with a B.Sc. in Computing from The Hong Kong Polytechnic University.",
+      "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently building a multimodal AI kiosk at Withmind. Graduated in Computer Science from The Hong Kong Polytechnic University.",
     highlights: [
       { value: "4.7×", label: "Macro F1 gain over baseline (BERT ensemble)", project: "Movie Sentiment Analysis" },
       { value: "0.92", label: "Macro F1 score achieved", project: "Movie Sentiment Analysis" },
@@ -51,34 +51,34 @@ export const siteConfig = {
       },
       {
         category: "work",
-        tag: "Claion · Jan 2025 – Jan 2026",
+        tag: "Claion · Sep 2025 – Jan 2026",
         name: "Asynchronous RAG Evaluation System",
         metric: "Foundation of Claion's commercial product R.E.X.",
         description:
-          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nRedesigned sequential per-system RAG evaluation into a central async microservice architecture.\nSeparated the embedding model as an independent service, applied caching for repeated vectorization, and isolated each RAG system in its own temporary Qdrant collection for independent evaluation.\nIntegrated BLEU/ROUGE and MRR/MAP/NDCG into one unified set of metrics.\nIndependently authored the functional requirements, sequence diagrams, and user flow documentation.",
+          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nSolved slow, heavy RAG evaluation with a central async server that benchmarks the whole RAG pipeline on the user's behalf.\nDesigned to be deployable on an intranet too.\nSeparated the embedding model as an independent service, applied caching for repeated vectorization, and isolated each RAG system in its own temporary Qdrant collection for independent evaluation.\nIntegrated BLEU/ROUGE and MRR/MAP/NDCG into one unified set of metrics.\nIndependently authored the functional requirements, sequence diagrams, and user flow documentation.",
         skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
       },
       {
         category: "work",
-        tag: "Claion · Jan 2025 – Jan 2026",
+        tag: "Claion · Jan 2025 – Aug 2025",
         name: "LLM / SLM Evaluation Benchmark System",
         metric: "4 task types · data-driven model adoption",
         description:
-          "Built a company-wide benchmarking standard to evaluate SLMs for product integration.\nDefined evaluation criteria across Reasoning, Summarization, Instruction-following, and RAG tasks, and automated the pipeline with Python and Hugging Face.\nCompared commercial and open-source models on the same criteria to drive integration decisions.",
+          "Built a company-wide benchmarking standard to evaluate SLMs for product integration.\nDefined evaluation criteria across Reasoning, Summarization, Instruction-following, and RAG tasks, and automated the pipeline with Python and Hugging Face.\nScored models on four axes — qualitative, quantitative, LLM-as-a-Judge, and performance — comparing commercial and open-source models on the same criteria to drive integration decisions.",
         skills: ["Python", "Hugging Face", "LangChain"],
       },
       {
         category: "work",
-        tag: "Claion · Jan 2025 – Jan 2026",
+        tag: "Claion · Jan 2025 – Aug 2025",
         name: "SLM Fine-Tuning for Tool-Calling",
         metric: "3 SLMs · LoRA/PEFT · 300K+ training examples",
         description:
-          "Researched and implemented tool-calling capability injection into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH using three open-source Hugging Face datasets.\nEngineered model-specific chat templates to activate tool-calling syntax and logic per model architecture.",
+          "Researched and implemented tool-calling capability injection into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH, training on open-source Hugging Face datasets that I preprocessed beforehand.\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.\nIdentified the technical limits of LoRA-based tuning, which informed the company's later model-integration strategy.",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
         category: "academic",
-        tag: "PolyU Thesis · Sep 2025 – May 2026",
+        tag: "PolyU Capstone · Sep 2025 – May 2026",
         name: "Complexity-Based RAG Routing (DMA-RAG)",
         metric: "Lower cost & latency, answer quality preserved",
         description:
@@ -87,7 +87,7 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU · 2026",
+        tag: "PolyU Database Management · 2026",
         name: "Large-Scale Self-Join Optimization",
         metric: "1M+ records · no extra hardware",
         description:
@@ -96,11 +96,11 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU · 2026",
+        tag: "PolyU Computer Vision · 2026",
         name: "Lightweight Hybrid Plant Classification",
         metric: "Built without deep learning",
         description:
-          "Built a lightweight alternative to heavy deep-learning models for simple, on-site plant classification.\nCombined HOG and LBP feature extractors with an SVM classifier.\nAchieved classification performance that stays robust under environmental changes, without any deep learning.",
+          "Built a lightweight alternative to heavy deep-learning models for simple, on-site plant classification.\nBuilt the train/evaluation/test datasets by photographing plants on campus.\nCombined HOG and LBP feature extractors with an SVM classifier.\nAchieved classification performance that stays robust under environmental changes, without any deep learning.",
         skills: ["scikit-learn", "HOG", "LBP", "SVM"],
       },
       {
@@ -125,7 +125,7 @@ export const siteConfig = {
     experience: [
       {
         company: "Withmind",
-        title: "AI Engineer",
+        title: "Machine Learning Engineer",
         dateRange: "Jun 2026 - Present",
         bullets: [
           "Reduced response latency of a multimodal AI kiosk by adopting the Gemini Live API, which handles voice input and output in a single streaming session.",
@@ -135,12 +135,12 @@ export const siteConfig = {
       },
       {
         company: "Claion",
-        title: "Machine Learning Engineer",
+        title: "AI Engineer",
         dateRange: "Jan 2025 - Jan 2026",
         bullets: [
-          "Designed company-wide SLM benchmarking standard with automated evaluation pipeline across Reasoning, Summarization, Instruction-following, and RAG tasks.",
-          "Architected and built an asynchronous RAG evaluation microservice — redesigned sequential evaluation to async parallel processing with embedding service isolation and caching.",
-          "Led SLM fine-tuning research (LoRA/PEFT via Unsloth) on Gemma, Exaone, and HCX DASH; engineered model-specific chat templates to inject tool-calling capabilities.",
+          "Designed company-wide SLM benchmarking standard with automated evaluation pipeline across Reasoning, Summarization, Instruction-following, and RAG tasks, scored on qualitative, quantitative, LLM-as-a-Judge, and performance criteria.",
+          "Built an asynchronous RAG evaluation system — a central server that benchmarks the whole RAG pipeline on the user's behalf, deployable on an intranet.",
+          "Led SLM fine-tuning research (LoRA/PEFT via Unsloth) on Gemma, Exaone, and HCX DASH, using preprocessed open-source datasets and chat-template modification experiments to enable tool calling.",
           "Operated as PL in teams of 1–3; authored formal functional requirements, system sequence diagrams, and user flow documentation for all major systems.",
         ],
       },
@@ -148,10 +148,10 @@ export const siteConfig = {
     education: [
       {
         school: "The Hong Kong Polytechnic University",
-        degree: "B.Sc. in Computing",
+        degree: "Computer Science",
         dateRange: "Sep 2019 - Aug 2026",
         achievements: [
-          "Thesis (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer — lower response time and token cost with answer quality preserved",
+          "Capstone (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer — lower response time and token cost with answer quality preserved",
           "Computer Vision: Real-time object risk detection system using YOLOv11 + Depth Anything V2",
           "Big Data Analytics: NLP pipeline from classical ML to BERT transformer (Macro F1 0.9208)",
         ],
@@ -175,7 +175,7 @@ export const siteConfig = {
     description:
       "정준영 포트폴리오 — LLM 평가, RAG 시스템, SLM 파인튜닝을 다루는 AI 엔지니어",
     aboutMe:
-      "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계·배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 단독 주도\n1~3인 규모 팀에서 기술 리드(PL)로 활동\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중\n홍콩이공대학교 컴퓨팅 학사 졸업",
+      "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계·배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 단독 주도\n1~3인 규모 팀에서 기술 리드(PL)로 활동\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중\n홍콩이공대학교 컴퓨터공학과 졸업",
     highlights: [
       { value: "4.7×", label: "베이스라인 대비 Macro F1 향상 (BERT 앙상블)", project: "영화 리뷰 감성 분석" },
       { value: "0.92", label: "Macro F1 점수 달성", project: "영화 리뷰 감성 분석" },
@@ -194,34 +194,34 @@ export const siteConfig = {
       },
       {
         category: "work",
-        tag: "클라이온 · 2025.01 – 2026.01",
+        tag: "클라이온 · 2025.09 – 2026.01",
         name: "비동기 RAG 평가 시스템",
         metric: "클라이온 상용 제품 R.E.X.의 기반 설계",
         description:
-          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nRAG 시스템을 하나씩 순서대로 테스트하던 구조를, 여러 시스템을 동시에 평가하는 비동기 마이크로서비스로 재설계\n임베딩 모델을 별도 서비스로 분리하고 캐싱을 적용해 반복 연산 제거, 시스템마다 독립된 Qdrant 컬렉션을 사용해 서로 간섭 없이 평가\nBLEU/ROUGE와 MRR/MAP/NDCG를 하나의 기준으로 통합해 시스템 간 동일한 잣대로 비교\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 단독 작성",
+          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\n무겁고 오래 걸리던 RAG 평가를, 중앙 서버가 비동기로 파이프라인 전체를 대신 벤치마크하는 구조로 전환\n인트라넷에서도 구축 가능하도록 설계\n임베딩 모델을 별도 서비스로 분리하고 캐싱을 적용해 반복 연산 제거, 시스템마다 독립된 Qdrant 컬렉션을 사용해 서로 간섭 없이 평가\nBLEU/ROUGE와 MRR/MAP/NDCG를 하나의 기준으로 통합해 시스템 간 동일한 잣대로 비교\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 단독 작성",
         skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
       },
       {
         category: "work",
-        tag: "클라이온 · 2025.01 – 2026.01",
+        tag: "클라이온 · 2025.01 – 2025.08",
         name: "LLM / SLM 평가 벤치마크 시스템",
         metric: "4개 업무 유형 · 데이터 기반 모델 도입 결정",
         description:
-          "어떤 SLM을 제품에 넣을지 감으로 정하던 상황을 데이터로 판단할 수 있도록 사내 평가 표준 수립\n추론·요약·지시 이행·RAG 4개 업무 유형별 평가 기준 정의, Python·Hugging Face로 평가 자동화\n상용 모델과 오픈소스 모델을 같은 기준으로 비교해 도입 의사결정에 활용",
+          "어떤 SLM을 제품에 넣을지 감으로 정하던 상황을 데이터로 판단할 수 있도록 사내 평가 표준 수립\n추론·요약·지시 이행·RAG 4개 업무 유형별 평가 기준 정의, Python·Hugging Face로 평가 자동화\n정성·정량·LLM as a Judge·성능 4가지 기준으로 상용 모델과 오픈소스 모델을 같은 잣대로 비교해 도입 의사결정에 활용",
         skills: ["Python", "Hugging Face", "LangChain"],
       },
       {
         category: "work",
-        tag: "클라이온 · 2025.01 – 2026.01",
+        tag: "클라이온 · 2025.01 – 2025.08",
         name: "SLM Tool-Calling 파인튜닝",
         metric: "SLM 3종 · LoRA/PEFT · 학습 데이터 30만 건+",
         description:
-          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 새로 이식\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종 학습\n공개 Hugging Face 데이터셋 3종을 활용해 학습 데이터를 30만 건 규모로 구성\n모델마다 다른 포맷·추론 방식에 맞춘 Chat Template 직접 설계\nLoRA 기반 튜닝의 기술적 한계를 확인하고, 이후 모델 통합 전략 수립에 반영",
+          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 새로 이식\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종 학습\nHugging Face 오픈소스 데이터셋을 학습 전에 전처리해 30만 건 규모로 사용\nTool-Calling을 지원하지 않는 모델의 Chat Template을 수정하며 동작 여부를 검증하는 실험 진행\nLoRA 기반 튜닝의 기술적 한계를 확인하고, 이후 모델 통합 전략 수립에 반영",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
         category: "academic",
-        tag: "PolyU 졸업 논문 · 2025.09 – 2026.05",
+        tag: "PolyU 캡스톤 · 2025.09 – 2026.05",
         name: "질문 난이도별 RAG 라우팅 (DMA-RAG)",
         metric: "답변 품질 유지 · 응답 시간·비용 절감",
         description:
@@ -230,7 +230,7 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU · 2026",
+        tag: "PolyU Database Management · 2026",
         name: "대용량 데이터 자기조인 최적화",
         metric: "100만 건+ 데이터 · 추가 하드웨어 없이 해결",
         description:
@@ -239,11 +239,11 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU · 2026",
+        tag: "PolyU 컴퓨터 비전 · 2026",
         name: "경량 하이브리드 식물 분류",
         metric: "딥러닝 없이 구현",
         description:
-          "현장의 간단한 식물 분류에 무거운 딥러닝 모델을 쓰는 비효율을 줄이기 위한 경량 분류 시스템\n이미지의 형태·질감 패턴을 추출하는 HOG와 LBP를 결합하고 SVM으로 분류\n딥러닝 없이도 환경 변화에 강한 분류 성능 확보",
+          "현장의 간단한 식물 분류에 무거운 딥러닝 모델을 쓰는 비효율을 줄이기 위한 경량 분류 시스템\n교내 식물을 직접 촬영해 train/evaluation/test 데이터셋 구축\n이미지의 형태·질감 패턴을 추출하는 HOG와 LBP를 결합하고 SVM으로 분류\n딥러닝 없이도 환경 변화에 강한 분류 성능 확보",
         skills: ["scikit-learn", "HOG", "LBP", "SVM"],
       },
       {
@@ -268,7 +268,7 @@ export const siteConfig = {
     experience: [
       {
         company: "Withmind",
-        title: "AI 엔지니어",
+        title: "머신러닝 엔지니어",
         dateRange: "2026년 6월 - 현재",
         bullets: [
           "멀티모달 AI 키오스크의 응답 지연 개선 — 음성 입출력을 한 번에 처리하는 Gemini Live API 도입",
@@ -278,12 +278,12 @@ export const siteConfig = {
       },
       {
         company: "클라이온",
-        title: "머신러닝 엔지니어",
+        title: "AI 엔지니어",
         dateRange: "2025년 1월 - 2026년 1월",
         bullets: [
-          "추론·요약·지시 이행·RAG 4개 업무 유형의 자동 평가 파이프라인과 사내 SLM 벤치마크 표준 수립",
-          "비동기 RAG 평가 마이크로서비스 설계·구축 — 순차 평가를 병렬 처리로 전환하고 임베딩 서비스 분리·캐싱 적용",
-          "Gemma·EXAONE·HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 모델별 Chat Template 설계로 Tool-Calling 기능 이식 주도",
+          "추론·요약·지시 이행·RAG 4개 업무 유형을 정성·정량·LLM as a Judge·성능 기준으로 평가하는 자동 평가 파이프라인과 사내 SLM 벤치마크 표준 수립",
+          "비동기 RAG 평가 시스템 구축 — 중앙 서버가 파이프라인 전체를 대신 벤치마크, 인트라넷에서도 구축 가능하게 설계",
+          "Gemma·EXAONE·HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 오픈소스 데이터 전처리와 Chat Template 수정 실험으로 Tool-Calling 기능 이식 주도",
           "1~3인 팀에서 PL로 활동하며 주요 시스템의 기능 요구사항·시퀀스 다이어그램·사용자 플로우 문서 작성",
         ],
       },
@@ -291,10 +291,10 @@ export const siteConfig = {
     education: [
       {
         school: "홍콩이공대학교",
-        degree: "컴퓨팅 학사 (B.Sc.)",
+        degree: "컴퓨터공학",
         dateRange: "2019년 9월 - 2026년 8월",
         achievements: [
-          "졸업 논문 (DMA-RAG) — 질문 난이도별 RAG 라우팅, 멀티 에이전트 Discussion Agent Layer 설계로 답변 품질은 유지하고 응답 시간·토큰 비용 절감",
+          "캡스톤 프로젝트 (DMA-RAG) — 질문 난이도별 RAG 라우팅, 멀티 에이전트 Discussion Agent Layer 설계로 답변 품질은 유지하고 응답 시간·토큰 비용 절감",
           "컴퓨터 비전 — YOLOv11 + Depth Anything V2 기반 실시간 위험 감지 시스템",
           "빅데이터 분석 — 고전 ML부터 BERT까지 NLP 파이프라인 (Macro F1 0.9208)",
         ],
