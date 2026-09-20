@@ -1,20 +1,21 @@
 ---
-// Renders a "\n"-separated string as a bullet list, or as a plain paragraph
-// when there is only one line.
+// Renders a "\n"-separated string as a lead sentence (first line) followed by
+// a bullet list (remaining lines). A single line renders as a plain paragraph.
 interface Props {
   text: string;
 }
-const lines = Astro.props.text.split("\n").filter((line) => line.trim() !== "");
+const [lead, ...rest] = Astro.props.text
+  .split("\n")
+  .filter((line) => line.trim() !== "");
 ---
 
+<p class={rest.length > 0 ? "font-medium text-gray-800" : ""}>{lead}</p>
 {
-  lines.length > 1 ? (
-    <ul class="list-disc pl-5 space-y-1.5 marker:text-gray-400">
-      {lines.map((line) => (
+  rest.length > 0 && (
+    <ul class="mt-3 list-disc pl-5 space-y-1.5 marker:text-gray-400">
+      {rest.map((line) => (
         <li>{line}</li>
       ))}
     </ul>
-  ) : (
-    <p>{lines[0]}</p>
   )
 }

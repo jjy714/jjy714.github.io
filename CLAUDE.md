@@ -90,7 +90,7 @@ Python, PyTorch, Hugging Face Transformers, LangChain, LangGraph, FastAPI, Docke
 5. **Movie Sentiment Analysis** (PolyU DSAI4205, 2026) — BERT ensemble, Macro F1 0.9208 (4.7× improvement)
 
 ### Education
-1. PolyU — B.Eng. Computer Science (Honors), Expected Aug 2026
+1. PolyU — B.Sc. in Computing, graduated Aug 2026
 2. Hanyang University — Visiting Student, Sep 2023 – Jul 2024
 
 ## Pending Tasks

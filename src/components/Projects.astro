@@ -3,6 +3,17 @@ import { siteConfig } from "../config";
 import { ui } from "../i18n/ui";
 import Lines from "./Lines.astro";
 const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
+
+// Group projects (work first, then academic) while keeping each project's
+// original index so the matching Korean entry can be looked up.
+const groups = (["work", "academic"] as const)
+  .map((key) => ({
+    key,
+    items: siteConfig.en.projects
+      .map((project, sourceIndex) => ({ project, sourceIndex }))
+      .filter(({ project }) => project.category === key),
+  }))
+  .filter((group) => group.items.length > 0);
 ---
 
 {
@@ -22,9 +33,20 @@ const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
           </div>
 
           <div class="lg:col-span-8">
-            <div class="space-y-8">
-              {siteConfig.en.projects.map((projectEn, index) => {
-                const projectKo = siteConfig.ko.projects[index];
+            <div class="space-y-14">
+              {groups.map((group) => (
+                <div>
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-sm sm:text-base font-mono font-semibold uppercase tracking-widest text-gray-500 whitespace-nowrap">
+                      <span data-en>{ui.en.projectGroups[group.key]}</span>
+                      <span data-ko>{ui.ko.projectGroups[group.key]}</span>
+                      <span class="ml-1 text-gray-400">({group.items.length})</span>
+                    </h3>
+                    <div class="h-px flex-1 bg-gray-200" />
+                  </div>
+                  <div class="space-y-8">
+              {group.items.map(({ project: projectEn, sourceIndex }, index) => {
+                const projectKo = siteConfig.ko.projects[sourceIndex];
                 const Component = projectEn.link ? "a" : "div";
                 const linkProps = projectEn.link
                   ? {
@@ -64,16 +86,20 @@ const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
 
                       <div class="space-y-4">
                         <div>
-                          <span
-                            class="text-sm font-mono"
-                            style={{ color: siteConfig.accentColor }}
-                          >
-                            0{index + 1}
-                          </span>
-                          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
+                          <div class="flex flex-wrap items-center gap-x-2 text-xs sm:text-sm font-mono pr-12 sm:pr-14 md:pr-16">
+                            <span style={{ color: siteConfig.accentColor }}>
+                              0{index + 1}
+                            </span>
+                            <span class="text-gray-300">/</span>
+                            <span class="text-gray-500">
+                              <span data-en>{projectEn.tag}</span>
+                              <span data-ko>{projectKo.tag}</span>
+                            </span>
+                          </div>
+                          <h4 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1.5">
                             <span data-en>{projectEn.name}</span>
                             <span data-ko>{projectKo.name}</span>
-                          </h3>
+                          </h4>
                         </div>
 
                         {projectEn.metric && (
@@ -118,6 +144,9 @@ const hasProjects = siteConfig.en.projects && siteConfig.en.projects.length > 0;
                   </div>
                 );
               })}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

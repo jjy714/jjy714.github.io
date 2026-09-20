@@ -12,6 +12,10 @@ export const ui = {
       experience: "Experience",
       education: "Education",
     },
+    projectGroups: {
+      work: "Work Projects",
+      academic: "Academic & Thesis Projects",
+    },
     hero: {
       greeting: "Hello! 👋",
       intro: "I'm",
@@ -32,6 +36,10 @@ export const ui = {
       projects: "프로젝트",
       experience: "경력",
       education: "학력",
+    },
+    projectGroups: {
+      work: "회사 프로젝트",
+      academic: "학교 · 논문 프로젝트",
     },
     hero: {
       greeting: "안녕하세요! 👋",
