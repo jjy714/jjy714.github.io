@@ -26,3 +26,64 @@ html[data-lang="ko"] [data-ko] { display: revert !important; }
     transition: none;
   }
 }
+
+/* Print / "Save as PDF": open with ?lang=ko or ?lang=en to pick the language */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    /* Tailwind sizes are rem-based, so this shrinks the whole page to ~75% */
+    font-size: 12px;
+  }
+  #header,
+  footer,
+  #hero .absolute.bottom-0,
+  /* experience timeline dots and connector lines */
+  #experience [data-reveal] > .absolute {
+    display: none !important;
+  }
+  #experience [data-reveal] {
+    margin-bottom: 4mm !important;
+  }
+  [data-reveal],
+  .animate-fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  #hero {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  #hero > div.h-full {
+    padding: 12mm 4mm 6mm !important;
+  }
+  section {
+    padding: 8mm 4mm !important;
+  }
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+  /* start projects on a fresh page; keep the small sections whole so a
+     heading never ends up alone at the bottom of a page */
+  #projects {
+    break-before: page;
+  }
+  #experience,
+  #education {
+    break-inside: avoid;
+  }
+  .group,
+  #about [data-reveal],
+  #experience [data-reveal],
+  #education [data-reveal] {
+    break-inside: avoid;
+  }
+}

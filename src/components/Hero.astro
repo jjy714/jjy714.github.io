@@ -146,6 +146,10 @@ import { ui } from "../i18n/ui";
         ><span data-en>{ui.en.hero.outro}</span><span data-ko>{ui.ko.hero.outro}</span>
       </h1>
       {/* The greeting already states the title in both languages, so there is no separate subtitle */}
+      {/* Print/PDF only: the icon links below are hidden, so show contact details as text */}
+      <p class="hidden print:block mt-6 text-base text-gray-600">
+        {siteConfig.social.email} · github.com/jjy714 · jjy714.github.io
+      </p>
     </div>
   </div>
   <div

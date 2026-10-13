@@ -15,7 +15,7 @@ import "../styles/global.css";
   <head>
     <!-- Prevents flash-of-wrong-language for returning Korean visitors -->
     <script is:inline>
-      (function(){var l=localStorage.getItem('preferred-lang');if(l==='ko')document.documentElement.setAttribute('data-lang','ko')})();
+      (function(){var q=new URLSearchParams(location.search).get('lang');var l=q||localStorage.getItem('preferred-lang');if(l==='ko'||l==='en')document.documentElement.setAttribute('data-lang',l)})();
     </script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
