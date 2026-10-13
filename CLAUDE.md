@@ -1,102 +1,57 @@
-# Portfolio Project — Junyoung Jung (Jason)
+# Portfolio Site — Junyoung Jung (정준영)
 
-## Overview
-Personal portfolio site using the [devportfolio](https://github.com/RyanFitzgerald/devportfolio) template (Astro + Tailwind CSS), deployed to GitHub Pages at **https://jjy714.github.io**.
+Personal portfolio for job applications (target: general AI/ML engineer), built on the [devportfolio](https://github.com/RyanFitzgerald/devportfolio) template (Astro + Tailwind CSS v4) and deployed to GitHub Pages at **https://jjy714.github.io**.
 
-- Repo: `https://github.com/jjy714/jjy714.github.io`
-- Main branch: `main`
-- Local path: `~/Projects/Portfolio/devportfolio`
+- Repo: `https://github.com/jjy714/jjy714.github.io` (branch `main`)
+- Deploy: push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) builds and publishes.
+- **Keep the repo public.** GitHub Pages on the free plan needs a public repo; making it private takes the site down. Pages Source must stay **GitHub Actions** (not branch deploy).
 
-## Tech Stack
-- **Astro**: Static site generator
-- **Tailwind CSS v4**: Utility-first CSS framework using the new `@tailwindcss/vite` plugin
-- **TypeScript**: For type-safe configuration
-- **Tabler Icons**: Icon library
-- Deployed via GitHub Actions (`.github/workflows/deploy.yml`)
-- GitHub Pages Source: **GitHub Actions** (not branch deploy)
-
-## Development Commands
+## Commands
 
 ```bash
-npm run dev       # Start development server (localhost:4321)
-npm run build     # Build for production → ./dist
-npm run preview   # Preview production build
+npm run dev       # localhost:4321
+npm run build     # production build → ./dist
+npm run preview
 ```
 
 ## Architecture
 
-Component-based architecture with all customization centralized in `src/config.ts`:
+- **All content lives in `src/config.ts`** (English + Korean). Sections hide automatically when their data is removed.
+- `src/components/` — Hero, Highlights, About, Experience, Projects, Education, Header, Footer, plus `Lines.astro` (renders a `"\n"`-separated string as a lead line + bullets).
+- `src/pages/index.astro` — single page; reads `?lang=ko|en` and sets `html[data-lang]`.
+- `src/i18n/ui.ts` — UI strings (project group labels, hero greeting/intro/outro).
+- `src/styles/global.css` — reveal animation and the `@media print` block (A4, header/footer hidden, `#projects` starts a new page, cards avoid page breaks).
+- Bilingual text: every string is rendered twice as `<span data-en>` / `<span data-ko>`; CSS shows the one matching `html[data-lang]`.
+- Projects carry `category` (`"work"` | `"academic"`), `tag`, `metric`, and a `description` split on `\n` into a lead line plus bullets. **Project cards have no repo links** (the Claion RAG-evaluation repo is private; the others were deliberately unlinked).
+- Highlights: long values use a smaller font and `nowrap` (`Highlights.astro`).
 
-- **Components** (`src/components/`): Individual Astro components for each section (Hero, About, Projects, Experience, Education, Header, Footer)
-- **Main Layout** (`src/pages/index.astro`): Single-page layout that imports all components
-- **Configuration** (`src/config.ts`): Single source of truth for all content and customization
+## Exporting a PDF (companies that only accept uploads)
 
-### Key Architectural Decisions
-1. **Single Configuration File**: All content is managed through `src/config.ts`
-2. **Conditional Rendering**: Sections automatically hide if their data is removed from the config
-3. **Component Independence**: Each section is a self-contained component that reads from the config
-4. **Accent Color System**: Single `accentColor` in config propagates throughout the site via CSS custom properties
+Open `https://jjy714.github.io/?lang=ko` (or `?lang=en`) → Ctrl+P → Save as PDF, A4, **headers/footers off, background graphics on**. Headless alternative: `msedge.exe --headless=new --print-to-pdf=<out.pdf> "<url>"`.
 
-### Important Implementation Details
-- Tailwind CSS v4 with the Vite plugin configuration
-- No linting or testing framework currently configured
-- All components are in `.astro` format (not React/Vue/etc)
-- IBM Plex Mono font loaded from Google Fonts
-- Social links in config are all optional and will conditionally render
+## Content rules (verified facts only)
 
-### Working with Components
-1. Components read directly from the imported `siteConfig` object
-2. Use Tailwind utility classes for styling
-3. Maintain the existing monospace font aesthetic
-4. Use Tabler Icons for consistency with existing icons
+Every claim on the site must be traceable to a source and honestly attributed. Frame work as **what I chose, combined and operated** — problem → why this tool → design → failure mitigation → metric. Never write "used an API" as the achievement.
 
-## Primary Config File
-All site content is controlled by **`src/config.ts`**. Edit this file to update anything on the site.
+Career facts (the Wanted resume PDF is the source of truth):
+- **Headline**: MultiAgent-based AI/ML engineer.
+- **Withmind** — contract, manager, ML engineer, 2026.06 – present (kiosk "홀로오더"; AI Lab).
+- **Claion** (클라이온) — contract, AI engineer, 2025.01 – 2026.01. SLM work 2025.01–08; "R.E.X." RAG evaluation 2025.09–2026.01.
+  - Eval pipeline scored qualitative, quantitative, LLM-as-a-Judge and performance axes.
+  - Fine-tuning data was open-source Hugging Face data that I only **preprocessed**; I ran **experiments** modifying chat templates of models without tool-calling support — never say "built/designed".
+  - The eval pipeline and the fine-tuning are **separate** projects; I did not benchmark the fine-tuned models.
+  - R.E.X.: only the **planning and initial architecture** is mine; Claion productized it after I left.
+- **PolyU** — Computer Science, **graduated Aug 2026**. Not honours-classified. **Never show GPA.**
+- Languages: English fluent, Japanese conversational. No Cortech entry (removed on purpose).
 
-```
-siteConfig fields:
-- Basic info:  name, title, description, accentColor
-- Social:      email, linkedin, twitter, github (all optional)
-- aboutMe:     string
-- skills:      string[]
-- projects:    { name, description, link, skills[] }[]
-- experience:  { company, title, dateRange, bullets[] }[]
-- education:   { school, degree, dateRange, achievements[] }[]
-```
+Project facts (do not drift from these):
+- **DMA-RAG** (complexity-based RAG routing; baseline = MA-RAG; gpt-oss-20b; 20 questions × 4 datasets): TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, NQ 0.15 → 0.00; latency lower on 3 of 4. The MA-RAG baseline failed on 38 of 80 questions (output-length limit), so on questions both answered only TriviaQA improves (0.50 → 0.71) while NQ and FEVER do not. The router labelled every question easy/medium, so the Discussion Agent Layer never ran. **Never claim token/cost savings or that the DAL was evaluated.**
+- **Pet Mischief Detector** (PolyU COMP4423, team of 3): pretrained YOLOv11s + Depth Anything V2 — fine-tuning failed, nothing was trained on the 27,512-image pool. My part: scoring logic, v1 → v4 3-class accuracy 0.25 → 0.54 on 141 clips. Still images at 8–12 fps — never say "real-time".
+- **Movie Sentiment** (PolyU DSAI4205, team of 6): my part was comparing augmentation variants, the F1 visualisation and choosing the hybrid dataset. The BERT 3-fold ensemble was a teammate's. 0.8086 → 0.9208 (2-class) is the **team** result; the old "4.7×" is wrong (3.8×, and it mixed 5-class with 2-class).
+- **Plant classification** (PolyU COMP4423, about 536 images, 8 classes, traditional ML only): stacking scored CV 0.76 but test 0.17 (leak) → redesigned with SelectKBest(100) → PCA(30), CV about 0.70. Strong sunlight, angle and clutter still fail. **Never claim robustness to environmental change.** (The 0.99 in `train_summary.json` is a random-fold artifact.)
 
-### Current Owner Info
-- Name: Junyoung Jung (Jason)
-- Title: AI Engineer
-- Email: jjy714@gmail.com
-- GitHub: https://github.com/jjy714
+## Open items
 
-### Skills
-Python, PyTorch, Hugging Face Transformers, LangChain, LangGraph, FastAPI, Docker, Qdrant, MongoDB, scikit-learn, React / React Native, Git
-
-### Experience
-1. **Claion** — AI Engineer (Jan 2025 – Jan 2026)
-   - SLM benchmarking standard + automated eval pipeline
-   - Async RAG evaluation microservice (FastAPI, Docker, Qdrant, MongoDB)
-   - SLM fine-tuning for tool-calling (LoRA/PEFT, Unsloth, Gemma/Exaone/HCX DASH)
-   - PL in teams of 1–3
-
-
-### Projects (in order)
-1. **Asynchronous RAG Evaluation System** (Claion, 2025)
-2. **SLM Fine-Tuning for Tool-Calling** (Claion, 2025)
-3. **LLM/SLM Evaluation Benchmark System** (Claion, 2025)
-4. **Pet Mischief Detector** (PolyU COMP4423, 2026, team of 3) — pretrained YOLOv11s + Depth Anything V2; scorer v1→v4 accuracy 0.25→0.54 on 141 clips (NOT trained on 27,512 images; fine-tuning failed)
-5. **Movie Sentiment Analysis** (PolyU DSAI4205, 2026) — BERT ensemble, Macro F1 0.9208 (2-class); 5-class TF-IDF baseline 0.2439, same-task LR+TF-IDF 0.8086 (the old "4.7x" does not compute: 3.8x)
-
-### Education
-1. PolyU — Computer Science, graduated Aug 2026
-2. Hanyang University — Visiting Student, Sep 2023 – Jul 2024
-
-## Pending Tasks
-- [ ] Update `link` fields in `projects` array with actual GitHub repo URLs (currently all point to https://github.com/jjy714)
-- [ ] Add LinkedIn URL to `social` if desired
-- [ ] Verify site renders correctly after deploy
-
-## Deploy
-Push to `main` → GitHub Actions automatically builds and deploys.
-Check status at: https://github.com/jjy714/jjy714.github.io/actions
+- Per-project detail pages with charts (plant first, then DMA-RAG); project cards currently point to `#projects`.
+- Confirm plant-project team size, the "growth direction" essay wording, whether the Movie external augmentation overlaps the test set, and evidence for the self-join claim.
+- The registered Wanted resume still carries older wording; replace it with the regenerated text.
