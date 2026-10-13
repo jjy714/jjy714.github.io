@@ -85,8 +85,8 @@ Python, PyTorch, Hugging Face Transformers, LangChain, LangGraph, FastAPI, Docke
 1. **Asynchronous RAG Evaluation System** (Claion, 2025)
 2. **SLM Fine-Tuning for Tool-Calling** (Claion, 2025)
 3. **LLM/SLM Evaluation Benchmark System** (Claion, 2025)
-4. **Pet Mischief Detector** (PolyU COMP4423, 2026) — YOLOv11s + Depth Anything V2, 27,512 COCO images, 56.74% accuracy
-5. **Movie Sentiment Analysis** (PolyU DSAI4205, 2026) — BERT ensemble, Macro F1 0.9208 (4.7× improvement)
+4. **Pet Mischief Detector** (PolyU COMP4423, 2026, team of 3) — pretrained YOLOv11s + Depth Anything V2; scorer v1→v4 accuracy 0.25→0.54 on 141 clips (NOT trained on 27,512 images; fine-tuning failed)
+5. **Movie Sentiment Analysis** (PolyU DSAI4205, 2026) — BERT ensemble, Macro F1 0.9208 (2-class); 5-class TF-IDF baseline 0.2439, same-task LR+TF-IDF 0.8086 (the old "4.7x" does not compute: 3.8x)
 
 ### Education
 1. PolyU — Computer Science, graduated Aug 2026

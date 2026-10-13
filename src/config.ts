@@ -34,8 +34,8 @@ export const siteConfig = {
     aboutMe:
       "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently building a multimodal AI kiosk at Withmind. Graduated in Computer Science from The Hong Kong Polytechnic University.",
     highlights: [
-      { value: "4.7×", label: "Macro F1 gain over baseline (BERT ensemble)", project: "Movie Sentiment Analysis" },
-      { value: "0.92", label: "Macro F1 score achieved", project: "Movie Sentiment Analysis" },
+      { value: "0.24 → 0.92", label: "Macro F1: 5-class TF-IDF baseline → 2-class BERT ensemble", project: "Movie Sentiment Analysis" },
+      { value: "0.81 → 0.92", label: "Macro F1 on the same 2-class task: LR + TF-IDF → BERT ensemble", project: "Movie Sentiment Analysis" },
       { value: "3", label: "SLMs fine-tuned for tool-calling (LoRA/PEFT)", project: "SLM Fine-Tuning" },
       { value: "4", label: "Task types covered by automated eval pipeline", project: "LLM / SLM Evaluation Benchmark" },
     ],
@@ -80,9 +80,9 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU Capstone · Sep 2025 – May 2026",
         name: "Complexity-Based RAG Routing (DMA-RAG)",
-        metric: "Lower cost & latency, answer quality preserved",
+        metric: "TriviaQA EM 0.35 → 0.70 · lower latency on 3 of 4 datasets",
         description:
-          "Standard RAG pipelines process every question the same way, wasting tokens and time on simple ones.\nDesigned a Discussion Agent Layer (DAL) that routes each question along a path matched to its complexity.\nKept answer quality on complex questions while cutting average response time and token cost.",
+          "MA-RAG runs the same full multi-step pipeline for every question, so simple questions pay the same cost as hard ones.\nDesigned a three-tier router (easy / medium / complex) so that only complex questions reach the Discussion Agent Layer — three advocate agents and a moderator that decides by majority vote.\nCompared it with MA-RAG on 20 questions × 4 datasets (NQ, TriviaQA, HotpotQA, FEVER). With gpt-oss-20b: TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, and lower latency on 3 of 4 datasets (FEVER 28.0 s → 7.6 s).\nTrade-offs: token usage was higher than MA-RAG on all four datasets, NQ EM dropped (0.15 → 0.00), and FEVER showed label bias. Only 20 questions per dataset were evaluated.\nFixed a vLLM infinite-loop failure on small models by setting max_model_len to 32,768 and max_tokens to 4,096 per request.",
         skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
       },
       {
@@ -105,20 +105,20 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU COMP4423 · 2026",
+        tag: "PolyU COMP4423 · Team of 3 · 2026",
         name: "Pet Mischief Detector",
-        metric: "27,512 images trained · 56.74% accuracy",
+        metric: "Scorer v1 → v4: accuracy 0.25 → 0.54 (141 clips)",
         description:
-          "Real-time system detecting spatial relationships between pets and household objects to classify risk level (HIGH/MEDIUM/LOW).\nIntegrated YOLOv11s with Depth Anything V2 to overcome 2D distance limitations.\nIterated the core closeness scoring logic 4 times — additive weighting → multiplicative depth gate → portrait-strip sampling → edge-to-edge gap.\nAlso experimented with a ResNet18 + Graph Attention Network hybrid classifier.\nTrained on 27,512 COCO images, achieving 56.74% accuracy.",
+          "Team project (3 members) that rates, from a still image, how risky a pet's position relative to household objects is (HIGH / MEDIUM / LOW).\n2D box proximity alone flags objects that are adjacent in the image but far apart in depth, so I combined a COCO-pretrained YOLOv11s detector with Depth Anything V2 depth estimates. In one example the depth gate cut a false-positive score from 0.663 to 0.205.\nMy part: the risk-scoring logic, iterated four times — additive weighting → multiplicative depth gate → portrait-strip depth sampling → edge-to-edge gap. Three-class accuracy on 141 labelled clips rose from 0.25 to 0.54 (YOLOv11s; 0.29 → 0.57 with YOLOv11n).\nAlso built a ResNet18 + Graph Attention Network classifier and the evaluation script. The classifier did not beat the heuristic — about 120 training samples were too few — and detector fine-tuning attempts did not converge, so the pretrained detector was used (mAP@0.5 0.635 on 2,752 test images).\nLimitation: the labelled clips are imbalanced (95 high, 44 low, 2 medium), so the result is best read as the relative improvement and the failure analysis rather than an absolute accuracy.",
         skills: ["YOLOv11s", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
       },
       {
         category: "academic",
         tag: "PolyU DSAI4205 · 2026",
         name: "Movie Sentiment Analysis — Classical NLP to BERT",
-        metric: "Macro F1 0.9208 · 4.7× over baseline",
+        metric: "Macro F1 0.24 (5-class baseline) → 0.92 (2-class BERT ensemble)",
         description:
-          "Two-notebook iterative pipeline for fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset.\nSystematically compared 4 classical architectures (Word2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM) across 3 label schemes and 3 augmentation strategies, expanding the corpus from 1,024 to 11,900+ samples.\nFine-tuned BERT-base-uncased with a 3-fold cross-validation ensemble, achieving Macro F1 0.9208 — a 4.7× improvement over baseline.",
+          "Two-notebook iterative pipeline for fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset.\nSystematically compared 4 classical architectures (Word2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM) across 3 label schemes and 3 augmentation strategies, expanding the corpus from 1,024 to 11,900+ samples.\nFine-tuned BERT-base-uncased with a 3-fold cross-validation ensemble, reaching Macro F1 0.9208 on the 2-class task. The 5-class TF-IDF baseline scored 0.2439; on the same 2-class setup, LR + TF-IDF scored 0.8086.",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
@@ -151,8 +151,8 @@ export const siteConfig = {
         degree: "Computer Science",
         dateRange: "Sep 2019 - Aug 2026",
         achievements: [
-          "Capstone (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer — lower response time and token cost with answer quality preserved",
-          "Computer Vision: Real-time object risk detection system using YOLOv11 + Depth Anything V2",
+          "Capstone (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer, benchmarked against MA-RAG on four QA datasets",
+          "Computer Vision: Pet–object risk assessment pipeline using YOLOv11 + Depth Anything V2 (team project)",
           "Big Data Analytics: NLP pipeline from classical ML to BERT transformer (Macro F1 0.9208)",
         ],
       },
@@ -177,8 +177,8 @@ export const siteConfig = {
     aboutMe:
       "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계·배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 단독 주도\n1~3인 규모 팀에서 기술 리드(PL)로 활동\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중\n홍콩이공대학교 컴퓨터공학과 졸업",
     highlights: [
-      { value: "4.7×", label: "베이스라인 대비 Macro F1 향상 (BERT 앙상블)", project: "영화 리뷰 감성 분석" },
-      { value: "0.92", label: "Macro F1 점수 달성", project: "영화 리뷰 감성 분석" },
+      { value: "0.24 → 0.92", label: "Macro F1: 5-class TF-IDF 기준선 → 2-class BERT 앙상블", project: "영화 리뷰 감성 분석" },
+      { value: "0.81 → 0.92", label: "같은 2-class 조건 Macro F1: LR + TF-IDF → BERT 앙상블", project: "영화 리뷰 감성 분석" },
       { value: "3개", label: "SLM에 Tool-Calling 기능 이식 (LoRA/PEFT)", project: "SLM Tool-Calling 파인튜닝" },
       { value: "4개", label: "업무 유형별 자동 평가 체계 구축", project: "LLM / SLM 평가 벤치마크" },
     ],
@@ -223,9 +223,9 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU 캡스톤 · 2025.09 – 2026.05",
         name: "질문 난이도별 RAG 라우팅 (DMA-RAG)",
-        metric: "답변 품질 유지 · 응답 시간·비용 절감",
+        metric: "TriviaQA EM 0.35 → 0.70 · 4개 중 3개 데이터셋에서 지연 감소",
         description:
-          "모든 질문을 같은 방식으로 처리해 불필요한 비용과 지연이 생기던 RAG 구조 개선\n질문의 복잡도에 따라 처리 경로를 자동으로 나누는 Discussion Agent Layer(DAL) 설계 — 쉬운 질문은 가볍게, 어려운 질문은 깊게\n복잡한 질문의 답변 품질은 유지하면서 평균 응답 시간과 토큰 비용 절감",
+          "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n질문을 쉬움·보통·복잡 3단계로 나누는 라우터를 설계해, 복잡한 질문만 옹호 에이전트 3개와 다수결 중재자로 이루어진 Discussion Agent Layer로 전달\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n한계: 토큰 사용량은 4개 데이터셋 모두 MA-RAG보다 많았고, NQ에서는 EM이 하락(0.15 → 0.00), FEVER에서는 라벨 편향이 나타남. 평가 문항은 데이터셋당 20개\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
         skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
       },
       {
@@ -248,20 +248,20 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU COMP4423 · 2026",
+        tag: "PolyU COMP4423 · 3인 팀 · 2026",
         name: "반려동물 장난 감지기",
-        metric: "학습 이미지 27,512장 · 정확도 56.74%",
+        metric: "점수 로직 v1 → v4: 정확도 0.25 → 0.54 (141개 클립)",
         description:
-          "반려동물이 위험한 물건에 다가가는 상황을 실시간으로 감지해 위험도를 상·중·하 3단계로 분류하는 시스템\n2D 영상만으로는 알기 어려운 실제 거리를 YOLOv11s와 Depth Anything V2(깊이 추정 모델)를 결합해 보완\n근접도 판단 기준을 4차례 개선 — 가중치 합산 → 깊이 값을 곱해 반영 → 세로 띠 샘플링 → 물체 가장자리 간 거리\nResNet18 + Graph Attention Network 하이브리드 분류기 실험\nCOCO 이미지 27,512장으로 학습해 정확도 56.74% 달성",
+          "3인 팀 프로젝트 — 정지 이미지에서 반려동물과 주변 물건의 위치 관계를 보고 사고 위험도를 상·중·하 3단계로 판정하는 시스템\n2D 박스 거리만 보면 화면에서는 붙어 있지만 실제로는 멀리 떨어진 물건까지 위험으로 판단해서, COCO 사전학습 YOLOv11s에 Depth Anything V2(깊이 추정 모델)를 결합 — 한 예시에서 깊이 게이트가 오탐 점수를 0.663에서 0.205로 낮춤\n담당: 위험도 점수 로직을 4차례 개선 — 가중치 합산 → 깊이 값을 곱해 반영 → 세로 띠 샘플링 → 물체 가장자리 간 거리. 141개 라벨 클립 기준 3단계 정확도 0.25 → 0.54 (YOLOv11n 기준 0.29 → 0.57)\nResNet18 + Graph Attention Network 분류기와 평가 스크립트도 구현. 분류기는 학습 샘플이 약 120개로 적어 규칙 기반을 넘지 못했고, 검출기 파인튜닝도 수렴하지 않아 사전학습 모델을 사용 (테스트 2,752장 mAP@0.5 0.635)\n한계: 라벨 클립이 high 95 · low 44 · medium 2로 치우쳐 있어, 절대 정확도보다 개선 폭과 실패 원인 분석이 핵심",
         skills: ["YOLOv11s", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
       },
       {
         category: "academic",
         tag: "PolyU DSAI4205 · 2026",
         name: "영화 리뷰 감성 분석 (고전 NLP → BERT)",
-        metric: "Macro F1 0.9208 · 베이스라인 대비 4.7배",
+        metric: "Macro F1 0.24 (5-class 기준선) → 0.92 (2-class BERT 앙상블)",
         description:
-          "Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석\nWord2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM 4가지 방식을 3가지 레이블 체계·3가지 증강 전략으로 비교, 데이터를 1,024건에서 11,900건 이상으로 확장\nBERT-base-uncased를 3-Fold 교차검증 앙상블로 파인튜닝해 Macro F1 0.9208 달성 — 베이스라인 대비 4.7배",
+          "Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석\nWord2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM 4가지 방식을 3가지 레이블 체계·3가지 증강 전략으로 비교, 데이터를 1,024건에서 11,900건 이상으로 확장\nBERT-base-uncased를 3-Fold 교차검증 앙상블로 파인튜닝해 2-class 과제에서 Macro F1 0.9208 달성 — 5-class TF-IDF 기준선은 0.2439, 같은 2-class 조건의 LR+TF-IDF는 0.8086",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
@@ -294,8 +294,8 @@ export const siteConfig = {
         degree: "컴퓨터공학",
         dateRange: "2019년 9월 - 2026년 8월",
         achievements: [
-          "캡스톤 프로젝트 (DMA-RAG) — 질문 난이도별 RAG 라우팅, 멀티 에이전트 Discussion Agent Layer 설계로 답변 품질은 유지하고 응답 시간·토큰 비용 절감",
-          "컴퓨터 비전 — YOLOv11 + Depth Anything V2 기반 실시간 위험 감지 시스템",
+          "캡스톤 프로젝트 (DMA-RAG) — 질문 난이도별 RAG 라우팅과 멀티 에이전트 Discussion Agent Layer, 4개 QA 데이터셋에서 MA-RAG와 비교 평가",
+          "컴퓨터 비전 — YOLOv11 + Depth Anything V2 기반 반려동물 위험도 판정 파이프라인 (팀 프로젝트)",
           "빅데이터 분석 — 고전 ML부터 BERT까지 NLP 파이프라인 (Macro F1 0.9208)",
         ],
       },

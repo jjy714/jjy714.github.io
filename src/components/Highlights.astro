@@ -17,7 +17,11 @@ const hasHighlights =
               class="text-center lg:text-left"
             >
               <div
-                class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"
+                class={`font-bold tracking-tight whitespace-nowrap ${
+                  hEn.value.length > 5
+                    ? "text-2xl sm:text-3xl"
+                    : "text-3xl sm:text-4xl md:text-5xl"
+                }`}
                 style={{ color: siteConfig.accentColor }}
               >
                 {hEn.value}
