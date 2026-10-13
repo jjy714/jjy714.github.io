@@ -34,8 +34,8 @@ export const siteConfig = {
     aboutMe:
       "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Comfortable operating as technical lead (PL) in small, fast-moving teams. Currently building a multimodal AI kiosk at Withmind. Graduated in Computer Science from The Hong Kong Polytechnic University.",
     highlights: [
-      { value: "0.24 → 0.92", label: "Macro F1: 5-class TF-IDF baseline → 2-class BERT ensemble", project: "Movie Sentiment Analysis" },
-      { value: "0.81 → 0.92", label: "Macro F1 on the same 2-class task: LR + TF-IDF → BERT ensemble", project: "Movie Sentiment Analysis" },
+      { value: "0.35 → 0.70", label: "TriviaQA EM vs. MA-RAG (gpt-oss-20b, 20 questions)", project: "Complexity-Based RAG Routing" },
+      { value: "0.25 → 0.54", label: "3-class accuracy, my scoring logic v1 → v4 (141 clips)", project: "Pet Mischief Detector" },
       { value: "3", label: "SLMs fine-tuned for tool-calling (LoRA/PEFT)", project: "SLM Fine-Tuning" },
       { value: "4", label: "Task types covered by automated eval pipeline", project: "LLM / SLM Evaluation Benchmark" },
     ],
@@ -82,7 +82,7 @@ export const siteConfig = {
         name: "Complexity-Based RAG Routing (DMA-RAG)",
         metric: "TriviaQA EM 0.35 → 0.70 · lower latency on 3 of 4 datasets",
         description:
-          "MA-RAG runs the same full multi-step pipeline for every question, so simple questions pay the same cost as hard ones.\nDesigned a three-tier router (easy / medium / complex) so that only complex questions reach the Discussion Agent Layer — three advocate agents and a moderator that decides by majority vote.\nCompared it with MA-RAG on 20 questions × 4 datasets (NQ, TriviaQA, HotpotQA, FEVER). With gpt-oss-20b: TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, and lower latency on 3 of 4 datasets (FEVER 28.0 s → 7.6 s).\nTrade-offs: token usage was higher than MA-RAG on all four datasets, NQ EM dropped (0.15 → 0.00), and FEVER showed label bias. Only 20 questions per dataset were evaluated.\nFixed a vLLM infinite-loop failure on small models by setting max_model_len to 32,768 and max_tokens to 4,096 per request.",
+          "MA-RAG runs the same full multi-step pipeline for every question, so simple questions pay the same cost as hard ones.\nDesigned a three-tier router (easy / medium / complex) so that only complex questions reach the Discussion Agent Layer — three advocate agents and a moderator that decides by majority vote.\nCompared it with MA-RAG on 20 questions × 4 datasets (NQ, TriviaQA, HotpotQA, FEVER) using gpt-oss-20b: TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, lower latency on 3 of 4 datasets (FEVER 28.0 s → 7.6 s).\nCaveats found when re-computing the results: the MA-RAG baseline failed on 38 of 80 questions (output-length limit), so on questions both systems answered the gain holds for TriviaQA (0.50 → 0.71) but not for NQ or FEVER; and the difficulty classifier labelled every question easy or medium, so the Discussion Agent Layer never ran. Only 20 questions per dataset were evaluated.\nFixed a vLLM infinite-loop failure on small models by setting max_model_len to 32,768 and max_tokens to 4,096 per request.",
         skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
       },
       {
@@ -98,9 +98,9 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU Computer Vision · 2026",
         name: "Lightweight Hybrid Plant Classification",
-        metric: "Built without deep learning",
+        metric: "CV 0.76 vs. test 0.17 diagnosed → redesigned, CV ≈ 0.70",
         description:
-          "Built a lightweight alternative to heavy deep-learning models for simple, on-site plant classification.\nBuilt the train/evaluation/test datasets by photographing plants on campus.\nCombined HOG and LBP feature extractors with an SVM classifier.\nAchieved classification performance that stays robust under environmental changes, without any deep learning.",
+          "Computer-vision assignment: classify eight campus plants with traditional machine learning only, no deep learning.\nBuilt the dataset by photographing plants on campus (about 60 images per class).\nExtracted about 1,783 features (HOG, LBP, colour moments) and iterated through four model stages. A stacking model scored 0.76 in cross-validation but only 0.17 on a separate test set — a leak I diagnosed — so I redesigned it around a SelectKBest(100) → PCA(30) bottleneck, reaching about 0.70 cross-validated accuracy.\nKnown limits: strong sunlight, camera angle and cluttered backgrounds still caused misclassifications.",
         skills: ["scikit-learn", "HOG", "LBP", "SVM"],
       },
       {
@@ -114,11 +114,11 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU DSAI4205 · 2026",
+        tag: "PolyU DSAI4205 · Team of 6 · 2026",
         name: "Movie Sentiment Analysis — Classical NLP to BERT",
-        metric: "Macro F1 0.24 (5-class baseline) → 0.92 (2-class BERT ensemble)",
+        metric: "Team result: Macro F1 0.8086 → 0.9208 (2-class)",
         description:
-          "Two-notebook iterative pipeline for fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset.\nSystematically compared 4 classical architectures (Word2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM) across 3 label schemes and 3 augmentation strategies, expanding the corpus from 1,024 to 11,900+ samples.\nFine-tuned BERT-base-uncased with a 3-fold cross-validation ensemble, reaching Macro F1 0.9208 on the 2-class task. The 5-class TF-IDF baseline scored 0.2439; on the same 2-class setup, LR + TF-IDF scored 0.8086.",
+          "Team project (6 members): fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset, from classical NLP baselines to BERT.\nMy part: compared the original, synthetic, external and hybrid augmentation variants across models, built the F1 visualisations, and selected the hybrid dataset used to train the BERT models.\nTeam result on the same 2-class task: Macro F1 0.8086 (LR + TF-IDF) → 0.9208 (BERT 3-fold ensemble, implemented by a teammate).",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
@@ -153,7 +153,7 @@ export const siteConfig = {
         achievements: [
           "Capstone (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer, benchmarked against MA-RAG on four QA datasets",
           "Computer Vision: Pet–object risk assessment pipeline using YOLOv11 + Depth Anything V2 (team project)",
-          "Big Data Analytics: NLP pipeline from classical ML to BERT transformer (Macro F1 0.9208)",
+          "Big Data Analytics: team project on sentiment analysis from classical ML to BERT (team Macro F1 0.9208)",
         ],
       },
       {
@@ -177,8 +177,8 @@ export const siteConfig = {
     aboutMe:
       "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계·배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 단독 주도\n1~3인 규모 팀에서 기술 리드(PL)로 활동\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중\n홍콩이공대학교 컴퓨터공학과 졸업",
     highlights: [
-      { value: "0.24 → 0.92", label: "Macro F1: 5-class TF-IDF 기준선 → 2-class BERT 앙상블", project: "영화 리뷰 감성 분석" },
-      { value: "0.81 → 0.92", label: "같은 2-class 조건 Macro F1: LR + TF-IDF → BERT 앙상블", project: "영화 리뷰 감성 분석" },
+      { value: "0.35 → 0.70", label: "MA-RAG 대비 TriviaQA EM (gpt-oss-20b, 20문항)", project: "질문 난이도별 RAG 라우팅" },
+      { value: "0.25 → 0.54", label: "담당한 점수 로직 v1 → v4 3단계 정확도 (141개 클립)", project: "반려동물 장난 감지기" },
       { value: "3개", label: "SLM에 Tool-Calling 기능 이식 (LoRA/PEFT)", project: "SLM Tool-Calling 파인튜닝" },
       { value: "4개", label: "업무 유형별 자동 평가 체계 구축", project: "LLM / SLM 평가 벤치마크" },
     ],
@@ -225,7 +225,7 @@ export const siteConfig = {
         name: "질문 난이도별 RAG 라우팅 (DMA-RAG)",
         metric: "TriviaQA EM 0.35 → 0.70 · 4개 중 3개 데이터셋에서 지연 감소",
         description:
-          "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n질문을 쉬움·보통·복잡 3단계로 나누는 라우터를 설계해, 복잡한 질문만 옹호 에이전트 3개와 다수결 중재자로 이루어진 Discussion Agent Layer로 전달\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n한계: 토큰 사용량은 4개 데이터셋 모두 MA-RAG보다 많았고, NQ에서는 EM이 하락(0.15 → 0.00), FEVER에서는 라벨 편향이 나타남. 평가 문항은 데이터셋당 20개\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
+          "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n질문을 쉬움·보통·복잡 3단계로 나누는 라우터를 설계해, 복잡한 질문만 옹호 에이전트 3개와 다수결 중재자로 이루어진 Discussion Agent Layer로 전달\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n결과를 다시 계산하며 확인한 한계: MA-RAG 기준선이 80문항 중 38문항에서 출력 길이 제한으로 응답에 실패해, 두 시스템이 모두 답한 문항만 보면 TriviaQA(0.50 → 0.71)는 개선이 유지되지만 NQ와 FEVER는 그렇지 않음. 난이도 분류기가 모든 문항을 easy·medium으로 분류해 토론 계층은 실행되지 않았고, 평가 문항은 데이터셋당 20개\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
         skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
       },
       {
@@ -241,9 +241,9 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU 컴퓨터 비전 · 2026",
         name: "경량 하이브리드 식물 분류",
-        metric: "딥러닝 없이 구현",
+        metric: "교차검증 0.76 vs 테스트 0.17 진단 → 재설계 후 CV 약 0.70",
         description:
-          "현장의 간단한 식물 분류에 무거운 딥러닝 모델을 쓰는 비효율을 줄이기 위한 경량 분류 시스템\n교내 식물을 직접 촬영해 train/evaluation/test 데이터셋 구축\n이미지의 형태·질감 패턴을 추출하는 HOG와 LBP를 결합하고 SVM으로 분류\n딥러닝 없이도 환경 변화에 강한 분류 성능 확보",
+          "컴퓨터 비전 과제 — 딥러닝 없이 전통 머신러닝만으로 교내 식물 8종을 분류\n교내 식물을 직접 촬영해 클래스당 약 60장의 데이터셋 구축\nHOG·LBP·색상 모멘트 등 약 1,783개 특징으로 4단계 모델을 실험 — 스태킹 모델이 교차검증 0.76이었지만 별도 테스트에서는 0.17로 무너지는 누수를 진단하고, SelectKBest(100) → PCA(30) 병목 구조로 재설계해 교차검증 약 0.70 확보\n한계: 강한 햇빛, 촬영 각도, 복잡한 배경에서는 여전히 오분류가 발생",
         skills: ["scikit-learn", "HOG", "LBP", "SVM"],
       },
       {
@@ -257,11 +257,11 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU DSAI4205 · 2026",
+        tag: "PolyU DSAI4205 · 6인 팀 · 2026",
         name: "영화 리뷰 감성 분석 (고전 NLP → BERT)",
-        metric: "Macro F1 0.24 (5-class 기준선) → 0.92 (2-class BERT 앙상블)",
+        metric: "팀 결과: Macro F1 0.8086 → 0.9208 (2-class)",
         description:
-          "Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석\nWord2Vec+XGBoost, Doc2Vec+MLP, TF-IDF Word2Vec+SVM, BiLSTM 4가지 방식을 3가지 레이블 체계·3가지 증강 전략으로 비교, 데이터를 1,024건에서 11,900건 이상으로 확장\nBERT-base-uncased를 3-Fold 교차검증 앙상블로 파인튜닝해 2-class 과제에서 Macro F1 0.9208 달성 — 5-class TF-IDF 기준선은 0.2439, 같은 2-class 조건의 LR+TF-IDF는 0.8086",
+          "6인 팀 프로젝트 — Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석 (고전 NLP에서 BERT까지)\n담당: 원본·합성·외부·하이브리드 증강 변형을 모델별로 비교 평가하고 F1 시각화를 제작, BERT 학습에 쓸 하이브리드 데이터셋 선정\n팀 결과: 같은 2-class 조건에서 Macro F1 0.8086(LR+TF-IDF) → 0.9208(BERT 3-fold 앙상블, 팀원 구현)",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
@@ -296,7 +296,7 @@ export const siteConfig = {
         achievements: [
           "캡스톤 프로젝트 (DMA-RAG) — 질문 난이도별 RAG 라우팅과 멀티 에이전트 Discussion Agent Layer, 4개 QA 데이터셋에서 MA-RAG와 비교 평가",
           "컴퓨터 비전 — YOLOv11 + Depth Anything V2 기반 반려동물 위험도 판정 파이프라인 (팀 프로젝트)",
-          "빅데이터 분석 — 고전 ML부터 BERT까지 NLP 파이프라인 (Macro F1 0.9208)",
+          "빅데이터 분석 — 고전 ML부터 BERT까지 감성 분석 팀 프로젝트 (팀 Macro F1 0.9208)",
         ],
       },
       {
