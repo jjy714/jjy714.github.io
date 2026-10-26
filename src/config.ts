@@ -72,7 +72,7 @@ export const siteConfig = {
         category: "work",
         tag: "Claion · Jan 2025 – Aug 2025",
         name: "SLM Fine-Tuning for Tool-Calling",
-        metric: "3 SLMs · LoRA/PEFT · 300K+ training examples",
+        metric: "3 SLMs · LoRA/PEFT · ~11K–15K examples per model",
         description:
           "Ran experiments on injecting tool-calling capability into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH, training on open-source Hugging Face datasets that I preprocessed beforehand.\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
@@ -88,12 +88,12 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU Database Management · 2026",
-        name: "Large-Scale Self-Join Optimization",
-        metric: "1M+ records · no extra hardware",
+        tag: "PolyU DSAI4205 Big Data Analytics · 2026",
+        name: "Student Plagiarism Detection with PySpark",
+        metric: "PySpark pipeline · ROUGE-L pairwise similarity",
         description:
-          "Resolved out-of-memory failures during similarity analysis on a news dataset of over 1 million records.\nTraced the cause to a Cartesian-product explosion by analyzing the Spark execution plan.\nImplemented filtering logic with a custom PySpark UDF (least() / greatest()) that removes duplicate comparisons — stabilizing the pipeline without adding hardware.",
-        skills: ["PySpark", "SQL"],
+          "Course assignment: detect plagiarism among students from their homework submissions with PySpark.\nBuilt the student table as a PySpark DataFrame from raw records and exported it to JSON.\nPaired students of the same major with a self-join and scored each pair's homework with a ROUGE-L similarity UDF.\nQueried plagiarism cases by major, then joined the students' grade data to classify each pair as mutual copying or a copee–copier relationship.\nThe data was a small course file, so the work shows the pipeline design rather than scale.",
+        skills: ["PySpark", "ROUGE-L"],
       },
       {
         category: "academic",
@@ -117,9 +117,9 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU DSAI4205 · Team of 6 · 2026",
         name: "Movie Sentiment Analysis — Classical NLP to BERT",
-        metric: "Team result: Macro F1 0.8086 → 0.9208 (2-class)",
+        metric: "Team of 6 · staged hand-offs from data to models",
         description:
-          "Team project (6 members): fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset, from classical NLP baselines to BERT.\nMy part: compared the original, synthetic, external and hybrid augmentation variants across models, built the F1 visualisations, and selected the hybrid dataset used to train the BERT models.\nTeam result on the same 2-class task: Macro F1 0.8086 (LR + TF-IDF) → 0.9208 (BERT 3-fold ensemble, implemented by a teammate).",
+          "Team project (6 members): fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset, from classical NLP baselines to BERT.\nThe team split the work into data expansion, classical models and BERT training, and passed each stage's results to the next as the basis for design decisions.\nMy part: compared the original, synthetic, external and hybrid augmentation variants across models and built the F1 visualisations, giving the team the evidence for choosing the dataset used to train the BERT models.",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
@@ -152,9 +152,10 @@ export const siteConfig = {
         degree: "Computer Science",
         dateRange: "Sep 2019 - Aug 2026",
         achievements: [
+          "Work-Integrated Education (WIE): Claion employment credited by the university; capstone project run in parallel",
           "Capstone (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer, benchmarked against MA-RAG on four QA datasets",
           "Computer Vision: Pet–object risk assessment pipeline using YOLOv11 + Depth Anything V2 (team project)",
-          "Big Data Analytics: team project on sentiment analysis from classical ML to BERT (team Macro F1 0.9208)",
+          "Big Data Analytics: team project (6 members) on sentiment analysis from classical ML to BERT",
         ],
       },
       {
@@ -215,9 +216,9 @@ export const siteConfig = {
         category: "work",
         tag: "클라이온 · 2025.01 – 2025.08",
         name: "SLM Tool-Calling 파인튜닝",
-        metric: "SLM 3종 · LoRA/PEFT · 학습 데이터 30만 건+",
+        metric: "SLM 3종 · LoRA/PEFT · 모델별 약 1.1만~1.5만 건",
         description:
-          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 이식하는 실험 진행\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종에 적용\nHugging Face 오픈소스 데이터셋을 학습 전에 전처리해 30만 건 규모로 사용\nTool-Calling을 지원하지 않는 모델의 Chat Template을 수정하며 동작 여부를 검증하는 실험 진행",
+          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 이식하는 실험 진행\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종에 적용\nHugging Face 오픈소스 Tool-Calling 데이터(BitAgent·ToolACE·xLAM·Glaive)를 학습 전에 전처리해 모델별 약 1.1만~1.5만 건 규모로 사용\nTool-Calling을 지원하지 않는 모델의 Chat Template을 수정하며 동작 여부를 검증하는 실험 진행",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
@@ -231,12 +232,12 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU Database Management · 2026",
-        name: "대용량 데이터 자기조인 최적화",
-        metric: "100만 건+ 데이터 · 추가 하드웨어 없이 해결",
+        tag: "PolyU DSAI4205 빅데이터 분석 · 2026",
+        name: "PySpark 학생 과제 표절 탐지",
+        metric: "PySpark 파이프라인 · ROUGE-L 쌍별 유사도",
         description:
-          "100만 건 이상 뉴스 데이터의 유사도 분석 중 발생한 메모리 부족(OOM) 오류 해결\nSpark 실행 계획을 분석해, 모든 데이터 쌍을 비교하는 Cartesian Product가 원인임을 규명\nleast()·greatest() 기반 커스텀 PySpark UDF로 중복 비교를 걸러내, 서버 증설 없이 파이프라인 안정화",
-        skills: ["PySpark", "SQL"],
+          "수업 과제 — 학생들의 과제 제출물로 표절을 찾아내는 PySpark 파이프라인\n원본 레코드로 학생 테이블을 PySpark DataFrame으로 구성하고 JSON으로 저장\n같은 전공 학생끼리 자기조인으로 쌍을 만들고, 쌍마다 ROUGE-L 유사도 UDF로 과제 유사도를 계산\n전공별 표절 사례를 조회하고, 성적 데이터를 결합해 상호 복사 또는 원본-복사자 관계로 분류\n데이터는 과목에서 제공한 소규모 파일이라 규모보다 파이프라인 설계를 보여주는 과제",
+        skills: ["PySpark", "ROUGE-L"],
       },
       {
         category: "academic",
@@ -260,9 +261,9 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU DSAI4205 · 6인 팀 · 2026",
         name: "영화 리뷰 감성 분석 (고전 NLP → BERT)",
-        metric: "팀 결과: Macro F1 0.8086 → 0.9208 (2-class)",
+        metric: "6인 팀 · 단계별 결과 인계로 협업",
         description:
-          "6인 팀 프로젝트 — Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석 (고전 NLP에서 BERT까지)\n담당: 원본·합성·외부·하이브리드 증강 변형을 모델별로 비교 평가하고 F1 시각화를 제작, BERT 학습에 쓸 하이브리드 데이터셋 선정\n팀 결과: 같은 2-class 조건에서 Macro F1 0.8086(LR+TF-IDF) → 0.9208(BERT 3-fold 앙상블, 팀원 구현)",
+          "6인 팀 프로젝트 — Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석 (고전 NLP에서 BERT까지)\n데이터 확장, 고전 모델, BERT 학습을 팀원이 나눠 맡고, 앞 단계의 실험 결과를 다음 단계 설계의 근거로 넘기며 협업\n담당: 원본·합성·외부·하이브리드 증강 변형을 모델별로 비교 평가하고 F1 시각화를 제작, 팀이 BERT 학습용 데이터셋을 정하는 근거 제공",
         skills: ["BERT", "Hugging Face", "scikit-learn", "Keras", "Gensim"],
       },
     ],
@@ -295,9 +296,10 @@ export const siteConfig = {
         degree: "컴퓨터공학",
         dateRange: "2019년 9월 - 2026년 8월",
         achievements: [
+          "WIE(Work-Integrated Education) 프로그램 — 클라이온 근무 시간을 학교에서 인정받아 캡스톤 프로젝트와 병행",
           "캡스톤 프로젝트 (DMA-RAG) — 질문 난이도별 RAG 라우팅과 멀티 에이전트 Discussion Agent Layer, 4개 QA 데이터셋에서 MA-RAG와 비교 평가",
           "컴퓨터 비전 — YOLOv11 + Depth Anything V2 기반 반려동물 위험도 판정 파이프라인 (팀 프로젝트)",
-          "빅데이터 분석 — 고전 ML부터 BERT까지 감성 분석 팀 프로젝트 (팀 Macro F1 0.9208)",
+          "빅데이터 분석 — 고전 ML부터 BERT까지 감성 분석 6인 팀 프로젝트",
         ],
       },
       {
