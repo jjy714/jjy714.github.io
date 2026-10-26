@@ -11,6 +11,7 @@ export const siteConfig = {
     "Hugging Face Transformers",
     "LangChain",
     "LangGraph",
+    "vLLM",
     "Gemini Live API",
     "FastAPI",
     "Docker",
@@ -36,7 +37,7 @@ export const siteConfig = {
     highlights: [
       { value: "0.35 → 0.70", label: "TriviaQA EM vs. MA-RAG (gpt-oss-20b, 20 questions)", project: "Complexity-Based RAG Routing" },
       { value: "0.25 → 0.54", label: "3-class accuracy, my scoring logic v1 → v4 (141 clips)", project: "Pet Mischief Detector" },
-      { value: "3", label: "SLMs fine-tuned for tool-calling (LoRA/PEFT)", project: "SLM Fine-Tuning" },
+      { value: "3", label: "SLMs in tool-calling fine-tuning experiments (LoRA/PEFT)", project: "SLM Fine-Tuning" },
       { value: "4", label: "Task types covered by automated eval pipeline", project: "LLM / SLM Evaluation Benchmark" },
     ],
     projects: [
@@ -46,7 +47,7 @@ export const siteConfig = {
         name: "Voice AI Kiosk — Latency Reduction & Tool Calling",
         metric: "PoC delivered · 2nd phase in progress",
         description:
-          "Cut the response latency of a multimodal in-store AI kiosk and designed how the AI operates the backend.\nReplaced a sequential STT → LLM → TTS pipeline with the Gemini Live API, which handles voice input and output in a single streaming session.\nFree-form ordering (adding to the cart, database lookups) runs on LLM tool calling.\nPredictable steps such as option pages and menu utterances are matched against a predefined keyword set and executed directly by the backend — removing tool-call misfires and hallucination risk wherever the answer is already known.\nDesigned the Frontend–Backend–AI interface for conversation-driven screen transitions and delivered the PoC; second-phase work is under way.",
+          "Cut the response latency of a multimodal in-store AI kiosk and designed how the AI operates the backend.\nReplaced a sequential STT → LLM → TTS pipeline with the Gemini Live API, which handles voice input and output in a single streaming session.\nFree-form ordering (adding to the cart, database lookups) runs on LLM tool calling.\nPredictable steps such as option pages and menu utterances are matched against a predefined keyword set and executed directly by the backend — reducing tool-call misfires and hallucination risk wherever the answer is already known (not yet measured quantitatively).\nDesigned the Frontend–Backend–AI interface for conversation-driven screen transitions and delivered the PoC; second-phase work is under way.",
         skills: ["Gemini Live API", "Tool Calling", "LLM Function Calling"],
       },
       {
@@ -64,8 +65,8 @@ export const siteConfig = {
         name: "LLM / SLM Evaluation Benchmark System",
         metric: "4 task types · data-driven model adoption",
         description:
-          "Built a company-wide benchmarking standard to evaluate SLMs for product integration.\nDefined evaluation criteria across Reasoning, Summarization, Instruction-following, and RAG tasks, and automated the pipeline with Python and Hugging Face.\nScored models on four axes — qualitative, quantitative, LLM-as-a-Judge, and performance — comparing commercial and open-source models on the same criteria to drive integration decisions.",
-        skills: ["Python", "Hugging Face", "LangChain"],
+          "Built an automated benchmark pipeline to evaluate SLMs for product integration.\nDefined evaluation criteria across Reasoning, Summarization, Instruction-following, and RAG tasks, and automated the pipeline with Python and Hugging Face.\nScored models on four axes — qualitative, quantitative, LLM-as-a-Judge, and performance — comparing commercial and open-source models on the same criteria to drive integration decisions.",
+        skills: ["Python", "Hugging Face"],
       },
       {
         category: "work",
@@ -73,7 +74,7 @@ export const siteConfig = {
         name: "SLM Fine-Tuning for Tool-Calling",
         metric: "3 SLMs · LoRA/PEFT · 300K+ training examples",
         description:
-          "Researched and implemented tool-calling capability injection into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH, training on open-source Hugging Face datasets that I preprocessed beforehand.\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.\nIdentified the technical limits of LoRA-based tuning, which informed the company's later model-integration strategy.",
+          "Ran experiments on injecting tool-calling capability into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH, training on open-source Hugging Face datasets that I preprocessed beforehand.\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
@@ -125,11 +126,11 @@ export const siteConfig = {
     experience: [
       {
         company: "Withmind",
-        title: "Machine Learning Engineer",
+        title: "Machine Learning Engineer · Manager",
         dateRange: "Jun 2026 - Present",
         bullets: [
           "Reduced response latency of a multimodal AI kiosk by adopting the Gemini Live API, which handles voice input and output in a single streaming session.",
-          "Split conversation handling by predictability: LLM tool calling for free-form ordering, keyword-matched backend execution for option and menu steps with fixed answers — designed to prevent tool-call misfires.",
+          "Split conversation handling by predictability: LLM tool calling for free-form ordering, keyword-matched backend execution for option and menu steps with fixed answers — designed to reduce tool-call misfires.",
           "Designed the Frontend–Backend–AI interface, delivered the PoC, and started second-phase development.",
         ],
       },
@@ -138,10 +139,10 @@ export const siteConfig = {
         title: "AI Engineer",
         dateRange: "Jan 2025 - Jan 2026",
         bullets: [
-          "Designed company-wide SLM benchmarking standard with automated evaluation pipeline across Reasoning, Summarization, Instruction-following, and RAG tasks, scored on qualitative, quantitative, LLM-as-a-Judge, and performance criteria.",
-          "Built an asynchronous RAG evaluation system — a central server that benchmarks the whole RAG pipeline on the user's behalf, deployable on an intranet.",
-          "Led SLM fine-tuning research (LoRA/PEFT via Unsloth) on Gemma, Exaone, and HCX DASH, using preprocessed open-source datasets and chat-template modification experiments to enable tool calling.",
-          "Operated as PL in teams of 1–3; authored formal functional requirements, system sequence diagrams, and user flow documentation for all major systems.",
+          "Built an automated SLM evaluation pipeline across Reasoning, Summarization, Instruction-following, and RAG tasks, scored on qualitative, quantitative, LLM-as-a-Judge, and performance criteria.",
+          "Planned and built the initial architecture of an asynchronous RAG evaluation system — a central server that benchmarks the whole RAG pipeline on the user's behalf, deployable on an intranet. Claion later productized it as R.E.X.",
+          "Ran SLM fine-tuning experiments (LoRA/PEFT via Unsloth) on Gemma, Exaone, and HCX DASH, using preprocessed open-source datasets and chat-template modification experiments for tool calling.",
+          "Operated as PL in teams of 1–3; authored functional requirements, sequence diagrams, and user flow documentation for the RAG evaluation system.",
         ],
       },
     ],
@@ -179,7 +180,7 @@ export const siteConfig = {
     highlights: [
       { value: "0.35 → 0.70", label: "MA-RAG 대비 TriviaQA EM (gpt-oss-20b, 20문항)", project: "질문 난이도별 RAG 라우팅" },
       { value: "0.25 → 0.54", label: "담당한 점수 로직 v1 → v4 3단계 정확도 (141개 클립)", project: "반려동물 장난 감지기" },
-      { value: "3개", label: "SLM에 Tool-Calling 기능 이식 (LoRA/PEFT)", project: "SLM Tool-Calling 파인튜닝" },
+      { value: "3개", label: "Tool-Calling 파인튜닝 실험 대상 SLM (LoRA/PEFT)", project: "SLM Tool-Calling 파인튜닝" },
       { value: "4개", label: "업무 유형별 자동 평가 체계 구축", project: "LLM / SLM 평가 벤치마크" },
     ],
     projects: [
@@ -189,7 +190,7 @@ export const siteConfig = {
         name: "음성 AI 키오스크 — 응답 지연 개선",
         metric: "PoC 개발 완료 · 2차 고도화 진행 중",
         description:
-          "음성으로 주문하는 매장용 AI 키오스크의 느린 응답을 줄이고, AI가 주문 처리를 직접 수행하는 구조 설계\nSTT → LLM → TTS를 순서대로 호출하던 방식에서 음성 입출력을 한 번에 처리하는 Gemini Live API로 전환해 지연 개선\n장바구니 담기·DB 조회 등 자유로운 발화는 LLM Tool Calling으로 처리\n옵션 선택·메뉴 발화처럼 답이 정해진 구간은 자주 쓰는 키워드를 미리 등록해 두고, 매칭되면 LLM 판단 없이 백엔드가 즉시 실행 — 오작동·환각 가능성 사전 차단\nFrontend·Backend·AI를 잇는 인터페이스를 설계해 대화에 따른 화면 자동 전환 구현",
+          "음성으로 주문하는 매장용 AI 키오스크의 느린 응답을 줄이고, AI가 주문 처리를 직접 수행하는 구조 설계\nSTT → LLM → TTS를 순서대로 호출하던 방식에서 음성 입출력을 한 번에 처리하는 Gemini Live API로 전환해 지연 개선\n장바구니 담기·DB 조회 등 자유로운 발화는 LLM Tool Calling으로 처리\n옵션 선택·메뉴 발화처럼 답이 정해진 구간은 자주 쓰는 키워드를 미리 등록해 두고, 매칭되면 LLM 판단 없이 백엔드가 즉시 실행 — 오작동·환각 가능성을 구조적으로 축소 (정량 측정은 아직 못 함)\nFrontend·Backend·AI를 잇는 인터페이스를 설계해 대화에 따른 화면 자동 전환 구현",
         skills: ["Gemini Live API", "Tool Calling", "LLM Function Calling"],
       },
       {
@@ -207,8 +208,8 @@ export const siteConfig = {
         name: "LLM / SLM 평가 벤치마크 시스템",
         metric: "4개 업무 유형 · 데이터 기반 모델 도입 결정",
         description:
-          "어떤 SLM을 제품에 넣을지 감으로 정하던 상황을 데이터로 판단할 수 있도록 사내 평가 표준 수립\n추론·요약·지시 이행·RAG 4개 업무 유형별 평가 기준 정의, Python·Hugging Face로 평가 자동화\n정성·정량·LLM as a Judge·성능 4가지 기준으로 상용 모델과 오픈소스 모델을 같은 잣대로 비교해 도입 의사결정에 활용",
-        skills: ["Python", "Hugging Face", "LangChain"],
+          "어떤 SLM을 제품에 넣을지 감으로 정하던 상황을 데이터로 판단할 수 있도록 자동 평가 파이프라인 구축\n추론·요약·지시 이행·RAG 4개 업무 유형별 평가 기준 정의, Python·Hugging Face로 평가 자동화\n정성·정량·LLM as a Judge·성능 4가지 기준으로 상용 모델과 오픈소스 모델을 같은 잣대로 비교해 도입 의사결정에 활용",
+        skills: ["Python", "Hugging Face"],
       },
       {
         category: "work",
@@ -216,7 +217,7 @@ export const siteConfig = {
         name: "SLM Tool-Calling 파인튜닝",
         metric: "SLM 3종 · LoRA/PEFT · 학습 데이터 30만 건+",
         description:
-          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 새로 이식\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종 학습\nHugging Face 오픈소스 데이터셋을 학습 전에 전처리해 30만 건 규모로 사용\nTool-Calling을 지원하지 않는 모델의 Chat Template을 수정하며 동작 여부를 검증하는 실험 진행\nLoRA 기반 튜닝의 기술적 한계를 확인하고, 이후 모델 통합 전략 수립에 반영",
+          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 이식하는 실험 진행\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종에 적용\nHugging Face 오픈소스 데이터셋을 학습 전에 전처리해 30만 건 규모로 사용\nTool-Calling을 지원하지 않는 모델의 Chat Template을 수정하며 동작 여부를 검증하는 실험 진행",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
@@ -268,11 +269,11 @@ export const siteConfig = {
     experience: [
       {
         company: "Withmind",
-        title: "머신러닝 엔지니어",
+        title: "머신러닝 엔지니어 · 매니저",
         dateRange: "2026년 6월 - 현재",
         bullets: [
           "멀티모달 AI 키오스크의 응답 지연 개선 — 음성 입출력을 한 번에 처리하는 Gemini Live API 도입",
-          "자유 발화는 LLM Tool Calling으로, 답이 정해진 구간은 키워드 매칭 후 백엔드가 직접 처리하도록 나누어 오작동 가능성 차단",
+          "자유 발화는 LLM Tool Calling으로, 답이 정해진 구간은 키워드 매칭 후 백엔드가 직접 처리하도록 나누어 오작동 가능성 축소",
           "Frontend·Backend·AI 연동 구조 설계, PoC 완료 후 2차 고도화 진행",
         ],
       },
@@ -281,10 +282,10 @@ export const siteConfig = {
         title: "AI 엔지니어",
         dateRange: "2025년 1월 - 2026년 1월",
         bullets: [
-          "추론·요약·지시 이행·RAG 4개 업무 유형을 정성·정량·LLM as a Judge·성능 기준으로 평가하는 자동 평가 파이프라인과 사내 SLM 벤치마크 표준 수립",
-          "비동기 RAG 평가 시스템 구축 — 중앙 서버가 파이프라인 전체를 대신 벤치마크, 인트라넷에서도 구축 가능하게 설계",
-          "Gemma·EXAONE·HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 오픈소스 데이터 전처리와 Chat Template 수정 실험으로 Tool-Calling 기능 이식 주도",
-          "1~3인 팀에서 PL로 활동하며 주요 시스템의 기능 요구사항·시퀀스 다이어그램·사용자 플로우 문서 작성",
+          "추론·요약·지시 이행·RAG 4개 업무 유형을 정성·정량·LLM as a Judge·성능 기준으로 평가하는 자동 평가 파이프라인 구축",
+          "비동기 RAG 평가 시스템의 기획과 초기 아키텍처 설계·구축 — 중앙 서버가 파이프라인 전체를 대신 벤치마크, 인트라넷에서도 구축 가능하게 설계 (이후 클라이온이 R.E.X.로 상용화)",
+          "Gemma·EXAONE·HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 오픈소스 데이터 전처리와 Chat Template 수정 실험으로 Tool-Calling 동작을 검증",
+          "1~3인 팀에서 PL로 활동하며 RAG 평가 시스템의 기능 요구사항·시퀀스 다이어그램·사용자 플로우 문서 작성",
         ],
       },
     ],
