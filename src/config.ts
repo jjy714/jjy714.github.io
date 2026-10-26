@@ -72,9 +72,9 @@ export const siteConfig = {
         category: "work",
         tag: "Claion · Jan 2025 – Aug 2025",
         name: "SLM Fine-Tuning for Tool-Calling",
-        metric: "3 SLMs · LoRA/PEFT · ~11K–15K examples per model",
+        metric: "3 SLMs · LoRA/PEFT · ~11K–15K examples per model (551K-example run also attempted)",
         description:
-          "Ran experiments on injecting tool-calling capability into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH, training on open-source Hugging Face datasets that I preprocessed beforehand.\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.",
+          "Ran experiments on injecting tool-calling capability into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH, training on open-source Hugging Face datasets that I preprocessed beforehand (about 11K–15K examples per model; a 551,285-example run was also attempted).\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
@@ -216,9 +216,9 @@ export const siteConfig = {
         category: "work",
         tag: "클라이온 · 2025.01 – 2025.08",
         name: "SLM Tool-Calling 파인튜닝",
-        metric: "SLM 3종 · LoRA/PEFT · 모델별 약 1.1만~1.5만 건",
+        metric: "SLM 3종 · LoRA/PEFT · 모델별 약 1.1만~1.5만 건 (55만 건 학습도 시도)",
         description:
-          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 이식하는 실험 진행\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종에 적용\nHugging Face 오픈소스 Tool-Calling 데이터(BitAgent·ToolACE·xLAM·Glaive)를 학습 전에 전처리해 모델별 약 1.1만~1.5만 건 규모로 사용\nTool-Calling을 지원하지 않는 모델의 Chat Template을 수정하며 동작 여부를 검증하는 실험 진행",
+          "Tool-Calling을 지원하지 않던 소형 언어 모델(SLM)에 해당 기능을 이식하는 실험 진행\nGPU·비용 제약을 고려해 Full fine-tuning 대신 LoRA/PEFT를 선택, Unsloth로 Gemma·EXAONE·HCX DASH 3종에 적용\nHugging Face 오픈소스 Tool-Calling 데이터(BitAgent·ToolACE·xLAM·Glaive)를 학습 전에 전처리해 모델별 약 1.1만~1.5만 건 규모로 사용했고 551,285건 규모 데이터셋으로도 학습을 시도\nTool-Calling을 지원하지 않는 모델의 Chat Template을 수정하며 동작 여부를 검증하는 실험 진행",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
