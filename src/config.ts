@@ -88,12 +88,12 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU DSAI4205 Big Data Analytics · 2026",
-        name: "Student Plagiarism Detection with PySpark",
-        metric: "PySpark pipeline · ROUGE-L pairwise similarity",
+        tag: "PolyU COMP4432 Machine Learning · Team of 2 · 2024",
+        name: "Unsupervised Learning on 1M News Headlines",
+        metric: "Silhouette ≈ 0.19, yet topic-coherent clusters",
         description:
-          "Course assignment: detect plagiarism among students from their homework submissions with PySpark.\nBuilt the student table as a PySpark DataFrame from raw records and exported it to JSON.\nPaired students of the same major with a self-join and scored each pair's homework with a ROUGE-L similarity UDF.\nQueried plagiarism cases by major, then joined the students' grade data to classify each pair as mutual copying or a copee–copier relationship.\nThe data was a small course file, so the work shows the pipeline design rather than scale.",
-        skills: ["PySpark", "ROUGE-L"],
+          "Team project (2 members): grouping one million news headlines into topics with unsupervised learning.\nPreprocessed the headlines (lowercasing, de-duplication, stop-word removal, stemming, TF-IDF) and compared K-means, LSA, LDA (grid search) and an autoencoder.\nMy part: training the K-means and LSA models and writing the report.\nThe silhouette score stayed near 0.19, yet the clusters were coherent (sports, politics, finance), which showed why qualitative inspection is needed alongside distance-based scores.\nThe autoencoder ran out of memory at 5% of the data (about 50,000 headlines), so it was trained on 1–3% subsets.",
+        skills: ["K-means", "LSA / LDA", "Autoencoder"],
       },
       {
         category: "academic",
@@ -232,12 +232,12 @@ export const siteConfig = {
       },
       {
         category: "academic",
-        tag: "PolyU DSAI4205 빅데이터 분석 · 2026",
-        name: "PySpark 학생 과제 표절 탐지",
-        metric: "PySpark 파이프라인 · ROUGE-L 쌍별 유사도",
+        tag: "PolyU COMP4432 머신러닝 · 2인 팀 · 2024",
+        name: "뉴스 헤드라인 100만 건 비지도 학습",
+        metric: "실루엣 약 0.19, 그러나 주제별로 일관된 군집",
         description:
-          "수업 과제 — 학생들의 과제 제출물로 표절을 찾아내는 PySpark 파이프라인\n원본 레코드로 학생 테이블을 PySpark DataFrame으로 구성하고 JSON으로 저장\n같은 전공 학생끼리 자기조인으로 쌍을 만들고, 쌍마다 ROUGE-L 유사도 UDF로 과제 유사도를 계산\n전공별 표절 사례를 조회하고, 성적 데이터를 결합해 상호 복사 또는 원본-복사자 관계로 분류\n데이터는 과목에서 제공한 소규모 파일이라 규모보다 파이프라인 설계를 보여주는 과제",
-        skills: ["PySpark", "ROUGE-L"],
+          "2인 팀 프로젝트 — 뉴스 헤드라인 100만 건을 비지도 학습으로 주제별 군집화\n소문자화·중복 제거·불용어 제거·어간 추출·TF-IDF로 전처리하고 K-means, LSA, LDA(그리드 서치), 오토인코더를 비교\n담당: K-means·LSA 학습과 보고서 작성\n실루엣 점수는 약 0.19로 낮았지만 군집 내용은 스포츠·정치·금융 등으로 일관되어, 거리 기반 점수와 함께 정성 검토가 필요한 이유를 확인\n오토인코더는 전체의 5%(약 5만 건)에서 메모리가 부족해 1~3% 부분집합으로 학습",
+        skills: ["K-means", "LSA / LDA", "Autoencoder"],
       },
       {
         category: "academic",
