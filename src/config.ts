@@ -52,12 +52,12 @@ export const siteConfig = {
       },
       {
         category: "work",
-        tag: "Claion · Sep 2025 – Jan 2026",
-        name: "Asynchronous RAG Evaluation System",
+        tag: "Claion · Jul 2025 – Sep 2025",
+        name: "RAG Evaluation Server",
         metric: "Foundation of Claion's commercial product R.E.X.",
         description:
-          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nSolved slow, heavy RAG evaluation with a central async server that benchmarks the whole RAG pipeline on the user's behalf.\nDesigned to be deployable on an intranet too.\nSeparated the embedding model as an independent service, applied caching for repeated vectorization, and isolated each RAG system in its own temporary Qdrant collection for independent evaluation.\nIntegrated BLEU/ROUGE and MRR/MAP/NDCG into one unified set of metrics.\nIndependently authored the functional requirements, sequence diagrams, and user flow documentation.",
-        skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
+          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nBuilt the evaluation server as a FastAPI service whose LangGraph graphs run the metric nodes in parallel: retrieval (MRR, MAP, NDCG, F1, precision, recall, context relevance) and generation (ROUGE, BLEU, LLM-based faithfulness).\nBuilt a FastAPI data service backed by MongoDB for benchmark data, cached sessions in Redis, and packaged the services with docker compose.\nA teammate wrote the client library that collects a target RAG system's outputs; it connects to the server through its API.\nIndependently authored the functional requirements, sequence diagrams, and user flow documentation.",
+        skills: ["Python", "FastAPI", "LangGraph", "MongoDB", "Redis"],
       },
       {
         category: "work",
@@ -140,7 +140,7 @@ export const siteConfig = {
         dateRange: "Jan 2025 - Jan 2026",
         bullets: [
           "Built an automated SLM evaluation pipeline across Reasoning, Summarization, Instruction-following, and RAG tasks, scored on qualitative, quantitative, LLM-as-a-Judge, and performance criteria.",
-          "Planned and built the initial architecture of an asynchronous RAG evaluation system — a central server that benchmarks the whole RAG pipeline on the user's behalf, deployable on an intranet. Claion later productized it as R.E.X.",
+          "Planned and built the initial architecture of a RAG evaluation server — async FastAPI with LangGraph metric graphs, a MongoDB data service and a Redis cache. The project was paused and later resumed; Claion productized it as R.E.X.",
           "Ran SLM fine-tuning experiments (LoRA/PEFT via Unsloth) on Gemma, Exaone, and HCX DASH, using preprocessed open-source datasets and chat-template modification experiments for tool calling.",
           "Operated as PL in teams of 1–3; authored functional requirements, sequence diagrams, and user flow documentation for the RAG evaluation system.",
         ],
@@ -196,12 +196,12 @@ export const siteConfig = {
       },
       {
         category: "work",
-        tag: "클라이온 · 2025.09 – 2026.01",
-        name: "비동기 RAG 평가 시스템",
+        tag: "클라이온 · 2025.07 – 2025.09",
+        name: "RAG 평가 서버",
         metric: "클라이온 상용 제품 R.E.X.의 기반 설계",
         description:
-          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\n무겁고 오래 걸리던 RAG 평가를, 중앙 서버가 비동기로 파이프라인 전체를 대신 벤치마크하는 구조로 전환\n인트라넷에서도 구축 가능하도록 설계\n임베딩 모델을 별도 서비스로 분리하고 캐싱을 적용해 반복 연산 제거, 시스템마다 독립된 Qdrant 컬렉션을 사용해 서로 간섭 없이 평가\nBLEU/ROUGE와 MRR/MAP/NDCG를 하나의 기준으로 통합해 시스템 간 동일한 잣대로 비교\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 단독 작성",
-        skills: ["Python", "FastAPI", "Docker", "Qdrant", "MongoDB"],
+          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nFastAPI 평가 서버에서 LangGraph 그래프가 지표 노드를 병렬로 실행 — 검색(MRR·MAP·NDCG·F1·precision·recall·context relevance)과 생성(ROUGE·BLEU·LLM 기반 faithfulness)\nFastAPI 데이터 서비스와 MongoDB로 벤치마크 데이터를 다루고, 세션은 Redis로 캐싱, 서비스들은 docker compose로 구성\n대상 RAG의 출력을 수집하는 클라이언트 라이브러리는 팀원이 작성해 평가 서버와 API로 연동\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 단독 작성",
+        skills: ["Python", "FastAPI", "LangGraph", "MongoDB", "Redis"],
       },
       {
         category: "work",
@@ -284,7 +284,7 @@ export const siteConfig = {
         dateRange: "2025년 1월 - 2026년 1월",
         bullets: [
           "추론·요약·지시 이행·RAG 4개 업무 유형을 정성·정량·LLM as a Judge·성능 기준으로 평가하는 자동 평가 파이프라인 구축",
-          "비동기 RAG 평가 시스템의 기획과 초기 아키텍처 설계·구축 — 중앙 서버가 파이프라인 전체를 대신 벤치마크, 인트라넷에서도 구축 가능하게 설계 (이후 클라이온이 R.E.X.로 상용화)",
+          "RAG 평가 서버의 기획과 초기 아키텍처 설계·구축 — FastAPI·LangGraph 지표 그래프·MongoDB 데이터 서비스·Redis 캐시 (보류 후 재개되어 클라이온이 R.E.X.로 상용화)",
           "Gemma·EXAONE·HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 오픈소스 데이터 전처리와 Chat Template 수정 실험으로 Tool-Calling 동작을 검증",
           "1~3인 팀에서 PL로 활동하며 RAG 평가 시스템의 기능 요구사항·시퀀스 다이어그램·사용자 플로우 문서 작성",
         ],
