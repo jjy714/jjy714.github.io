@@ -39,8 +39,8 @@ export const ui = {
       education: "학력",
     },
     projectGroups: {
-      work: "회사 프로젝트",
-      academic: "학교 · 논문 프로젝트",
+      work: "실무 경험",
+      academic: "프로젝트 경험",
     },
     hero: {
       greeting: "안녕하세요",
