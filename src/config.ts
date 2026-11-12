@@ -56,7 +56,7 @@ export const siteConfig = {
         name: "RAG Evaluation Server",
         metric: "Foundation of Claion's commercial product R.E.X.",
         description:
-          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nBuilt the evaluation server as a FastAPI service whose LangGraph graphs run the metric nodes in parallel, integrating krag- and ragas-based metrics: retrieval (MRR, MAP, NDCG, F1, precision, recall, context relevance) and generation (ROUGE, BLEU, LLM-based faithfulness).\nBuilt a FastAPI data service backed by MongoDB for benchmark data, cached sessions in Redis, and packaged the services with docker compose.\nI drafted the client library that collects a target RAG system's outputs and a teammate extended it; it connects to the server through its API.\nIndependently authored the functional requirements, sequence diagrams, and user flow documentation.",
+          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nBuilt the evaluation server as a FastAPI service whose LangGraph graphs run the metric nodes in parallel, integrating krag- and ragas-based metrics: retrieval (MRR, MAP, NDCG, F1, precision, recall, context relevance) and generation (ROUGE, BLEU, LLM-based faithfulness).\nBuilt a FastAPI data service backed by MongoDB for benchmark data, cached sessions in Redis, and packaged the services with docker compose.\nI drafted the client library that collects a target RAG system's outputs and an intern later extended it; it connects to the server through its API.\nIndependently authored the functional requirements, sequence diagrams, and user flow documentation.",
         skills: ["Python", "FastAPI", "LangGraph", "MongoDB", "Redis"],
       },
       {
@@ -65,7 +65,7 @@ export const siteConfig = {
         name: "LLM / SLM Evaluation Benchmark System",
         metric: "4 evaluation axes · comparison of candidate models",
         description:
-          "Set up a scripted benchmark environment to compare candidate SLMs for product integration.\nCovered four axes — qualitative (document report, QnA, RAG), quantitative (lm-evaluation-harness), LLM-as-a-Judge (LogicKor with a GPT-4 judge) and performance (etalon TTFT/TBT) — and compared HCX, EXAONE, Qwen3 and Gemma.\nThe quantitative, judge and performance tooling is open source; automatic report generation was not implemented.",
+          "Set up a scripted benchmark environment to compare candidate SLMs for product integration.\nCovered four axes — qualitative (document report, QnA, RAG), quantitative (lm-evaluation-harness), LLM-as-a-Judge (LogicKor, scored by Azure GPT-4o) and performance (etalon TTFT/TPOT) — and compared five SLMs (HCX DASH, EXAONE 3.5, EXAONE-Deep, Qwen3-8B, Qwen3-30B-A3B).\nThe quantitative, judge and performance tooling is open source; automatic report generation was not implemented.",
         skills: ["Python", "Hugging Face"],
       },
       {
@@ -83,7 +83,7 @@ export const siteConfig = {
         name: "Complexity-Based RAG Routing (DMA-RAG)",
         metric: "TriviaQA EM 0.35 → 0.70 · lower latency on 3 of 4 datasets",
         description:
-          "MA-RAG runs the same full multi-step pipeline for every question, so simple questions pay the same cost as hard ones.\nThe MA-RAG baseline is a shared team codebase. I designed a Discussion Agent Layer that every question passes through first: three advocate agents vote on whether it is easy, medium or complex, and a moderator picks the route by majority vote.\nCompared it with MA-RAG on 20 questions × 4 datasets (NQ, TriviaQA, HotpotQA, FEVER) using gpt-oss-20b: TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, lower latency on 3 of 4 datasets (FEVER 28.0 s → 7.6 s).\nCaveats found when re-computing the results: the MA-RAG baseline failed on 38 of 80 questions (output-length limit), so on questions both systems answered the gain holds for TriviaQA (0.50 → 0.71) but not for NQ or FEVER; and the Discussion Agent Layer routed every question to the easy or medium path, so the complex path was never chosen. All 20 TriviaQA questions took the easy (direct-answer) path, so the gain cannot be attributed to routing. Only 20 questions per dataset were evaluated.\nFixed a vLLM infinite-loop failure on small models by setting max_model_len to 32,768 and max_tokens to 4,096 per request.",
+          "MA-RAG runs the same full multi-step pipeline for every question, so simple questions pay the same cost as hard ones.\nThe baseline reproduces the original MA-RAG paper's code; I designed, implemented and evaluated a Discussion Agent Layer that every question passes through first: three advocate agents vote on whether it is easy, medium or complex, and a moderator picks the route by majority vote.\nCompared it with MA-RAG on 20 questions × 4 datasets (NQ, TriviaQA, HotpotQA, FEVER) using gpt-oss-20b: TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, lower latency on 3 of 4 datasets (FEVER 28.0 s → 7.6 s).\nCaveats found when re-computing the results: the MA-RAG baseline failed on 38 of 80 questions (output-length limit), so on questions both systems answered the gain holds for TriviaQA (0.50 → 0.71) but not for NQ or FEVER; and the Discussion Agent Layer routed every question to the easy or medium path, so the complex path was never chosen. All 20 TriviaQA questions took the easy (direct-answer) path, so the gain cannot be attributed to routing. Only 20 questions per dataset were evaluated.\nFixed a vLLM infinite-loop failure on small models by setting max_model_len to 32,768 and max_tokens to 4,096 per request.",
         skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
       },
       {
@@ -110,8 +110,8 @@ export const siteConfig = {
         name: "Pet Mischief Detector",
         metric: "Depth gate: false-positive score 0.663 → 0.205 in one example · 3-class accuracy 0.54–0.57 (141 clips)",
         description:
-          "Team project (3 members) that rates, from a still image, how risky a pet's position relative to household objects is (HIGH / MEDIUM / LOW).\n2D box proximity alone flags objects that are adjacent in the image but far apart in depth, so the team combined a pretrained YOLO detector with Depth Anything V2 depth estimates. In one dog–person example the depth gate cut a false-positive score from 0.663 to 0.205 (a single example, not a dataset metric).\nMy part: the risk-scoring logic, iterated four times — additive weighting → multiplicative depth gate → portrait-strip depth sampling → edge-to-edge gap. Three-class accuracy on 141 relabelled clips is 0.54 (yolo26s) and 0.57 (yolo11n). The earlier 0.25 was measured on a different label distribution, and re-scoring the old logic on the new labels gives a higher number, so I do not claim an accuracy improvement.\nAlso built a ResNet18 + Graph Attention Network classifier and the heuristic evaluation script. The classifier did not beat the heuristic — about 120 training samples were too few. Detector fine-tuning (done by a teammate) did not converge, so a pretrained detector was used (mAP@0.5 0.635 on 2,752 test images).\nLimitation: the labelled clips are imbalanced (95 high, 44 low, 2 medium), so the result is best read through the failure analysis rather than as an absolute accuracy.",
-        skills: ["YOLO (pretrained)", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
+          "Team project (3 members) that rates, from a still image, how risky a pet's position relative to household objects is (HIGH / MEDIUM / LOW).\n2D box proximity alone flags objects that are adjacent in the image but far apart in depth, so I combined a COCO-pretrained YOLOv11s detector with Depth Anything V2 depth estimates. In one dog–person example the depth gate cut a false-positive score from 0.663 to 0.205 (a single example, not a dataset metric).\nMy part: the risk-scoring logic, iterated four times — additive weighting → multiplicative depth gate → portrait-strip depth sampling → edge-to-edge gap. Three-class accuracy on the 141 relabelled clips is 0.54 (YOLOv11s) and 0.57 (YOLOv11n).\nAlso built a ResNet18 + Graph Attention Network classifier and the heuristic evaluation script. The classifier did not beat the heuristic — about 120 training samples were too few. Detector fine-tuning attempts did not converge, so the pretrained detector was used (mAP@0.5 0.635 on 2,752 test images).\nLimitation: the labelled clips are imbalanced (95 high, 44 low, 2 medium), so the result is best read through the failure analysis rather than as an absolute accuracy.",
+        skills: ["YOLOv11s (pretrained)", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
       },
       {
         category: "academic",
@@ -154,7 +154,7 @@ export const siteConfig = {
         achievements: [
           "Work-Integrated Education (WIE): Claion employment credited by the university; capstone project run in parallel",
           "Capstone (DMA-RAG): Complexity-based RAG routing with a multi-agent Discussion Agent Layer, benchmarked against MA-RAG on four QA datasets",
-          "Computer Vision: Pet–object risk assessment pipeline using a pretrained YOLO + Depth Anything V2 (team project)",
+          "Computer Vision: Pet–object risk assessment pipeline using a pretrained YOLOv11s + Depth Anything V2 (team project)",
           "Big Data Analytics: team project (6 members) on sentiment analysis from classical ML to BERT",
         ],
       },
@@ -200,7 +200,7 @@ export const siteConfig = {
         name: "RAG 평가 서버",
         metric: "클라이온 상용 제품 R.E.X.의 기반 설계",
         description:
-          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nFastAPI 평가 서버에서 LangGraph 그래프가 krag·ragas 기반 지표 노드를 병렬로 실행 — 검색(MRR·MAP·NDCG·F1·precision·recall·context relevance)과 생성(ROUGE·BLEU·LLM 기반 faithfulness)\nFastAPI 데이터 서비스와 MongoDB로 벤치마크 데이터를 다루고, 세션은 Redis로 캐싱, 서비스들은 docker compose로 구성\n대상 RAG의 출력을 수집하는 클라이언트 라이브러리는 초안을 작성하고 팀원이 확장해 평가 서버와 API로 연동\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 단독 작성",
+          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nFastAPI 평가 서버에서 LangGraph 그래프가 krag·ragas 기반 지표 노드를 병렬로 실행 — 검색(MRR·MAP·NDCG·F1·precision·recall·context relevance)과 생성(ROUGE·BLEU·LLM 기반 faithfulness)\nFastAPI 데이터 서비스와 MongoDB로 벤치마크 데이터를 다루고, 세션은 Redis로 캐싱, 서비스들은 docker compose로 구성\n대상 RAG의 출력을 수집하는 클라이언트 라이브러리는 초안을 작성하고 이후 인턴이 확장해 평가 서버와 API로 연동\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 단독 작성",
         skills: ["Python", "FastAPI", "LangGraph", "MongoDB", "Redis"],
       },
       {
@@ -209,7 +209,7 @@ export const siteConfig = {
         name: "LLM / SLM 평가 벤치마크 시스템",
         metric: "4개 평가 기준 · 후보 모델 비교",
         description:
-          "어떤 SLM을 제품에 넣을지 데이터로 비교할 수 있도록 스크립트화된 평가 환경 구성\n정성(문서 보고서·QnA·RAG), 정량(lm-evaluation-harness), LLM as a Judge(LogicKor, GPT-4 judge), 성능(etalon TTFT/TBT) 4가지 기준으로 HCX·EXAONE·Qwen3·Gemma를 비교 평가\n정량·Judge·성능 도구는 오픈소스를 활용했고, 보고서 자동 생성은 미구현",
+          "어떤 SLM을 제품에 넣을지 데이터로 비교할 수 있도록 스크립트화된 평가 환경 구성\n정성(문서 보고서·QnA·RAG), 정량(lm-evaluation-harness), LLM as a Judge(LogicKor, Azure GPT-4o 채점), 성능(etalon TTFT/TPOT) 4가지 기준으로 HCX·EXAONE·Qwen3 5개 SLM을 비교 평가\n정량·Judge·성능 도구는 오픈소스를 활용했고, 보고서 자동 생성은 미구현",
         skills: ["Python", "Hugging Face"],
       },
       {
@@ -227,7 +227,7 @@ export const siteConfig = {
         name: "질문 난이도별 RAG 라우팅 (DMA-RAG)",
         metric: "TriviaQA EM 0.35 → 0.70 · 4개 중 3개 데이터셋에서 지연 감소",
         description:
-          "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n기준선 MA-RAG는 팀 공동 코드. 모든 질문이 먼저 통과하는 Discussion Agent Layer를 설계 — 옹호 에이전트 3개가 쉬움·보통·복잡에 투표하고 중재자가 다수결로 경로를 선택\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n결과를 다시 계산하며 확인한 한계: MA-RAG 기준선이 80문항 중 38문항에서 출력 길이 제한으로 응답에 실패해, 두 시스템이 모두 답한 문항만 보면 TriviaQA(0.50 → 0.71)는 개선이 유지되지만 NQ와 FEVER는 그렇지 않음. DAL이 모든 문항을 easy·medium으로 판정해 복잡 경로는 한 번도 선택되지 않았고, TriviaQA 20문항은 모두 easy(직접 답변) 경로라 향상을 라우팅 효과로 단정할 수 없음. 평가 문항은 데이터셋당 20개\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
+          "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n기준선은 원 논문 MA-RAG 코드를 재현해 사용하고, DAL 설계·구현·평가는 단독 수행. 모든 질문이 먼저 통과하는 Discussion Agent Layer를 설계 — 옹호 에이전트 3개가 쉬움·보통·복잡에 투표하고 중재자가 다수결로 경로를 선택\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n결과를 다시 계산하며 확인한 한계: MA-RAG 기준선이 80문항 중 38문항에서 출력 길이 제한으로 응답에 실패해, 두 시스템이 모두 답한 문항만 보면 TriviaQA(0.50 → 0.71)는 개선이 유지되지만 NQ와 FEVER는 그렇지 않음. DAL이 모든 문항을 easy·medium으로 판정해 복잡 경로는 한 번도 선택되지 않았고, TriviaQA 20문항은 모두 easy(직접 답변) 경로라 향상을 라우팅 효과로 단정할 수 없음. 평가 문항은 데이터셋당 20개\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
         skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
       },
       {
@@ -254,8 +254,8 @@ export const siteConfig = {
         name: "반려동물 장난 감지기",
         metric: "깊이 게이트: 예시 1건에서 오탐 점수 0.663 → 0.205 · 3단계 정확도 0.54~0.57 (141개 클립)",
         description:
-          "3인 팀 프로젝트 — 정지 이미지에서 반려동물과 주변 물건의 위치 관계를 보고 사고 위험도를 상·중·하 3단계로 판정하는 시스템\n2D 박스 거리만 보면 화면에서는 붙어 있지만 실제로는 멀리 떨어진 물건까지 위험으로 판단해서, 팀이 사전학습 YOLO에 Depth Anything V2(깊이 추정 모델)를 결합 — 개–사람 쌍 예시 1건에서 깊이 게이트가 오탐 점수를 0.663에서 0.205로 낮춤 (데이터셋 지표가 아님)\n담당: 위험도 점수 로직을 4차례 개선 — 가중치 합산 → 깊이 값을 곱해 반영 → 세로 띠 샘플링 → 물체 가장자리 간 거리. 라벨 재정비 후 141개 클립 3단계 정확도는 0.54(yolo26s)·0.57(yolo11n). 이전 0.25는 라벨 분포가 달라 같은 기준이 아니고, 같은 라벨로 이전 로직을 재채점하면 더 높게 나와 정확도 향상은 주장하지 않음\nResNet18 + Graph Attention Network 분류기와 휴리스틱 평가 스크립트도 구현. 분류기는 학습 샘플이 약 120개로 적어 규칙 기반을 넘지 못했고, 팀원이 진행한 검출기 파인튜닝도 수렴하지 않아 사전학습 모델을 사용 (테스트 2,752장 mAP@0.5 0.635)\n한계: 라벨 클립이 high 95 · low 44 · medium 2로 치우쳐 있어, 절대 정확도보다 실패 원인 분석이 핵심",
-        skills: ["YOLO(사전학습)", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
+          "3인 팀 프로젝트 — 정지 이미지에서 반려동물과 주변 물건의 위치 관계를 보고 사고 위험도를 상·중·하 3단계로 판정하는 시스템\n2D 박스 거리만 보면 화면에서는 붙어 있지만 실제로는 멀리 떨어진 물건까지 위험으로 판단해서, COCO 사전학습 YOLOv11s에 Depth Anything V2(깊이 추정 모델)를 결합 — 개–사람 쌍 예시 1건에서 깊이 게이트가 오탐 점수를 0.663에서 0.205로 낮춤 (데이터셋 지표가 아님)\n담당: 위험도 점수 로직을 4차례 개선 — 가중치 합산 → 깊이 값을 곱해 반영 → 세로 띠 샘플링 → 물체 가장자리 간 거리. 라벨 재정비 후 141개 클립 3단계 정확도는 0.54(YOLOv11s)·0.57(YOLOv11n)\nResNet18 + Graph Attention Network 분류기와 휴리스틱 평가 스크립트도 구현. 분류기는 학습 샘플이 약 120개로 적어 규칙 기반을 넘지 못했고, 검출기 파인튜닝도 수렴하지 않아 사전학습 모델을 사용 (테스트 2,752장 mAP@0.5 0.635)\n한계: 라벨 클립이 high 95 · low 44 · medium 2로 치우쳐 있어, 절대 정확도보다 실패 원인 분석이 핵심",
+        skills: ["YOLOv11s(사전학습)", "Depth Anything V2", "PyTorch", "PyTorch Geometric"],
       },
       {
         category: "academic",
@@ -298,7 +298,7 @@ export const siteConfig = {
         achievements: [
           "WIE(Work-Integrated Education) 프로그램 — 클라이온 근무 시간을 학교에서 인정받아 캡스톤 프로젝트와 병행",
           "캡스톤 프로젝트 (DMA-RAG) — 질문 난이도별 RAG 라우팅과 멀티 에이전트 Discussion Agent Layer, 4개 QA 데이터셋에서 MA-RAG와 비교 평가",
-          "컴퓨터 비전 — 사전학습 YOLO + Depth Anything V2 기반 반려동물 위험도 판정 파이프라인 (팀 프로젝트)",
+          "컴퓨터 비전 — YOLOv11s + Depth Anything V2 기반 반려동물 위험도 판정 파이프라인 (팀 프로젝트)",
           "빅데이터 분석 — 고전 ML부터 BERT까지 감성 분석 6인 팀 프로젝트",
         ],
       },
