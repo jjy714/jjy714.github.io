@@ -46,9 +46,12 @@ Career facts (the Wanted resume PDF is the source of truth):
 
 Project facts (do not drift from these):
 - **DMA-RAG** (complexity-based RAG routing; baseline = MA-RAG; gpt-oss-20b; 20 questions × 4 datasets): TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, NQ 0.15 → 0.00; latency lower on 3 of 4. The MA-RAG baseline failed on 38 of 80 questions (output-length limit), so on questions both answered only TriviaQA improves (0.50 → 0.71) while NQ and FEVER do not. The router labelled every question easy/medium, so the Discussion Agent Layer never ran. **Never claim token/cost savings or that the DAL was evaluated.**
-- **Pet Mischief Detector** (PolyU COMP4423, team of 3): pretrained YOLOv11s + Depth Anything V2 — fine-tuning failed, nothing was trained on the 27,512-image pool. My part: scoring logic, v1 → v4 3-class accuracy 0.25 → 0.54 on 141 clips. Still images at 8–12 fps — never say "real-time".
+- **Pet Mischief Detector** (PolyU COMP4423, team of 3): pretrained YOLO (evaluated with yolo11n/yolo26s; detector fine-tuning was a teammate's and failed) + Depth Anything V2 — fine-tuning failed, nothing was trained on the 27,512-image pool. My part: scoring logic v1 → v4, CNN+GNN, heuristic eval script. Do NOT claim 0.25 → 0.54: labels were re-balanced between v1 and v4 (28·87·26 vs 44·2·95) and re-scoring the old logic on the new labels scores higher (verified 2026-11-13). Use only 0.54–0.57 on the new labels, and 0.663 → 0.205 as a single example. Still images at 8–12 fps — never say "real-time".
 - **Movie Sentiment** (PolyU DSAI4205, team of 6): my part was comparing augmentation variants, the F1 visualisation and choosing the hybrid dataset. The BERT 3-fold ensemble was a teammate's. 0.8086 → 0.9208 (2-class) is the **team** result; the old "4.7×" is wrong (3.8×, and it mixed 5-class with 2-class).
 - **Plant classification** (PolyU COMP4423, about 536 images, 8 classes, traditional ML only): stacking scored CV 0.76 but test 0.17 (leak) → redesigned with SelectKBest(100) → PCA(30), CV about 0.70. Strong sunlight, angle and clutter still fail. **Never claim robustness to environmental change.** (The 0.99 in `train_summary.json` is a random-fold artifact.)
+
+## Verification (2026-11-13, GitHub code audit)
+See `../resume/out/github_verification_report.md`. Corrections applied: kiosk (no STT→LLM→TTS conversion in repo history; keywords are a backstop, not an LLM bypass; backend/AI solo, frontend by another developer), SLM eval (4 axes, not 4 task types; open-source tooling), fine-tuning (551,285 = BitAgent only, intermediate checkpoint), R.E.X. (client library drafted by me, extended by a teammate), plant test set was web-crawled, DMA-RAG baseline is shared team code and TriviaQA was all-easy.
 
 ## Open items
 
