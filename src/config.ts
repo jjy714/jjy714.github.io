@@ -81,6 +81,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU Capstone · Sep 2025 – May 2026",
         name: "Complexity-Based RAG Routing (DMA-RAG)",
+        slug: "dma-rag",
         metric: "TriviaQA EM 0.35 → 0.70 · lower latency on 3 of 4 datasets",
         description:
           "MA-RAG runs the same full multi-step pipeline for every question, so simple questions pay the same cost as hard ones.\nThe baseline reproduces the original MA-RAG paper's code; I designed, implemented and evaluated a Discussion Agent Layer that every question passes through first: three advocate agents vote on whether it is easy, medium or complex, and a moderator picks the route by majority vote.\nCompared it with MA-RAG on 20 questions × 4 datasets (NQ, TriviaQA, HotpotQA, FEVER) using gpt-oss-20b: TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, lower latency on 3 of 4 datasets (FEVER 28.0 s → 7.6 s).\nCaveats found when re-computing the results: the MA-RAG baseline failed on 38 of 80 questions (output-length limit), so on questions both systems answered the gain holds for TriviaQA (0.50 → 0.71) but not for NQ or FEVER; and the Discussion Agent Layer routed every question to the easy or medium path, so the complex path was never chosen. All 20 TriviaQA questions took the easy (direct-answer) path, so the gain cannot be attributed to routing. Only 20 questions per dataset were evaluated.\nFixed a vLLM infinite-loop failure on small models by setting max_model_len to 32,768 and max_tokens to 4,096 per request.",
@@ -99,6 +100,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU Computer Vision · 2026",
         name: "Lightweight Hybrid Plant Classification",
+        slug: "plant-classification",
         metric: "CV 0.76 vs. external test 0.17 diagnosed → redesigned, CV ≈ 0.70",
         description:
           "Computer-vision assignment: classify eight campus plants with traditional machine learning only, no deep learning.\nBuilt the dataset by photographing plants on campus (about 60 images per class).\nExtracted about 1,783 features (HOG, LBP, colour moments) and iterated through four model stages. A stacking model scored 0.76 in cross-validation but only 0.17 on a separate test set collected from the web — an overfitting and distribution gap I diagnosed — so I redesigned it around a SelectKBest(100) → PCA(30) bottleneck, reaching about 0.70 cross-validated accuracy.\nKnown limits: strong sunlight, camera angle and cluttered backgrounds still caused misclassifications.",
@@ -108,6 +110,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU COMP4423 · Team of 3 · 2026",
         name: "Pet Mischief Detector",
+        slug: "pet-mischief",
         metric: "Depth gate: false-positive score 0.663 → 0.205 in one example · 3-class accuracy 0.54–0.57 (141 clips)",
         description:
           "Team project (3 members) that rates, from a still image, how risky a pet's position relative to household objects is (HIGH / MEDIUM / LOW).\n2D box proximity alone flags objects that are adjacent in the image but far apart in depth, so I combined a COCO-pretrained YOLOv11s detector with Depth Anything V2 depth estimates. In one dog–person example the depth gate cut a false-positive score from 0.663 to 0.205 (a single example, not a dataset metric).\nMy part: the risk-scoring logic, iterated four times — additive weighting → multiplicative depth gate → portrait-strip depth sampling → edge-to-edge gap. Three-class accuracy on the 141 relabelled clips is 0.54 (YOLOv11s) and 0.57 (YOLOv11n).\nAlso built a ResNet18 + Graph Attention Network classifier and the heuristic evaluation script. The classifier did not beat the heuristic — about 120 training samples were too few. Detector fine-tuning attempts did not converge, so the pretrained detector was used (mAP@0.5 0.635 on 2,752 test images).\nLimitation: the labelled clips are imbalanced (95 high, 44 low, 2 medium), so the result is best read through the failure analysis rather than as an absolute accuracy.",
@@ -117,6 +120,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU DSAI4205 · Team of 6 · 2026",
         name: "Movie Sentiment Analysis — Classical NLP to BERT",
+        slug: "movie-sentiment",
         metric: "Team of 6 · staged hand-offs from data to models",
         description:
           "Team project (6 members): fine-grained phrase-level sentiment classification on the Rotten Tomatoes dataset, from classical NLP baselines to BERT.\nThe team split the work into data expansion, classical models and BERT training, and passed each stage's results to the next as the basis for design decisions.\nMy part: compared the original, synthetic, external and hybrid augmentation variants across models and built the F1 visualisations, giving the team the evidence for choosing the dataset used to train the BERT models.",
@@ -225,6 +229,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU 캡스톤 · 2025.09 – 2026.05",
         name: "질문 난이도별 RAG 라우팅 (DMA-RAG)",
+        slug: "dma-rag",
         metric: "TriviaQA EM 0.35 → 0.70 · 4개 중 3개 데이터셋에서 지연 감소",
         description:
           "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n기준선은 원 논문 MA-RAG 코드를 재현해 사용하고, DAL 설계·구현·평가는 단독 수행. 모든 질문이 먼저 통과하는 Discussion Agent Layer를 설계 — 옹호 에이전트 3개가 쉬움·보통·복잡에 투표하고 중재자가 다수결로 경로를 선택\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n결과를 다시 계산하며 확인한 한계: MA-RAG 기준선이 80문항 중 38문항에서 출력 길이 제한으로 응답에 실패해, 두 시스템이 모두 답한 문항만 보면 TriviaQA(0.50 → 0.71)는 개선이 유지되지만 NQ와 FEVER는 그렇지 않음. DAL이 모든 문항을 easy·medium으로 판정해 복잡 경로는 한 번도 선택되지 않았고, TriviaQA 20문항은 모두 easy(직접 답변) 경로라 향상을 라우팅 효과로 단정할 수 없음. 평가 문항은 데이터셋당 20개\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
@@ -243,6 +248,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU 컴퓨터 비전 · 2026",
         name: "경량 하이브리드 식물 분류",
+        slug: "plant-classification",
         metric: "교차검증 0.76 vs 외부 테스트 0.17 진단 → 재설계 후 CV 약 0.70",
         description:
           "컴퓨터 비전 과제 — 딥러닝 없이 전통 머신러닝만으로 교내 식물 8종을 분류\n교내 식물을 직접 촬영해 클래스당 약 60장의 데이터셋 구축\nHOG·LBP·색상 모멘트 등 약 1,783개 특징으로 4단계 모델을 실험 — 스태킹 모델이 교차검증 0.76이었지만 웹에서 수집한 별도 테스트셋에서는 0.17로 무너지는 과적합·분포 차이를 진단하고, SelectKBest(100) → PCA(30) 병목 구조로 재설계해 교차검증 약 0.70 확보\n한계: 강한 햇빛, 촬영 각도, 복잡한 배경에서는 여전히 오분류가 발생",
@@ -252,6 +258,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU COMP4423 · 3인 팀 · 2026",
         name: "반려동물 장난 감지기",
+        slug: "pet-mischief",
         metric: "깊이 게이트: 예시 1건에서 오탐 점수 0.663 → 0.205 · 3단계 정확도 0.54~0.57 (141개 클립)",
         description:
           "3인 팀 프로젝트 — 정지 이미지에서 반려동물과 주변 물건의 위치 관계를 보고 사고 위험도를 상·중·하 3단계로 판정하는 시스템\n2D 박스 거리만 보면 화면에서는 붙어 있지만 실제로는 멀리 떨어진 물건까지 위험으로 판단해서, COCO 사전학습 YOLOv11s에 Depth Anything V2(깊이 추정 모델)를 결합 — 개–사람 쌍 예시 1건에서 깊이 게이트가 오탐 점수를 0.663에서 0.205로 낮춤 (데이터셋 지표가 아님)\n담당: 위험도 점수 로직을 4차례 개선 — 가중치 합산 → 깊이 값을 곱해 반영 → 세로 띠 샘플링 → 물체 가장자리 간 거리. 라벨 재정비 후 141개 클립 3단계 정확도는 0.54(YOLOv11s)·0.57(YOLOv11n)\nResNet18 + Graph Attention Network 분류기와 휴리스틱 평가 스크립트도 구현. 분류기는 학습 샘플이 약 120개로 적어 규칙 기반을 넘지 못했고, 검출기 파인튜닝도 수렴하지 않아 사전학습 모델을 사용 (테스트 2,752장 mAP@0.5 0.635)\n한계: 라벨 클립이 high 95 · low 44 · medium 2로 치우쳐 있어, 절대 정확도보다 실패 원인 분석이 핵심",
@@ -261,6 +268,7 @@ export const siteConfig = {
         category: "academic",
         tag: "PolyU DSAI4205 · 6인 팀 · 2026",
         name: "영화 리뷰 감성 분석 (고전 NLP → BERT)",
+        slug: "movie-sentiment",
         metric: "6인 팀 · 단계별 결과 인계로 협업",
         description:
           "6인 팀 프로젝트 — Rotten Tomatoes 리뷰를 문구 단위로 세밀하게 분류하는 감성 분석 (고전 NLP에서 BERT까지)\n데이터 확장, 고전 모델, BERT 학습을 팀원이 나눠 맡고, 앞 단계의 실험 결과를 다음 단계 설계의 근거로 넘기며 협업\n담당: 원본·합성·외부·하이브리드 증강 변형을 모델별로 비교 평가하고 F1 시각화를 제작, 팀이 BERT 학습용 데이터셋을 정하는 근거 제공",

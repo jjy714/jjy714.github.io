@@ -126,6 +126,17 @@ const groups = (["work", "academic"] as const)
                           </div>
                         </div>
 
+                        {(projectEn as any).slug && (
+                          <a
+                            href={`/projects/${(projectEn as any).slug}/`}
+                            class="inline-flex items-center gap-1 text-sm font-semibold hover:underline"
+                            style={`color: ${siteConfig.accentColor}`}
+                          >
+                            <span data-en>Details &amp; charts →</span>
+                            <span data-ko>상세 보기 →</span>
+                          </a>
+                        )}
+
                         {projectEn.skills && projectEn.skills.length > 0 && (
                           <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                             {projectEn.skills.map((skill) => (
