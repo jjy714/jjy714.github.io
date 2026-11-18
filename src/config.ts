@@ -14,17 +14,15 @@ export const siteConfig = {
     "LangGraph",
     "vLLM",
     "Gemini Live API",
-    "OpenAI API",
-    "LLM Function Calling",
     "FastAPI",
+    "RESTful API",
     "Docker",
+    "Linux",
     "AWS",
     "Azure",
-    "Qdrant",
+    "MySQL",
     "MongoDB",
-    "PySpark",
     "scikit-learn",
-    "React / React Native",
     "Git",
   ],
 
@@ -38,7 +36,7 @@ export const siteConfig = {
     description:
       "Portfolio of Junyoung Jung — AI Engineer specializing in LLM evaluation, RAG systems, and SLM fine-tuning",
     aboutMe:
-      "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I independently led end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Currently building a multimodal AI kiosk at Withmind. Graduated in Computer Science from The Hong Kong Polytechnic University.",
+      "AI Engineer with hands-on experience designing and deploying LLM evaluation infrastructure, SLM benchmarking systems, and PEFT-based fine-tuning pipelines. At Claion, I worked on end-to-end ML projects — from requirements definition and system design documentation to Docker-based microservice deployment. Currently building a multimodal AI kiosk at Withmind. Graduated in Computer Science from The Hong Kong Polytechnic University.",
     highlights: [
       { value: "0.35 → 0.70", label: "TriviaQA EM vs. MA-RAG (gpt-oss-20b, 20 questions)", project: "Complexity-Based RAG Routing" },
       { value: "0.663 → 0.205", label: "False-positive score in one dog–person example after the depth gate (single example)", project: "Pet Mischief Detector" },
@@ -52,16 +50,16 @@ export const siteConfig = {
         name: "Voice AI Kiosk — Gemini Live Agent & Tool Calling",
         metric: "PoC delivered, 2nd phase in progress",
         description:
-          "Developed the backend and AI side of a multimodal in-store voice ordering kiosk (backend and AI developed solo; the production frontend is built by a separate developer).\nBuilt the agent on the Gemini Live API, which handles voice input and output in a single streaming session.\nFree-form ordering (adding to the cart, database lookups) runs on LLM tool calling.\nWhen the model skips a tool call for confirmations, cancellations, recommendations or payment intent, a predefined keyword set lets the backend step in deterministically at the end of the turn; touch input is handled by the backend directly.\nDesigned the Frontend–Backend WebSocket contract (OpenAPI) and built a test harness; delivered the PoC, and second-phase work is under way.",
+          "Developed the backend and AI side of a multimodal in-store voice ordering kiosk.\nBuilt the agent on the Gemini Live API, which handles voice input and output in a single streaming session.\nFree-form ordering (adding to the cart, database lookups) runs on LLM tool calling.\nWhen the model skips a tool call for confirmations, cancellations, recommendations or payment intent, a predefined keyword set lets the backend step in deterministically at the end of the turn; touch input is handled by the backend directly.\nBuilt the Frontend–Backend WebSocket bridge and a test harness; delivered the PoC, and second-phase work is under way.",
         skills: ["Gemini Live API", "OpenAI API", "Tool Calling", "LLM Function Calling"],
       },
       {
         category: "work",
-        tag: "Claion | Jul 2025 – Sep 2025",
+        tag: "Claion | Sep 2025 – Jan 2026",
         name: "RAG Evaluation Server",
         metric: "Foundation of Claion's commercial product R.E.X.",
         description:
-          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nBuilt the evaluation server as a FastAPI service whose LangGraph graphs run the metric nodes in parallel, integrating krag- and ragas-based metrics: retrieval (MRR, MAP, NDCG, F1, precision, recall, context relevance) and generation (ROUGE, BLEU, LLM-based faithfulness).\nBuilt a FastAPI data service backed by MongoDB for benchmark data, cached sessions in Redis, and packaged the services with docker compose.\nLoad tests (Locust) of the Redis cache showed average response time falling from 1,850 ms to 55 ms (about 33x) and throughput rising about 3.4x; I also compared MongoDB, MySQL, and PostgreSQL in Docker stress tests.\nI drafted the client library that collects a target RAG system's outputs and an intern later extended it; it connects to the server through its API.\nIndependently authored the functional requirements, sequence diagrams, and user flow documentation.",
+          "Planned and built the initial architecture of Claion's RAG evaluation system; after my departure, Claion extended it into its commercial RAG quality-diagnosis product, R.E.X. (claion.co.kr/solution/rex).\nBuilt the evaluation server as a FastAPI service whose LangGraph graphs run the metric nodes in parallel, integrating krag- and ragas-based metrics: retrieval (MRR, MAP, NDCG, F1, precision, recall, context relevance) and generation (ROUGE, BLEU, LLM-based faithfulness).\nBuilt a FastAPI data service backed by MongoDB for benchmark data, cached sessions in Redis, and packaged the services with docker compose.\nLoad tests (Locust) of the Redis cache showed average response time falling from 1,850 ms to 55 ms (about 33x) and throughput rising about 3.4x; I also compared MongoDB, MySQL, and PostgreSQL in Docker stress tests.\nWrote and extended the client library that collects a target RAG system's outputs and connects to the server through its API.\nAuthored the functional requirements, sequence diagrams, and user flow documentation.",
         skills: ["Python", "FastAPI", "LangGraph", "MongoDB", "Redis", "Locust"],
       },
       {
@@ -70,7 +68,7 @@ export const siteConfig = {
         name: "LLM / SLM Evaluation Benchmark System",
         metric: "4 evaluation axes, comparison of candidate models",
         description:
-          "Set up a scripted benchmark environment to compare candidate SLMs for product integration.\nCovered four axes — qualitative (document report, QnA, RAG), quantitative (lm-evaluation-harness), LLM-as-a-Judge (LogicKor, scored by Azure GPT-4o) and performance (etalon TTFT/TPOT) — and compared five SLMs (HCX DASH, EXAONE 3.5, EXAONE-Deep, Qwen3-8B, Qwen3-30B-A3B).\nThe quantitative, judge and performance tooling is open source.\nAlso ran LLM evaluations for a public-sector BMT (five model APIs), compiled Japanese evaluation metrics, and analyzed PDF/HWP parsing errors for the Busan AI service (comparing PyMuPDF and table parsers).",
+          "Set up a scripted benchmark environment to compare candidate SLMs for product integration.\nCovered four axes — qualitative (document report, QnA, RAG), quantitative (lm-evaluation-harness), LLM-as-a-Judge (LogicKor, scored by Azure GPT-4o) and performance (etalon TTFT/TPOT) — and compared five SLMs (HCX DASH, EXAONE 3.5, EXAONE-Deep, Qwen3-8B, Qwen3-30B-A3B).\nThe quantitative, judge and performance tooling is open source.\nAlso ran LLM evaluations for a public-sector BMT (five model APIs) and compiled Japanese evaluation metrics.",
         skills: ["Python", "Hugging Face"],
       },
       {
@@ -79,7 +77,7 @@ export const siteConfig = {
         name: "SLM Fine-Tuning for Tool-Calling",
         metric: "3 SLMs, LoRA/PEFT, ~11K–15K examples per model",
         description:
-          "Ran experiments on injecting tool-calling capability into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on Gemma, Exaone, and HCX DASH, training on open-source Hugging Face datasets that I preprocessed beforehand (about 11K–15K examples per model; original sizes: BitAgent 551,285, ToolACE 11,300, xLAM 60,000, Glaive about 113K).\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.",
+          "Ran experiments on injecting tool-calling capability into SLMs without native support.\nApplied LoRA/PEFT fine-tuning via Unsloth on HCX DASH, EXAONE 3.5, and Gemma 3, training on open-source Hugging Face datasets that I preprocessed beforehand (about 11K–15K examples per model; original sizes: BitAgent 551,285, ToolACE 11,300, xLAM 60,000, Glaive about 113K).\nExperimented with modifying the chat templates of models that lack tool-calling support to get tool calling working.",
         skills: ["PyTorch", "Hugging Face", "LoRA / PEFT", "Unsloth"],
       },
       {
@@ -138,9 +136,9 @@ export const siteConfig = {
         title: "Machine Learning Engineer, Manager",
         dateRange: "Jun 2026 - Present",
         bullets: [
-          "Built a multimodal voice-ordering agent on the Gemini Live API, which handles voice input and output in a single streaming session (backend and AI developed solo).",
+          "Built a multimodal voice-ordering agent on the Gemini Live API, which handles voice input and output in a single streaming session.",
           "LLM tool calling for free-form ordering, with a keyword-based deterministic backend fallback when the model skips a tool call; touch input is handled by the backend directly.",
-          "Designed the Frontend–Backend WebSocket contract (OpenAPI), delivered the PoC, and started second-phase development.",
+          "Built the Frontend–Backend WebSocket bridge, delivered the PoC, and started second-phase development.",
         ],
       },
       {
@@ -150,7 +148,7 @@ export const siteConfig = {
         bullets: [
           "Set up a scripted SLM evaluation environment scored on qualitative, quantitative (lm-evaluation-harness), LLM-as-a-Judge and performance criteria to compare candidate models.",
           "Planned and built the initial architecture of a RAG evaluation server — async FastAPI with LangGraph metric graphs, a MongoDB data service and a Redis cache. The project was paused and later resumed; Claion productized it as R.E.X.",
-          "Ran SLM fine-tuning experiments (LoRA/PEFT via Unsloth) on Gemma, Exaone, and HCX DASH, using preprocessed open-source datasets and chat-template modification experiments for tool calling.",
+          "Ran SLM fine-tuning experiments (LoRA/PEFT via Unsloth) on HCX DASH, EXAONE 3.5, and Gemma 3, using preprocessed open-source datasets and chat-template modification experiments for tool calling.",
           "Authored functional requirements, sequence diagrams, and user flow documentation for the RAG evaluation system.",
         ],
       },
@@ -186,7 +184,7 @@ export const siteConfig = {
     description:
       "정준영 포트폴리오 — LLM 평가, RAG 시스템, SLM 파인튜닝을 다루는 AI 엔지니어",
     aboutMe:
-      "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계 및 배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 단독 주도\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중\n홍콩이공대학교 컴퓨터공학과 졸업",
+      "LLM 평가부터 SLM 파인튜닝, 음성 AI 키오스크까지 — 문제 정의에서 설계 및 배포까지 직접 끌고 가는 AI 엔지니어\n클라이온에서 요구사항 정의, 설계 문서 작성, Docker 기반 마이크로서비스 배포까지 ML 프로젝트 전 과정을 수행\n현재 Withmind에서 멀티모달 AI 키오스크 개발 중\n홍콩이공대학교 컴퓨터공학과 졸업",
     highlights: [
       { value: "0.35 → 0.70", label: "MA-RAG 대비 TriviaQA EM (gpt-oss-20b, 20문항)", project: "질문 난이도별 RAG 라우팅" },
       { value: "0.663 → 0.205", label: "깊이 게이트 적용 후 개–사람 쌍 예시의 오탐 점수 (예시 1건)", project: "반려동물 장난 감지기" },
@@ -200,16 +198,16 @@ export const siteConfig = {
         name: "음성 AI 키오스크 — Gemini Live 에이전트",
         metric: "PoC 개발 완료, 2차 고도화 진행 중",
         description:
-          "음성으로 주문하는 매장용 AI 키오스크의 Backend, AI 개발 (Backend, AI 단독, 실제 프론트엔드는 별도 개발자)\n음성 입출력을 한 번에 처리하는 Gemini Live API 기반으로 에이전트 구현\n장바구니 담기, DB 조회 등 자유로운 발화는 LLM Tool Calling으로 처리\n모델이 도구를 호출하지 않은 확인, 취소, 추천, 결제 의도는 사전 정의한 키워드로 백엔드가 턴 종료 시점에 보정하고, 터치 입력은 백엔드가 직접 처리\nFrontend–Backend WebSocket 계약(OpenAPI)을 설계하고 테스트용 하네스를 제작해 PoC 완료",
+          "음성으로 주문하는 매장용 AI 키오스크의 Backend, AI 개발\n음성 입출력을 한 번에 처리하는 Gemini Live API 기반으로 에이전트 구현\n장바구니 담기, DB 조회 등 자유로운 발화는 LLM Tool Calling으로 처리\n모델이 도구를 호출하지 않은 확인, 취소, 추천, 결제 의도는 사전 정의한 키워드로 백엔드가 턴 종료 시점에 보정하고, 터치 입력은 백엔드가 직접 처리\nFrontend–Backend WebSocket 브릿지를 제작하고 테스트용 하네스를 만들어 PoC 완료",
         skills: ["Gemini Live API", "OpenAI API", "Tool Calling", "LLM Function Calling"],
       },
       {
         category: "work",
-        tag: "클라이온 | 2025.07 – 2025.09",
+        tag: "클라이온 | 2025.09 – 2026.01",
         name: "RAG 평가 서버",
         metric: "클라이온 상용 제품 R.E.X.의 기반 설계",
         description:
-          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계 및 구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nFastAPI 평가 서버에서 LangGraph 그래프가 krag, ragas 기반 지표 노드를 병렬로 실행 — 검색(MRR, MAP, NDCG, F1, precision, recall, context relevance)과 생성(ROUGE, BLEU, LLM 기반 faithfulness)\nFastAPI 데이터 서비스와 MongoDB로 벤치마크 데이터를 다루고, 세션은 Redis로 캐싱, 서비스들은 docker compose로 구성\nRedis 캐시 도입 후 Locust 부하 테스트에서 평균 응답 1,850ms가 55ms로 줄었고(약 33배) 처리량은 약 3.4배 향상, MongoDB, MySQL, PostgreSQL은 Docker 스트레스 테스트로 비교 평가\n대상 RAG의 출력을 수집하는 클라이언트 라이브러리는 초안을 작성하고 이후 인턴이 확장해 평가 서버와 API로 연동\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 작성",
+          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계 및 구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nFastAPI 평가 서버에서 LangGraph 그래프가 krag, ragas 기반 지표 노드를 병렬로 실행 — 검색(MRR, MAP, NDCG, F1, precision, recall, context relevance)과 생성(ROUGE, BLEU, LLM 기반 faithfulness)\nFastAPI 데이터 서비스와 MongoDB로 벤치마크 데이터를 다루고, 세션은 Redis로 캐싱, 서비스들은 docker compose로 구성\nRedis 캐시 도입 후 Locust 부하 테스트에서 평균 응답 1,850ms가 55ms로 줄었고(약 33배) 처리량은 약 3.4배 향상, MongoDB, MySQL, PostgreSQL은 Docker 스트레스 테스트로 비교 평가\n대상 RAG의 출력을 수집하는 클라이언트 라이브러리를 작성 및 확장해 평가 서버와 API로 연동\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 작성",
         skills: ["Python", "FastAPI", "LangGraph", "MongoDB", "Redis", "Locust"],
       },
       {
@@ -218,7 +216,7 @@ export const siteConfig = {
         name: "LLM / SLM 평가 벤치마크 시스템",
         metric: "4개 평가 기준, 후보 모델 비교",
         description:
-          "어떤 SLM을 제품에 넣을지 데이터로 비교할 수 있도록 스크립트화된 평가 환경 구성\n정성(문서 보고서, QnA, RAG), 정량(lm-evaluation-harness), LLM as a Judge(LogicKor, Azure GPT-4o 채점), 성능(etalon TTFT/TPOT) 4가지 기준으로 HCX, EXAONE, Qwen3 5개 SLM을 비교 평가\n정량, Judge, 성능 도구는 오픈소스를 활용\n공공기관 BMT(5개 모델 API 평가)와 일본어 평가 지표 정리, 부산시 AI 서비스 공문서(PDF, HWP) 파싱 오류 분석과 파서 비교 실험도 수행",
+          "어떤 SLM을 제품에 넣을지 데이터로 비교할 수 있도록 스크립트화된 평가 환경 구성\n정성(문서 보고서, QnA, RAG), 정량(lm-evaluation-harness), LLM as a Judge(LogicKor, Azure GPT-4o 채점), 성능(etalon TTFT/TPOT) 4가지 기준으로 HCX, EXAONE, Qwen3 5개 SLM을 비교 평가\n정량, Judge, 성능 도구는 오픈소스를 활용\n공공기관 BMT(5개 모델 API 평가)와 일본어 평가 지표 정리도 수행",
         skills: ["Python", "Hugging Face"],
       },
       {
@@ -237,7 +235,7 @@ export const siteConfig = {
         slug: "dma-rag",
         metric: "TriviaQA EM 0.35 → 0.70, 4개 중 3개 데이터셋에서 지연 감소",
         description:
-          "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n기준선은 원 논문 MA-RAG 코드를 재현해 사용하고, DAL 설계, 구현, 평가는 단독 수행. 모든 질문이 먼저 통과하는 Discussion Agent Layer를 설계 — 옹호 에이전트 3개가 쉬움, 보통, 복잡에 투표하고 중재자가 다수결로 경로를 선택\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
+          "MA-RAG는 모든 질문에 같은 다단계 파이프라인을 돌려서, 쉬운 질문도 어려운 질문과 같은 비용을 치르는 구조\n기준선은 원 논문 MA-RAG 코드를 재현해 사용하고, DAL 설계, 구현, 평가 담당. 모든 질문이 먼저 통과하는 Discussion Agent Layer를 설계 — 옹호 에이전트 3개가 쉬움, 보통, 복잡에 투표하고 중재자가 다수결로 경로를 선택\nMA-RAG와 4개 데이터셋(NQ, TriviaQA, HotpotQA, FEVER, 각 20문항)에서 비교 — gpt-oss-20b 기준 TriviaQA EM 0.35 → 0.70, HotpotQA 0.05 → 0.20, 4개 중 3개 데이터셋에서 지연 감소 (FEVER 28.0초 → 7.6초)\n소형 모델에서 vLLM이 같은 토큰을 무한 반복하는 문제를 max_model_len 32,768, 요청당 max_tokens 4,096으로 설정해 해결",
         skills: ["LangChain", "LangGraph", "Multi-Agent Systems"],
       },
       {
@@ -286,9 +284,9 @@ export const siteConfig = {
         title: "머신러닝 엔지니어, 매니저",
         dateRange: "2026년 6월 - 현재",
         bullets: [
-          "멀티모달 음성 주문 에이전트 개발 — 음성 입출력을 한 번에 처리하는 Gemini Live API 기반 (Backend, AI 단독)",
+          "멀티모달 음성 주문 에이전트 개발 — 음성 입출력을 한 번에 처리하는 Gemini Live API 기반",
           "자유 발화는 LLM Tool Calling으로 처리하고, 모델이 도구 호출을 놓친 의도는 키워드 기반으로 백엔드가 보정, 터치 입력은 백엔드가 직접 처리",
-          "Frontend–Backend WebSocket 계약(OpenAPI) 설계, PoC 완료 후 2차 고도화 진행",
+          "Frontend–Backend WebSocket 브릿지 제작, PoC 완료 후 2차 고도화 진행",
         ],
       },
       {
@@ -298,7 +296,7 @@ export const siteConfig = {
         bullets: [
           "정성 및 정량(lm-evaluation-harness), LLM as a Judge, 성능 4개 기준으로 후보 SLM을 비교하는 스크립트화된 평가 환경 구성",
           "RAG 평가 서버의 기획과 초기 아키텍처 설계 및 구축 — FastAPI, LangGraph 지표 그래프, MongoDB 데이터 서비스, Redis 캐시 (보류 후 재개되어 클라이온이 R.E.X.로 상용화)",
-          "Gemma, EXAONE, HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 오픈소스 데이터 전처리와 Chat Template 수정 실험으로 Tool-Calling 동작을 검증",
+          "HCX DASH, EXAONE 3.5, Gemma 3에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 오픈소스 데이터 전처리와 Chat Template 수정 실험으로 Tool-Calling 동작을 검증",
           "RAG 평가 시스템의 기능 요구사항 및 시퀀스 다이어그램 및 사용자 플로우 문서 작성",
         ],
       },

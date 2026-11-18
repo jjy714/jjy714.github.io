@@ -184,8 +184,8 @@ export const projectDetails: ProjectDetail[] = [
             ko: "쉬움 → 직접 답변, 보통 → 단일 검색 + 문맥 분석, 복잡 → 전체 MA-RAG 파이프라인.",
           },
           {
-            en: "The baseline reproduces the original MA-RAG paper's code; the layer's design, implementation and evaluation are my own.",
-            ko: "기준선은 원 논문 MA-RAG 코드를 재현해 사용했고, DAL의 설계, 구현, 평가는 단독으로 수행했습니다.",
+            en: "The baseline reproduces the original MA-RAG paper's code; I designed, implemented, and evaluated the layer.",
+            ko: "기준선은 원 논문 MA-RAG 코드를 재현해 사용했고, DAL의 설계, 구현, 평가를 맡았습니다.",
           },
         ],
       },
