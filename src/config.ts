@@ -146,7 +146,7 @@ export const siteConfig = {
           "Set up a scripted SLM evaluation environment scored on qualitative, quantitative (lm-evaluation-harness), LLM-as-a-Judge and performance criteria to compare candidate models.",
           "Planned and built the initial architecture of a RAG evaluation server — async FastAPI with LangGraph metric graphs, a MongoDB data service and a Redis cache. The project was paused and later resumed; Claion productized it as R.E.X.",
           "Ran SLM fine-tuning experiments (LoRA/PEFT via Unsloth) on Gemma, Exaone, and HCX DASH, using preprocessed open-source datasets and chat-template modification experiments for tool calling.",
-          "Authored functional requirements and user flow documentation for the RAG evaluation system.",
+          "Authored functional requirements, sequence diagrams, and user flow documentation for the RAG evaluation system.",
         ],
       },
     ],
@@ -204,7 +204,7 @@ export const siteConfig = {
         name: "RAG 평가 서버",
         metric: "클라이온 상용 제품 R.E.X.의 기반 설계",
         description:
-          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nFastAPI 평가 서버에서 LangGraph 그래프가 krag·ragas 기반 지표 노드를 병렬로 실행 — 검색(MRR·MAP·NDCG·F1·precision·recall·context relevance)과 생성(ROUGE·BLEU·LLM 기반 faithfulness)\nFastAPI 데이터 서비스와 MongoDB로 벤치마크 데이터를 다루고, 세션은 Redis로 캐싱, 서비스들은 docker compose로 구성\n대상 RAG의 출력을 수집하는 클라이언트 라이브러리는 초안을 작성하고 이후 인턴이 확장해 평가 서버와 API로 연동\n기능 요구사항, 사용자 플로우 문서 작성",
+          "클라이온 RAG 평가 시스템의 기획과 초기 아키텍처(기초 뼈대) 설계·구축 — 퇴사 후 클라이온이 고도화해 상용 솔루션 R.E.X.(claion.co.kr/solution/rex)로 출시\nFastAPI 평가 서버에서 LangGraph 그래프가 krag·ragas 기반 지표 노드를 병렬로 실행 — 검색(MRR·MAP·NDCG·F1·precision·recall·context relevance)과 생성(ROUGE·BLEU·LLM 기반 faithfulness)\nFastAPI 데이터 서비스와 MongoDB로 벤치마크 데이터를 다루고, 세션은 Redis로 캐싱, 서비스들은 docker compose로 구성\n대상 RAG의 출력을 수집하는 클라이언트 라이브러리는 초안을 작성하고 이후 인턴이 확장해 평가 서버와 API로 연동\n기능 요구사항, 시퀀스 다이어그램, 사용자 플로우 문서 작성",
         skills: ["Python", "FastAPI", "LangGraph", "MongoDB", "Redis"],
       },
       {
@@ -294,7 +294,7 @@ export const siteConfig = {
           "정성·정량(lm-evaluation-harness)·LLM as a Judge·성능 4개 기준으로 후보 SLM을 비교하는 스크립트화된 평가 환경 구성",
           "RAG 평가 서버의 기획과 초기 아키텍처 설계·구축 — FastAPI·LangGraph 지표 그래프·MongoDB 데이터 서비스·Redis 캐시 (보류 후 재개되어 클라이온이 R.E.X.로 상용화)",
           "Gemma·EXAONE·HCX DASH에 LoRA/PEFT(Unsloth) 파인튜닝을 적용하고, 오픈소스 데이터 전처리와 Chat Template 수정 실험으로 Tool-Calling 동작을 검증",
-          "RAG 평가 시스템의 기능 요구사항·사용자 플로우 문서 작성",
+          "RAG 평가 시스템의 기능 요구사항·시퀀스 다이어그램·사용자 플로우 문서 작성",
         ],
       },
     ],
