@@ -271,8 +271,8 @@ export const projectDetails: ProjectDetail[] = [
         heading: { en: "My part: the scoring logic", ko: "담당: 점수 로직" },
         bullets: [
           {
-            en: "closeness = (0.5, proximity + 0.2, contact) × depth_similarity; risk = closeness × a pair-specific multiplier; thresholds 0.30 / 0.65 map to low / medium / high.",
-            ko: "closeness = (0.5, 근접도 + 0.2, 접촉) × 깊이 유사도, risk = closeness × 쌍별 배수, 임계값 0.30 / 0.65로 low, medium, high 판정.",
+            en: "closeness = (0.5 × proximity + 0.2 × contact) × depth_similarity; risk = closeness × a pair-specific multiplier; thresholds 0.30 / 0.65 map to low / medium / high.",
+            ko: "closeness = (0.5 × 근접도 + 0.2 × 접촉) × 깊이 유사도, risk = closeness × 쌍별 배수, 임계값 0.30 / 0.65로 low, medium, high 판정.",
           },
           {
             en: "Four iterations: additive weights → multiplicative depth gate → vertical-strip depth sampling → edge-to-edge distance.",
