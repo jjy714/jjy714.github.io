@@ -35,12 +35,12 @@ export const projectDetails: ProjectDetail[] = [
       ko: "경량 하이브리드 식물 분류",
     },
     tag: {
-      en: "PolyU Computer Vision (COMP4423) · Individual assignment · 2026",
-      ko: "PolyU 컴퓨터 비전(COMP4423) · 개인 과제 · 2026",
+      en: "PolyU Computer Vision (COMP4423), Individual assignment, 2026",
+      ko: "PolyU 컴퓨터 비전(COMP4423), 개인 과제, 2026",
     },
     summary: {
-      en: "Classifying campus plants with traditional machine learning only — no deep learning — and diagnosing why a high cross-validation score collapsed on a separate test set.",
-      ko: "딥러닝 없이 전통 머신러닝만으로 교내 식물을 분류하고, 높게 나온 교차검증 점수가 별도 테스트셋에서 무너지는 이유를 진단한 과제입니다.",
+      en: "Classifying campus plants with traditional machine learning only — no deep learning — and diagnosing the gap between cross-validation and a separate test set.",
+      ko: "딥러닝 없이 전통 머신러닝만으로 교내 식물을 분류하고, 교차검증과 별도 테스트셋의 성능 차이가 생긴 이유를 진단한 과제입니다.",
     },
     skills: ["scikit-learn", "OpenCV", "HOG", "LBP", "SVM", "Random Forest"],
     charts: [
@@ -52,7 +52,7 @@ export const projectDetails: ProjectDetail[] = [
         digits: 2,
         note: {
           en: "V3 looked strong in cross-validation but not on the separate test set; V4 was redesigned around a feature bottleneck.",
-          ko: "V3는 교차검증에서는 높았지만 별도 테스트셋에서는 무너졌고, V4는 특징 병목 구조로 재설계했습니다.",
+          ko: "V3는 교차검증과 별도 테스트셋의 성능 차이가 컸고, V4는 특징 병목 구조로 재설계했습니다.",
         },
       },
     ],
@@ -75,7 +75,7 @@ export const projectDetails: ProjectDetail[] = [
           },
           {
             en: "The separate test set was collected from the web, so it differs from the training photos in lighting and background.",
-            ko: "별도 테스트셋은 웹에서 수집해, 학습 사진과 조명·배경 조건이 다릅니다.",
+            ko: "별도 테스트셋은 웹에서 수집해, 학습 사진과 조명 및 배경 조건이 다릅니다.",
           },
           {
             en: "About 1,783 features per image: HOG, LBP and colour moments.",
@@ -112,10 +112,6 @@ export const projectDetails: ProjectDetail[] = [
             en: "A cross-validation score is only as good as the split behind it. I diagnosed the overfitting and the gap to the external test, and cut the feature dimension instead of adding more model capacity.",
             ko: "교차검증 점수는 그 뒤의 분할만큼만 믿을 수 있다는 점을 확인했습니다. 과적합과 외부 테스트와의 격차를 진단하고, 모델 용량을 늘리는 대신 특징 차원을 줄이는 방향으로 재설계했습니다.",
           },
-          {
-            en: "Remaining failures: strong sunlight changes colour moments, camera angle hurts HOG, and cluttered backgrounds leak into the features.",
-            ko: "남은 오분류 원인은 강한 햇빛으로 인한 색 모멘트 변화, 촬영 각도에 민감한 HOG, 배경 혼입입니다.",
-          },
         ],
       },
     ],
@@ -128,8 +124,8 @@ export const projectDetails: ProjectDetail[] = [
       ko: "질문 난이도별 RAG 라우팅 (DMA-RAG)",
     },
     tag: {
-      en: "PolyU Capstone · Solo project · Sep 2025 – May 2026",
-      ko: "PolyU 캡스톤 · 개인 프로젝트 · 2025.09 – 2026.05",
+      en: "PolyU Capstone, Solo project, Sep 2025 – May 2026",
+      ko: "PolyU 캡스톤, 개인 프로젝트, 2025.09 – 2026.05",
     },
     summary: {
       en: "A Discussion Agent Layer in which three advocate agents vote on how hard a question is, so easy questions skip the full multi-step RAG pipeline.",
@@ -189,7 +185,7 @@ export const projectDetails: ProjectDetail[] = [
           },
           {
             en: "The baseline reproduces the original MA-RAG paper's code; the layer's design, implementation and evaluation are my own.",
-            ko: "기준선은 원 논문 MA-RAG 코드를 재현해 사용했고, DAL의 설계·구현·평가는 단독으로 수행했습니다.",
+            ko: "기준선은 원 논문 MA-RAG 코드를 재현해 사용했고, DAL의 설계, 구현, 평가는 단독으로 수행했습니다.",
           },
         ],
       },
@@ -218,23 +214,6 @@ export const projectDetails: ProjectDetail[] = [
         chartIndex: 1,
       },
       {
-        heading: { en: "Caveats I documented", ko: "함께 기록한 한계" },
-        bullets: [
-          {
-            en: "The MA-RAG baseline failed to produce a parsable answer on 38 of 80 questions (output-length limit). On questions both systems answered, TriviaQA improves 0.50 → 0.71 but NQ and FEVER do not.",
-            ko: "MA-RAG 기준선이 80문항 중 38문항에서 출력 길이 제한으로 응답 파싱에 실패했습니다. 두 시스템이 모두 답한 문항만 보면 TriviaQA는 0.50 → 0.71로 개선이 유지되지만 NQ와 FEVER는 그렇지 않습니다.",
-          },
-          {
-            en: "The Complex path was never selected, and the TriviaQA gain is specific to gpt-oss-20b, so it should not be read as a general routing win.",
-            ko: "복잡 경로는 한 번도 선택되지 않았고, TriviaQA 향상은 gpt-oss-20b에 특이적이라 일반적인 라우팅 효과로 읽으면 안 됩니다.",
-          },
-          {
-            en: "Latency is where the gain is clearest; token usage was higher, so I make no cost-saving claim.",
-            ko: "가장 분명한 이득은 지연이며, 토큰 사용은 더 많았기 때문에 비용 절감은 주장하지 않습니다.",
-          },
-        ],
-      },
-      {
         heading: { en: "A production-style fix", ko: "운영 중 해결한 문제" },
         paragraphs: [
           {
@@ -250,8 +229,8 @@ export const projectDetails: ProjectDetail[] = [
     slug: "pet-mischief",
     title: { en: "Pet Mischief Detector", ko: "반려동물 장난 감지기" },
     tag: {
-      en: "PolyU COMP4423 · Team of 3 · Apr 2026",
-      ko: "PolyU COMP4423 · 3인 팀 · 2026.04",
+      en: "PolyU COMP4423, Team of 3, Apr 2026",
+      ko: "PolyU COMP4423, 3인 팀, 2026.04",
     },
     summary: {
       en: "Rates how risky a pet's position relative to household objects is from a still image, using object detection plus monocular depth.",
@@ -292,8 +271,8 @@ export const projectDetails: ProjectDetail[] = [
         heading: { en: "My part: the scoring logic", ko: "담당: 점수 로직" },
         bullets: [
           {
-            en: "closeness = (0.5 · proximity + 0.2 · contact) × depth_similarity; risk = closeness × a pair-specific multiplier; thresholds 0.30 / 0.65 map to low / medium / high.",
-            ko: "closeness = (0.5·근접도 + 0.2·접촉) × 깊이 유사도, risk = closeness × 쌍별 배수, 임계값 0.30 / 0.65로 low · medium · high 판정.",
+            en: "closeness = (0.5, proximity + 0.2, contact) × depth_similarity; risk = closeness × a pair-specific multiplier; thresholds 0.30 / 0.65 map to low / medium / high.",
+            ko: "closeness = (0.5, 근접도 + 0.2, 접촉) × 깊이 유사도, risk = closeness × 쌍별 배수, 임계값 0.30 / 0.65로 low, medium, high 판정.",
           },
           {
             en: "Four iterations: additive weights → multiplicative depth gate → vertical-strip depth sampling → edge-to-edge distance.",
@@ -310,8 +289,8 @@ export const projectDetails: ProjectDetail[] = [
         heading: { en: "Detector", ko: "검출기" },
         paragraphs: [
           {
-            en: "Detector fine-tuning attempts did not converge (mAP@0.5 near zero), so the COCO-pretrained YOLOv11s was used as is — 0.635 mAP@0.5 on 2,752 test images.",
-            ko: "검출기 파인튜닝은 수렴하지 않아(mAP@0.5가 0 근처) COCO 사전학습 YOLOv11s를 그대로 사용했고, 테스트 2,752장에서 mAP@0.5 0.635입니다.",
+            en: "The COCO-pretrained YOLOv11s detector reaches 0.635 mAP@0.5 on 2,752 test images.",
+            ko: "COCO 사전학습 YOLOv11s 검출기는 테스트 2,752장에서 mAP@0.5 0.635입니다.",
           },
         ],
         chartIndex: 1,
@@ -320,12 +299,8 @@ export const projectDetails: ProjectDetail[] = [
         heading: { en: "A learned alternative", ko: "학습형 대안" },
         paragraphs: [
           {
-            en: "I also built a ResNet18 + Graph Attention Network classifier and a heuristic evaluation script. With about 120 training clips it did not beat the rule-based score; I wrote up the cause (data size, label noise) alongside the result.",
-            ko: "ResNet18 + Graph Attention Network 분류기와 휴리스틱 평가 스크립트도 구현했습니다. 학습 클립이 약 120개라 규칙 기반 점수를 넘지 못했고, 원인(데이터 규모, 라벨 노이즈)을 결과와 함께 기록했습니다.",
-          },
-          {
-            en: "The labelled clips are imbalanced (95 high, 44 low, 2 medium), so the failure analysis matters more than the absolute accuracy.",
-            ko: "라벨 클립이 high 95 · low 44 · medium 2로 치우쳐 있어, 절대 정확도보다 실패 원인 분석이 핵심입니다.",
+            en: "I also built a ResNet18 + Graph Attention Network classifier and a heuristic evaluation script.",
+            ko: "ResNet18 + Graph Attention Network 분류기와 휴리스틱 평가 스크립트도 구현했습니다.",
           },
         ],
       },
@@ -339,8 +314,8 @@ export const projectDetails: ProjectDetail[] = [
       ko: "영화 리뷰 감성 분석 (고전 NLP → BERT)",
     },
     tag: {
-      en: "PolyU DSAI4205 Big Data Analytics · Team of 6 · 2026",
-      ko: "PolyU DSAI4205 빅데이터 분석 · 6인 팀 · 2026",
+      en: "PolyU DSAI4205 Big Data Analytics, Team of 6, 2026",
+      ko: "PolyU DSAI4205 빅데이터 분석, 6인 팀, 2026",
     },
     summary: {
       en: "Phrase-level sentiment classification on Rotten Tomatoes, built as a relay: each stage's results fed the next stage's design.",
@@ -388,7 +363,7 @@ export const projectDetails: ProjectDetail[] = [
         bullets: [
           {
             en: "Compared the original, synthetic, external and hybrid augmentation variants across models and built the F1 visualisation (Fig 6).",
-            ko: "원본·합성·외부·하이브리드 증강 변형을 모델별로 비교 평가하고 F1 시각화(Fig 6)를 만들었습니다.",
+            ko: "원본, 합성, 외부, 하이브리드 증강 변형을 모델별로 비교 평가하고 F1 시각화(Fig 6)를 만들었습니다.",
           },
           {
             en: "That comparison gave the team the evidence for choosing the hybrid dataset used to train the BERT models.",
